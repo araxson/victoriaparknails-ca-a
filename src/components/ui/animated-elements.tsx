@@ -132,7 +132,7 @@ export function AnimatedList({
   className = '',
   as: Component = 'div'
 }: {
-  children: ReactNode[];
+  children: ReactNode;
   className?: string;
   as?: ElementType;
 }) {

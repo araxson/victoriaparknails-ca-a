@@ -100,9 +100,9 @@ export function ServicesFilter() {
     
     updateFilters(params);
   };
-
   return (
-    <div className="w-full max-w-xl mx-auto space-y-4">      <AnimatedOnce>
+    <div className="w-full max-w-xl mx-auto space-y-4">
+      <AnimatedOnce>
         <form onSubmit={handleSearchSubmit} className="relative">
           <Input
             type="text"

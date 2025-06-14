@@ -35,17 +35,18 @@ export function ServicesSection() {
       category: "Nail Design"
     }
   ].filter(item => item.service);
-
   // Format price correctly to avoid double dollar signs
-  const formatPrice = (price: number | string) => {
+  const formatPrice = (price: number | string): string => {
     if (typeof price === 'number') {
-      return `${price}`;
+      return `$${price}`;
     }
-    return price.startsWith('$') ? price : `{price}`;
+    return price.startsWith('$') ? price : `$${price}`;
   };
-
-  return (    <Section className="bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">        <div className="text-center mb-12 sm:mb-16 md:mb-20">          <AnimatedDetail>
+  return (
+    <Section className="bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <AnimatedDetail>
             <Badge variant="outline" size="lg" className="mb-6 rounded-full font-medium">
               Popular Services
             </Badge>
@@ -62,12 +63,14 @@ export function ServicesSection() {
               Discover our most requested professional nail services that keep our clients coming back
             </p>
           </AnimatedDetail>
-        </div>        <AnimatedList 
+        </div>
+
+        <AnimatedList 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {popularNailServices.map(({service, category}) => (
             service && (
-              <Card key={service.id} className="flex flex-col h-full border bg-card transition-opacity hover:opacity-80">
+              <Card key={service.id} className="flex flex-col h-full border bg-card transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
                 <CardHeader className="pb-2 text-center">
                   <AnimatedCardItem>
                     <Badge variant="secondary" size="default" className="mb-2 self-center">

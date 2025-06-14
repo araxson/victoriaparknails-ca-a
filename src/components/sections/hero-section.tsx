@@ -34,10 +34,9 @@ export function HeroSection({
       >
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
-
-      {/* Overlay for better text readability */}
+      </video>      {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-background/50 dark:bg-background/70 z-10" />
+      
       <div className="relative z-20 w-full">
         <div className="max-w-7xl mx-auto text-center space-y-6 md:space-y-8 lg:space-y-10 px-4 md:px-6">
           {showBadge && (
@@ -50,16 +49,12 @@ export function HeroSection({
                 Est. {businessInfo.founded}
               </Badge>
             </AnimatedDetail>
-          )}
-
-          <AnimatedDetail animation="slideUp" delay={300}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance text-foreground font-serif leading-tight [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)] max-w-6xl mx-auto">
+          )}          <AnimatedDetail animation="slideUp" delay={300}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance text-foreground font-serif leading-tight max-w-6xl mx-auto [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)]">
               {title || businessInfo.name}
             </h1>
-          </AnimatedDetail>
-
-          <AnimatedDetail animation="slideUp" delay={500}>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground font-sans leading-tight max-w-6xl mx-auto text-balance [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)] px-4">
+          </AnimatedDetail>          <AnimatedDetail animation="slideUp" delay={500}>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground font-sans leading-tight max-w-6xl mx-auto text-balance px-4 [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)]">
               {subtitle || businessInfo.tagline}
             </p>
           </AnimatedDetail>
@@ -75,7 +70,7 @@ export function HeroSection({
           {showButtons && (
             <AnimatedDetail animation="slideUp" delay={900}>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-8 px-4">
-                <Button size="lg" className="font-semibold text-base motion-safe:hover:animate-pulse" asChild>
+                <Button size="lg" className="font-semibold text-base transition-all duration-300 hover:scale-105" asChild>
                   <a
                     href={businessInfo.contact.bookingUrl}
                     target="_blank"

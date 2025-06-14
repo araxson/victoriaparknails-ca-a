@@ -17,22 +17,20 @@ import {
 import { ThemeToggle } from "@/components/layouts/theme-toggle";
 import { Menu, Phone, Clock, Home, HandHeart, ImageIcon } from "lucide-react";
 
-const navigation = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "Services", href: "/services", icon: HandHeart },
-  { name: "Gallery", href: "/gallery", icon: ImageIcon },
-  { name: "Contact", href: "/contact", icon: Phone },
-
-];
+  const navigation = [
+    { name: "Home", href: "/", icon: Home },
+    { name: "Services", href: "/services", icon: HandHeart },
+    { name: "Gallery", href: "/gallery", icon: ImageIcon },
+    { name: "Contact", href: "/contact", icon: Phone },
+  ];
 
 export function MainHeader() {
   const pathname = usePathname();
-  const [isSheetOpen, setIsSheetOpen] = React.useState(false);
-  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isSheetOpen, setIsSheetOpen] = React.useState(false);  const [isScrolled, setIsScrolled] = React.useState(false);
   const [isHidden, setIsHidden] = React.useState(false);
   const lastScrollY = React.useRef(0);
-  const scrollThreshold = 20; // Minimum scroll difference to trigger direction change
-  const scrollHideThreshold = 150; // Minimum scroll position to consider hiding header
+  const scrollThreshold = 20;
+  const scrollHideThreshold = 150;
 
   React.useEffect(() => {
     let ticking = false;
@@ -42,21 +40,17 @@ export function MainHeader() {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           const scrollDifference = currentScrollY - lastScrollY.current;
-          
-          // Update background state based on scroll position
+            // Update background state based on scroll position
           setIsScrolled(currentScrollY > 10);
           
           // Update hidden state based on scroll direction and position
           if (currentScrollY > scrollHideThreshold) {
             if (scrollDifference > scrollThreshold) {
-              // Scrolling down - hide header
               setIsHidden(true);
-            } else if (scrollDifference < -scrollThreshold/2) {
-              // Scrolling up - show header
+            } else if (scrollDifference < -scrollThreshold / 2) {
               setIsHidden(false);
             }
           } else {
-            // Always show header near the top of the page
             setIsHidden(false);
           }
           
@@ -128,11 +122,10 @@ export function MainHeader() {
               Book Now
             </a>
           </Button>
-          <ThemeToggle />
-          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+          <ThemeToggle />          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="lg:hidden">
-                <Menu className="hover:bg-secondary" />
+              <Button variant="ghost" className="lg:hidden" size="icon" aria-label="Open menu">
+                <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full max-w-sm p-0 overflow-y-auto">

@@ -139,14 +139,13 @@ export default function ServicesPage({
                     Showing results for: <span className="font-medium">&quot;{searchTerm}&quot;</span> ({services.length} {services.length === 1 ? 'service' : 'services'} found)
                   </p>
                 )}
-              </div>
-                {services.length > 0 ? (                <AnimatedList 
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                  {services.map((service: Service) => (
-                    <Card
+              </div>                {services.length > 0 ? (
+                  <AnimatedList 
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  >
+                  {services.map((service: Service) => (                    <Card
                       key={service.id}
-                      className="border bg-card flex flex-col overflow-hidden transition-opacity hover:opacity-80"
+                      className="border bg-card flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
                     >
                       <CardHeader className="flex-grow p-6">
                         <div className="flex justify-between items-start gap-4 mb-4">
@@ -166,20 +165,18 @@ export default function ServicesPage({
                               {service.duration}
                             </div>
                           </div>
-                        </div>
-
-                        <div className="space-y-4">
+                        </div>                        <div className="space-y-4">
                           <Button asChild className="w-full">
                             <a
                               href="https://victoriaparknailsspa.setmore.com/"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/70 dark:hover:bg-primary/70 transition-all text-sm font-semibold transform"
+                              className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/90 transition-all text-sm font-semibold"
                             >
                               Book This Service
                             </a>
                           </Button>
-                        </div>                      </CardHeader>
+                        </div></CardHeader>
                     </Card>
                   ))}
                 </AnimatedList>
