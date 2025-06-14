@@ -3,18 +3,24 @@
 import { useEffect, useState, useCallback } from 'react';
 import { toast } from 'sonner';
 import { promotions } from '@/data/promotions';
+import { Badge } from '@/components/ui/shadcn/data-display/badge';
 
 const PromoToast = ({ title, description, discount }: { title: string; description: string; discount: string }) => {
   return (
     <div className="relative w-full">
-      <div className="flex flex-col items-start pt-1">
+      <div className="absolute -top-3 -right-3 z-50">
+        <Badge 
+          variant="destructive" 
+          size="sm"
+          className="bg-red-500 border-red-500 font-bold px-2 py-0.5 rounded"
+        >
+          {discount}
+        </Badge>
+      </div>
+      
+      <div className="flex flex-col items-start pr-8 pt-2">
         <div className="font-semibold">{title}</div>
         <div className="text-sm opacity-90">{description}</div>
-      </div>
-      <div className="absolute -top-3.5 -right-3.5">
-        <span className="bg-red-500 text-xs px-2 py-0.5 font-bold rounded text-white">
-          {discount}
-        </span>
       </div>
     </div>
   );
@@ -38,6 +44,7 @@ export function PromotionNotification() {
       duration: 10000,
       position: "bottom-left",
       closeButton: false,
+      className: "promotion-toast",
       onDismiss: () => setDismissed(true)
     });
     
