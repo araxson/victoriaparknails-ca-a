@@ -43,13 +43,13 @@ export const faqs: FAQ[] = [
   {
     id: "french-manicure-options",
     question: "Do you offer French manicures?",
-    answer: "Yes! We offer classic French manicures with natural pink base and white tips. Available in both regular and gel polish options for $35. It's a timeless, elegant look perfect for any occasion.",
+    answer: "Yes! We offer classic French manicures with natural pink base and white tips. Available in both regular and gel polish options. French tips are an add-on for $10 to any manicure service.",
     category: "services"
   },
   {
     id: "nail-art-pricing",
     question: "How much does nail art cost?",
-    answer: "Basic nail art starts at $10 and can go up to $20. Advanced nail art with 3D elements or intricate designs starts at $25 and can go up to $50 depending on complexity. We'll discuss pricing during consultation.",
+    answer: "Custom nail design starts at $5 per nail and can vary based on complexity. We offer everything from simple accent nails to intricate custom artwork. Pricing will be discussed during your consultation based on your desired design.",
     category: "services"
   },
   {
@@ -61,14 +61,14 @@ export const faqs: FAQ[] = [
   {
     id: "service-duration",
     question: "How long do appointments take?",
-    answer: "Regular manicures take 30 minutes, gel manicures 45 minutes, classic pedicures 50 minutes, spa pedicures 75 minutes, and extensions 90-150 minutes. We'll confirm timing when booking.",
+    answer: "Regular manicures take 30 minutes, shellac manicures 1 hour, basic pedicures 45 minutes, spa pedicures 45 minutes to 1 hour, acrylic new sets 1 hour 15 minutes, and UV gel new sets 1 hour 15 minutes. We'll confirm timing when booking.",
     category: "services"
   },
   {
     id: "pricing-range",
     question: "What are your service prices?",
-    answer: "Regular manicures start at $25, gel manicures $35, classic pedicures $35, spa pedicures $55, acrylic extensions $65, and gel extensions $75. Contact us for a complete price list.",
-    category: "services"
+    answer: "Regular manicures start at $30, shellac manicures $40, basic pedicures $45-$50, spa pedicures $50-$60, acrylic new sets $60, and UV gel new sets $65. Massage services range from $120-$240. Contact us for a complete price list.",
+    category: "pricing"
   },
 
   // Health & Safety

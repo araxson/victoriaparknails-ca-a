@@ -1,15 +1,19 @@
 "use client";
-import * as React from "react";
+
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import * as SwitchPrimitive from "@radix-ui/react-switch";
-import { Moon, Sun } from "@/lib/icons";
+import { Root, Thumb } from "@radix-ui/react-switch";
+import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
-export function ThemeToggle() {
+
+function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
     setMounted(true);
   }, []);
+
   if (!mounted) {
     return (
       <div
@@ -18,43 +22,39 @@ export function ThemeToggle() {
       />
     );
   }
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
+
   return (
-    <SwitchPrimitive.Root
+    <Root
       checked={theme === "dark"}
-      onCheckedChange={toggleTheme}
+      onCheckedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
       className={cn(
-        "group relative inline-flex h-6 w-11 shrink-0 rounded-full",
-        "border-2 border-transparent focus-visible:outline-none",
-        "transition-colors duration-300",
-        "focus-visible:ring-2 focus-visible:ring-primary/50",
-        theme === "dark" ? "bg-slate-600" : "bg-amber-200",
+        "group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full",
+        "border-2 border-transparent transition-colors duration-300 ease-in-out",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
+        "data-[state=unchecked]:bg-amber-300",
+        "data-[state=checked]:bg-slate-800"
       )}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
-      <SwitchPrimitive.Thumb
+      <Thumb
         className={cn(
-          "pointer-events-none block h-5 w-5 rounded-full ring-0",
-          "transition-transform duration-300 flex items-center justify-center",
-          theme === "dark"
-            ? "translate-x-5 bg-slate-100"
-            : "translate-x-0 bg-white",
+          "pointer-events-none relative block h-5 w-5 rounded-full ring-0",
+          "transition-transform duration-300 ease-in-out",
+          "bg-white",
+          "data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
         )}
       >
-        {theme === "dark" ? (
-          <Moon
-            size={12}
-            className="text-slate-600 transition-colors duration-300"
-          />
-        ) : (
-          <Sun
-            size={12}
-            className="text-amber-600 transition-colors duration-300"
-          />
-        )}
-      </SwitchPrimitive.Thumb>
-    </SwitchPrimitive.Root>
+        <Sun
+          size={12}
+          className="absolute inset-0 m-auto text-amber-500 transition-all duration-300 ease-in-out group-data-[state=unchecked]:opacity-100 group-data-[state=unchecked]:rotate-0 group-data-[state=checked]:opacity-0 group-data-[state=checked]:-rotate-90"
+        />
+        <Moon
+          size={12}
+          className="absolute inset-0 m-auto text-slate-800 transition-all duration-300 ease-in-out group-data-[state=unchecked]:opacity-0 group-data-[state=unchecked]:rotate-90 group-data-[state=checked]:opacity-100 group-data-[state=checked]:rotate-0"
+        />
+      </Thumb>
+    </Root>
   );
 }
+
+export { ThemeToggle };

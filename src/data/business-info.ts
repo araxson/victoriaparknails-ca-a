@@ -16,7 +16,8 @@ export const businessInfo: BusinessInfo = {
   contact: {
     phone: "(403) 719-3600",
     email: "calgaryvpark@gmail.com",
-    website: "https://www.victoriaparknails.ca"
+    website: "https://www.victoriaparknails.ca",
+    bookingUrl: "https://victoriaparknailsspa.setmore.com/"
   },
   hours: {
     "Monday": "10:00 AM - 7:00 PM",

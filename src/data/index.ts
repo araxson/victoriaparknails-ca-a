@@ -47,6 +47,10 @@ export const getPopularServices = () => {
   return servicesList.filter(service => service.popular);
 };
 
+export const getAllServices = () => {
+  return servicesList;
+};
+
 export const getTeamMemberById = (id: string) => {
   return teamMembersList.find(member => member.id === id);
 };

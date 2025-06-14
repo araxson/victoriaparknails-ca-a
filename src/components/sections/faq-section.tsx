@@ -1,80 +1,82 @@
-'use client';
-
-import { useState } from 'react';
 import { faqs } from '@/data';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/shadcn/data-display/card';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/shadcn/layout/accordion';
 import { Badge } from '@/components/ui/shadcn/data-display/badge';
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import { Section } from '@/components/layouts';
+import { AnimatedDetail, AnimatedList } from '@/components/ui/animated-elements';
 
 export function FAQSection() {
-  const [openItems, setOpenItems] = useState<string[]>([]);
-
-  const toggleItem = (id: string) => {
-    setOpenItems(prev => 
-      prev.includes(id) 
-        ? prev.filter(item => item !== id)
-        : [...prev, id]
-    );
-  };
-
   const categories = [...new Set(faqs.map(faq => faq.category))];
-
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="mb-4">
-            FAQ
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Find answers to common questions about our services, booking, and policies.
-          </p>
+    <Section className="bg-muted/30">      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">          <AnimatedDetail animation="fade" delay={50}>
+            <Badge variant="outline" size="lg" className="mb-6 rounded-full font-medium">
+              FAQ
+            </Badge>
+          </AnimatedDetail>
+          
+          <AnimatedDetail animation="slideUp" delay={100}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-serif leading-tight max-w-4xl mx-auto">
+              Frequently Asked Questions
+            </h2>
+          </AnimatedDetail>
+          
+          <AnimatedDetail animation="slideUp" delay={150}>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Find answers to common questions about our services, booking, and
+              policies.
+            </p>
+          </AnimatedDetail>
         </div>
-
-        <div className="max-w-4xl mx-auto">
-          {categories.map(category => (
-            <div key={category} className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 capitalize">
-                {category} Questions
-              </h3>
-              <div className="space-y-3">
-                {faqs
-                  .filter(faq => faq.category === category)
-                  .map(faq => (
-                    <Card key={faq.id} className="hover:shadow-md transition-shadow">
-                      <CardHeader 
-                        className="cursor-pointer pb-3"
-                        onClick={() => toggleItem(faq.id)}
-                      >
-                        <div className="flex items-center justify-between">
-                          <CardTitle className="text-lg font-medium text-left">
+          <div className="max-w-4xl mx-auto">          <AnimatedList
+            className="space-y-10 sm:space-y-12"
+            itemDelay={120}
+            itemThreshold={0.3}
+          >
+            {categories.map(category => (
+              <div key={category}>                <AnimatedDetail animation="slideUp" delay={50}>
+                  <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6 sm:mb-8 capitalize font-serif text-center">
+                    {category} Questions
+                  </h3>
+                </AnimatedDetail>
+                
+                <Accordion type="single" collapsible className="w-full">
+                  <AnimatedList
+                    className="space-y-4"
+                    itemDelay={80}
+                    itemThreshold={0.4}
+                  >
+                    {faqs
+                      .filter(faq => faq.category === category)
+                      .map(faq => (
+                        <AccordionItem
+                          value={faq.id}
+                          key={faq.id}
+                          className="rounded-lg bg-card fade-on-hover"
+                        >
+                          <AccordionTrigger className="p-4 sm:p-6 text-base sm:text-lg font-semibold text-left hover:no-underline">
                             {faq.question}
-                          </CardTitle>
-                          {openItems.includes(faq.id) ? (
-                            <ChevronUpIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                          ) : (
-                            <ChevronDownIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                          )}
-                        </div>
-                      </CardHeader>
-                      
-                      {openItems.includes(faq.id) && (
-                        <CardContent className="pt-0">
-                          <p className="text-gray-600 leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </CardContent>
-                      )}
-                    </Card>
-                  ))}
+                          </AccordionTrigger>
+                          <AccordionContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+                            <div className="pt-2">
+                              <p className="text-muted-foreground leading-relaxed text-base">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                  </AnimatedList>
+                </Accordion>
               </div>
-            </div>
-          ))}
+            ))}
+          </AnimatedList>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

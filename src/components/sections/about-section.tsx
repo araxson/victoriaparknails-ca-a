@@ -1,164 +1,159 @@
 import { businessInfo } from '@/data';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/shadcn/data-display/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/shadcn/data-display/card';
 import { Badge } from '@/components/ui/shadcn/data-display/badge';
 import { MapPinIcon, PhoneIcon, ClockIcon, CalendarIcon } from 'lucide-react';
+import { Section } from '@/components/layouts';
+import { AnimatedDetail, AnimatedList } from '@/components/ui/animated-elements';
 
 export function AboutSection() {
   const currentYear = new Date().getFullYear();
   const yearsInBusiness = currentYear - parseInt(businessInfo.founded);
-
   return (
-    <section className="py-16 bg-gradient-to-br from-pink-50 to-purple-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="mb-4">
-            About Us
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {businessInfo.name}
-          </h2>
-          <p className="text-xl text-primary font-medium mb-6">
-            {businessInfo.tagline}
-          </p>
+    <Section className="bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">        <div className="text-center mb-12 sm:mb-16 md:mb-20">          <AnimatedDetail animation="fade" delay={50}>
+            <Badge variant="outline" size="lg" className="mb-6 rounded-full font-medium">
+              About Us
+            </Badge>
+          </AnimatedDetail>
+          
+          <AnimatedDetail animation="slideUp" delay={100}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-serif leading-tight max-w-4xl mx-auto">
+              Welcome to {businessInfo.name}
+            </h2>
+          </AnimatedDetail>
+          
+          <AnimatedDetail animation="slideUp" delay={150}>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              {businessInfo.tagline}
+            </p>
+          </AnimatedDetail>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Story & Description */}
-          <div className="space-y-6">
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl text-gray-900">
-                  Our Story
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-gray-600 leading-relaxed">
-                  {businessInfo.description}
-                </p>
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2">
-                    <CalendarIcon className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium">
-                      Established {businessInfo.founded}
-                    </span>
+          <div className="space-y-8">            <AnimatedDetail animation="slideLeft" delay={50}>
+              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+                <CardHeader className="p-6 pb-4">
+                  <CardTitle className="text-2xl md:text-3xl text-card-foreground font-serif">
+                    Our Story
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6 p-6 pt-0">
+                  <p className="text-muted-foreground leading-relaxed text-base">
+                    {businessInfo.description}
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 pt-4">
+                    <div className="flex items-center space-x-3">
+                      <CalendarIcon className="h-6 w-6 text-primary flex-shrink-0" />
+                      <span className="text-base font-medium text-muted-foreground">
+                        Established {businessInfo.founded}
+                      </span>
+                    </div>
+                    <Badge variant="secondary" size="default" className="px-4 py-1 text-sm">
+                      {yearsInBusiness}+ Years of Excellence
+                    </Badge>
                   </div>
-                  <Badge variant="secondary">
-                    {yearsInBusiness}+ Years of Excellence
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </AnimatedDetail>
 
             {/* Mission/Values */}
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl text-gray-900">
-                  What Sets Us Apart
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="text-center p-4 rounded-lg bg-pink-50">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      {yearsInBusiness}+
-                    </div>
-                    <div className="text-sm text-gray-600">Years Experience</div>
-                  </div>
-                  <div className="text-center p-4 rounded-lg bg-purple-50">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      1000+
-                    </div>
-                    <div className="text-sm text-gray-600">Happy Clients</div>
-                  </div>
-                  <div className="text-center p-4 rounded-lg bg-blue-50">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      100%
-                    </div>
-                    <div className="text-sm text-gray-600">Satisfaction</div>
-                  </div>
-                  <div className="text-center p-4 rounded-lg bg-green-50">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      7
-                    </div>
-                    <div className="text-sm text-gray-600">Days a Week</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <AnimatedDetail animation="slideLeft" delay={100}>
+              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+                <CardHeader className="p-6 pb-4">
+                  <CardTitle className="text-2xl md:text-3xl text-card-foreground font-serif">
+                    What Sets Us Apart
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 pt-0">
+                  <AnimatedList
+                    className="grid grid-cols-2 gap-4 sm:gap-6"
+                    itemDelay={60}
+                    itemThreshold={0.4}
+                  >
+                    {[
+                      { value: `${yearsInBusiness}+`, label: 'Years Experience' },
+                      { value: '1000+', label: 'Happy Clients' },
+                      { value: '100%', label: 'Satisfaction' },
+                      { value: '7', label: 'Days a Week' }
+                    ].map((stat, index) => (
+                      <div key={index} className="text-center p-4 rounded-lg bg-accent/40 hover:bg-accent/50 transition-colors">
+                        <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+                          {stat.value}
+                        </div>
+                        <div className="text-sm md:text-base text-muted-foreground uppercase tracking-wider font-medium">
+                          {stat.label}
+                        </div>
+                      </div>
+                    ))}
+                  </AnimatedList>
+                </CardContent>
+              </Card>
+            </AnimatedDetail>
           </div>
-
+          
           {/* Location & Contact Info */}
-          <div className="space-y-6">
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl text-gray-900 flex items-center">
-                  <MapPinIcon className="h-5 w-5 text-primary mr-2" />
-                  Visit Us
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <p className="font-medium text-gray-900">{businessInfo.address.fullAddress}</p>
-                  <div className="mt-2 space-y-1">
-                    <div className="flex items-center space-x-2">
-                      <PhoneIcon className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm text-gray-600">{businessInfo.contact.phone}</span>
+          <div className="space-y-8">            <AnimatedDetail animation="slideRight" delay={80}>
+              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+                <CardHeader className="p-6 pb-4">
+                  <CardTitle className="text-2xl md:text-3xl text-card-foreground flex items-center font-serif">
+                    <MapPinIcon className="h-7 w-7 text-primary mr-3 flex-shrink-0" />
+                    Visit Us
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6 p-6 pt-0">
+                  <div>
+                    <p className="font-medium text-card-foreground leading-relaxed text-base">{businessInfo.address.fullAddress}</p>
+                    <div className="mt-6 space-y-4">
+                      <div className="flex items-center space-x-3">
+                        <PhoneIcon className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                        <a 
+                          href={`tel:${businessInfo.contact.phone}`}
+                          className="text-base text-primary hover:text-primary/80 font-medium"
+                        >
+                          {businessInfo.contact.phone}
+                        </a>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <ClockIcon className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                        <span className="text-base text-muted-foreground">Open 7 days a week</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </AnimatedDetail>
 
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl text-gray-900 flex items-center">
-                  <ClockIcon className="h-5 w-5 text-primary mr-2" />
-                  Opening Hours
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {Object.entries(businessInfo.hours).map(([day, hours]) => (
-                    <div key={day} className="flex justify-between items-center">
-                      <span className="font-medium text-gray-700">{day}</span>
-                      <span className="text-gray-600">{hours}</span>
+            {/* Hours Card */}
+            <AnimatedDetail animation="slideRight" delay={250}>
+              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+                <CardHeader className="p-6 pb-4">
+                  <CardTitle className="text-2xl md:text-3xl text-card-foreground flex items-center font-serif">
+                    <ClockIcon className="h-7 w-7 text-primary mr-3 flex-shrink-0" />
+                    Business Hours
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 p-6 pt-0">
+                  <div className="flex justify-between items-center py-2.5 border-b">
+                    <span className="text-base text-muted-foreground">Monday - Friday</span>
+                    <span className="text-base text-foreground font-medium">9:00 AM - 7:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2.5">
+                    <span className="text-base text-muted-foreground">Saturday - Sunday</span>
+                    <span className="text-base text-foreground font-medium">10:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="pt-4 border-t border-border">
+                    <div className="flex justify-between items-center py-2.5">
+                      <span className="text-base text-muted-foreground">Holidays</span>
+                      <span className="text-base text-foreground font-medium">Call for hours</span>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Social Media */}
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl text-gray-900">
-                  Follow Us
-                </CardTitle>
-                <CardDescription>
-                  Stay connected for updates, tips, and inspiration
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex space-x-3">
-                  {Object.entries(businessInfo.socialMedia).map(([platform, url]) => 
-                    url ? (
-                      <a
-                        key={platform}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors capitalize"
-                      >
-                        {platform}
-                      </a>
-                    ) : null
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedDetail>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

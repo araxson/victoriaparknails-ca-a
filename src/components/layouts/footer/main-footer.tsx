@@ -1,11 +1,13 @@
-import * as React from "react"
-import Link from "next/link"
-import { Facebook, Instagram, MapPin, Phone, Mail, Clock, ExternalLink, Sparkles, Heart } from "lucide-react"
+"use client";
 
-import { businessInfo } from "@/data"
-import { Button } from "@/components/ui/shadcn/inputs/button"
-import { Separator } from "@/components/ui/shadcn/layout/separator"
-import { Badge } from "@/components/ui/shadcn/data-display/badge"
+import Link from "next/link";
+import Image from "next/image";
+import { Facebook, Instagram, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Sparkles, Heart } from "lucide-react";
+import { businessInfo } from "@/data";
+import { Button } from "@/components/ui/shadcn/inputs/button";
+import { Separator } from "@/components/ui/shadcn/layout/separator";
+import { LocationMap } from "@/components/sections/location-map";
 
 const footerNavigation = {
   services: [
@@ -23,7 +25,7 @@ const footerNavigation = {
   support: [
     { name: "Book Appointment", href: `tel:${businessInfo.contact.phone}` },
     { name: "Contact Us", href: `mailto:${businessInfo.contact.email}` },
-    { name: "Directions", href: "#" },
+    { name: "Directions", href: "https://maps.app.goo.gl/Bybt5QQfCJKHycm86" },
     { name: "Gift Cards", href: "#" },
   ],
 }
@@ -31,19 +33,28 @@ const footerNavigation = {
 export function MainFooter() {
   const currentYear = new Date().getFullYear()
 
-  return (    <footer className="bg-muted/50 border-t">
-      <div className="container px-4 py-12 mx-auto">
+  return (
+    <footer className="bg-muted/30 border-t border-border w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">          {/* Business Info */}
-          <div className="space-y-4">            <div className="flex items-center space-x-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-                <Sparkles className="h-6 w-6 text-primary-foreground" />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {/* Business Info */}
+          <div className="space-y-6 lg:col-span-1 md:col-span-2">
+            <div className="flex flex-col items-center">
+              <div className="relative w-auto h-auto mb-4">
+                <Image 
+                  src="/Victoria_Park_Nails_Spa_Logo_Primary_small.png" 
+                  alt={businessInfo.name}
+                  width={200}
+                  height={86}
+                  className="object-contain dark:invert"
+                />
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-primary font-serif">
+              <div className="text-center lg:text-right">
+                <h2 className="text-2xl font-bold text-foreground font-serif">
                   {businessInfo.name}
-                </h3>
-                <p className="text-sm text-muted-foreground font-medium font-sans">
+                </h2>
+                <p className="text-sm text-muted-foreground font-sans">
                   {businessInfo.tagline}
                 </p>
               </div>
@@ -53,31 +64,37 @@ export function MainFooter() {
               {businessInfo.description}
             </p>
 
-            <div className="space-y-3">              <div className="flex items-center space-x-3 text-sm group">
-                <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
-                <span className="text-muted-foreground group-hover:text-foreground transition-colors font-sans">
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3 group">
+                <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                <a 
+                  href="https://maps.app.goo.gl/Bybt5QQfCJKHycm86" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground group-hover:text-primary transition-colors"
+                >
                   {businessInfo.address.fullAddress}
-                </span>
+                </a>
               </div>
               
-              <div className="flex items-center space-x-3 text-sm group">
-                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
-                <a
+              <div className="flex items-center space-x-3 group">
+                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                <Link
                   href={`tel:${businessInfo.contact.phone}`}
-                  className="text-muted-foreground hover:text-primary transition-colors font-medium font-sans"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {businessInfo.contact.phone}
-                </a>
+                </Link>
               </div>
               
-              <div className="flex items-center space-x-3 text-sm group">
-                <Mail className="h-4 w-4 text-primary flex-shrink-0" />
-                <a
+              <div className="flex items-center space-x-3 group">
+                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                <Link
                   href={`mailto:${businessInfo.contact.email}`}
-                  className="text-muted-foreground hover:text-primary transition-colors font-sans"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {businessInfo.contact.email}
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -87,7 +104,7 @@ export function MainFooter() {
                 href={businessInfo.socialMedia.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-200 shadow-sm hover:shadow-md"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-muted hover:bg-primary/90 hover:text-primary-foreground transition-colors"
               >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -96,15 +113,17 @@ export function MainFooter() {
                 href={businessInfo.socialMedia.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-200 shadow-sm hover:shadow-md"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-muted hover:bg-primary/90 hover:text-primary-foreground transition-colors"
               >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </a>
             </div>
-          </div>          {/* Services */}
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4 font-serif">
+          </div>
+
+          {/* Services */}
+          <div className="lg:col-span-1">
+            <h4 className="text-lg font-semibold text-foreground mb-4 font-serif">
               Services
             </h4>
             <ul className="space-y-3 text-sm">
@@ -112,7 +131,7 @@ export function MainFooter() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors font-sans"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:underline underline-offset-4"
                   >
                     {item.name}
                   </Link>
@@ -122,8 +141,8 @@ export function MainFooter() {
           </div>
 
           {/* Company */}
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4 font-serif">
+          <div className="lg:col-span-1">
+            <h4 className="text-lg font-semibold text-foreground mb-4 font-serif">
               Company
             </h4>
             <ul className="space-y-3 text-sm">
@@ -131,7 +150,7 @@ export function MainFooter() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:underline underline-offset-4"
                   >
                     {item.name}
                   </Link>
@@ -141,41 +160,39 @@ export function MainFooter() {
           </div>
 
           {/* Hours & Support */}
-          <div className="space-y-6">            {/* Business Hours */}
-            <div className="p-4 bg-muted rounded-lg border">
-              <h4 className="text-sm font-semibold text-foreground mb-4 flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-primary" />
+          <div className="space-y-8 lg:col-span-1">
+            {/* Business Hours */}
+            <div className="p-5 bg-card rounded-xl border">
+              <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center">
+                <Clock className="h-5 w-5 mr-2.5 text-primary" />
                 Business Hours
               </h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Monday - Friday</span>
-                  <Badge variant="secondary" className="text-xs">10:00 AM - 7:00 PM</Badge>
+              <div className="space-y-2.5 text-sm">
+                <div className="flex justify-between items-center">
+                  <span className="text-muted-foreground">Mon - Fri</span>
+                  <span className="text-foreground font-medium">10:00 AM - 7:00 PM</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Saturday - Sunday</span>
-                  <Badge variant="secondary" className="text-xs">10:00 AM - 5:30 PM</Badge>
+                <div className="flex justify-between items-center">
+                  <span className="text-muted-foreground">Sat - Sun</span>
+                  <span className="text-foreground font-medium">10:00 AM - 5:30 PM</span>
                 </div>
               </div>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-sm font-semibold text-foreground mb-4">
+              <h4 className="text-lg font-semibold text-foreground mb-4 font-serif">
                 Quick Links
               </h4>
               <ul className="space-y-3 text-sm">
                 {footerNavigation.support.map((item) => (
                   <li key={item.name}>
-                    <a
+                    <Link
                       href={item.href}
-                      className="text-muted-foreground hover:text-primary transition-colors flex items-center"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:underline underline-offset-4"
                     >
                       {item.name}
-                      {item.href.startsWith('tel:') || item.href.startsWith('mailto:') ? (
-                        <ExternalLink className="h-3 w-3 ml-1" />
-                      ) : null}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -183,49 +200,36 @@ export function MainFooter() {
           </div>
         </div>
 
-        <Separator className="my-8" />        {/* Bottom Footer */}
-        <div className="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 md:items-center">
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+        {/* Location Map */}
+        <LocationMap className="mt-10" />
+
+        <Separator className="my-8 sm:my-10" />
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4">
+          <div className="text-sm text-muted-foreground text-center md:text-left">
             <span>© {currentYear} {businessInfo.name}. All rights reserved.</span>
-            <Heart className="h-4 w-4 text-red-500 fill-current" />
           </div>
-          
-          <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-6 md:items-center">
-            <Button variant="outline" size="sm" asChild>
-              <a href={`tel:${businessInfo.contact.phone}`}>
-                <Phone className="h-4 w-4 mr-2" />
-                Book Now
-              </a>
-            </Button>
-            
-            <div className="flex space-x-4 text-sm">
-              <Link
-                href="/privacy"
-                className="text-muted-foreground hover:text-primary transition-colors hover:underline"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-muted-foreground hover:text-primary transition-colors hover:underline"
-              >
-                Terms of Service
-              </Link>
+        </div>
+
+        {/* Health & Safety Notice */}
+        <div className="mt-8 p-6 bg-card rounded-xl border">
+          <div className="flex items-start space-x-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-destructive/10 flex-shrink-0">
+              <Heart className="h-5 w-5 text-destructive" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-card-foreground mb-1.5">
+                Health & Safety First
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                We maintain the highest standards of cleanliness and follow all health protocols 
+                to ensure your safety and comfort during your visit.
+              </p>
             </div>
           </div>
-        </div>        {/* Emergency Notice */}
-        <div className="mt-8 p-6 bg-muted rounded-xl border">
-          <p className="text-sm text-muted-foreground text-center leading-relaxed">
-            <span className="font-semibold text-foreground">Walk-ins Welcome!</span> Available based on scheduling.
-            <br />
-            For guaranteed service, please call ahead to book your appointment.
-            <br />
-            <Badge variant="outline" className="mt-2 text-xs">
-              Emergency repairs available during business hours
-            </Badge>
-          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

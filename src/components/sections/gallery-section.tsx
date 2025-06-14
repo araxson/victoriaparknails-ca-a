@@ -1,47 +1,80 @@
-import Image from "next/image";
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 import { galleryImages } from "@/data/gallery";
+import { Badge } from "@/components/ui/shadcn/data-display/badge";
+import { Button } from "@/components/ui/shadcn/inputs/button";
+import { Section } from "@/components/layouts";
+import { GalleryGrid } from "@/components/ui/gallery-grid";
+import { GalleryModal } from "@/components/ui/gallery-modal";
+import { AnimatedDetail } from "@/components/ui/animated-elements";
 
 export function GallerySection() {
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [initialIndex, setInitialIndex] = React.useState(0);
+
   // Get featured gallery images
-  const featuredImages = galleryImages
-    .filter(image => image.featured)
-    .slice(0, 8);
+  const featuredImages = React.useMemo(() => 
+    galleryImages
+      .filter(image => image.featured)
+      .slice(0, 8), 
+    []
+  );
+
+  const handleImageClick = (index: number) => {
+    setInitialIndex(index);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Work</h2>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-              Browse our gallery of beautiful nail designs and services
+    <>
+    <Section className="bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <AnimatedDetail animation="fade" delay={50}>
+            <Badge variant="outline" className="mb-6 px-6 py-2 text-base rounded-full font-medium">
+              Our Gallery
+            </Badge>
+          </AnimatedDetail>
+          
+          <AnimatedDetail animation="slideUp" delay={100}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight max-w-4xl mx-auto">Our Work</h2>
+          </AnimatedDetail>
+          
+          <AnimatedDetail animation="slideUp" delay={150}>
+            <p className="mx-auto max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed">
+              Browse our gallery of beautiful nail designs and services.
             </p>
-          </div>
+          </AnimatedDetail>
         </div>
-        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12">
-          {featuredImages.map((image) => (
-            <div key={image.id} className="overflow-hidden rounded-xl group relative">
-              <div className="aspect-square relative">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                />              </div>
-            </div>
-          ))}
+          
+          <GalleryGrid 
+            images={featuredImages} 
+            onImageClick={handleImageClick}
+            className="mx-auto"
+          />
+
+          <AnimatedDetail animation="slideUp" delay={200} className="flex justify-center mt-10 sm:mt-12">
+            <Button asChild size="lg" className="font-semibold h-auto py-3 text-base">
+              <Link href="/gallery">View Full Gallery</Link>
+            </Button>
+          </AnimatedDetail>
         </div>
-        <div className="flex justify-center mt-10">
-          <Link
-            href="/gallery"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-          >
-            View Full Gallery
-          </Link>
-        </div>
-      </div>
-    </section>
+      </Section>
+
+      {modalOpen && (
+        <GalleryModal
+          images={featuredImages}
+          initialIndex={initialIndex}
+          isOpen={modalOpen}
+          onClose={handleCloseModal}
+        />
+      )}
+    </>
   );
-} 
+}

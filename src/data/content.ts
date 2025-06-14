@@ -137,14 +137,14 @@ export const websiteContent = {
   // Contact section
   contact: {
     title: "Get In Touch or Book Your Visit",
-    subtitle: "Find Us in Victoria Park",
+    subtitle: "Find Us in Victoria Park Nails and Spa",
     description: "We're here to answer your questions or help you book your next moment of relaxation. For the fastest way to secure your appointment, please use our online booking system. For all other inquiries, please use the form below.",
     getDirections: "Get Directions",
     callNow: "Call Now",
     emailUs: "Email Us",
     followUs: "Follow Us",
     hours: "Hours of Operation",
-    location: "Find Us in Victoria Park",
+    location: "Find Us in Victoria Park Nails and Spa",
     contactInfo: "Contact Information",
     sendMessage: "Send Us a Message",
     formDisclaimer: "Please allow up to 24 hours for a response. For immediate booking, please click the 'Book an Appointment' button."

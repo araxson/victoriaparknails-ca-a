@@ -1,135 +1,209 @@
-import { services, serviceCategories, getServicesByCategory } from '@/data';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardAction } from '@/components/ui/shadcn/data-display/card';
+import type { Metadata } from 'next';
+// import { services } from '@/data';
+import {
+  serviceCategories,
+  getServicesByCategory,
+  getAllServices,
+  Service
+} from '@/data';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/shadcn/data-display/card';
 import { Badge } from '@/components/ui/shadcn/data-display/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/shadcn/layout/tabs';
 import Image from 'next/image';
+import { CheckIcon } from 'lucide-react';
+import { businessInfo } from '@/data';
+import { HeroSection } from '@/components/sections/hero-section';
+import { ServicesFilter } from '@/components/sections/services-filter';
+import { AnimatedList } from '@/components/ui/animated-elements';
+import { NoResultsMessage } from '@/components/ui/no-results-message';
+import { Suspense } from 'react';
 
-export default function ServicesPage() {
+export const metadata: Metadata = {
+  title: "Professional Nail & Spa Services | Manicures, Pedicures, Nail Art | Victoria Park Nails and Spa Calgary",
+  description: "Explore our comprehensive menu of professional nail and spa services in Calgary. Expert manicures, luxury pedicures, custom nail art, gel & acrylic extensions, waxing, massage, and lash services. View pricing and book online at Calgary's premier nail salon.",
+  keywords: [
+    "Calgary nail services",
+    "manicure prices Calgary",
+    "pedicure services Calgary", 
+    "gel nails Calgary",
+    "acrylic nails Calgary",
+    "nail art services Calgary",
+    "shellac manicure Calgary",
+    "spa pedicure Calgary",
+    "nail extensions Calgary",
+    "professional nail care Calgary",
+    "nail salon pricing Calgary",
+    "custom nail design Calgary",
+    "luxury nail services Calgary",
+    "downtown Calgary nail services",
+    "Victoria Park nail services",
+    "nail technician Calgary",
+    "best nail salon services Calgary",
+    "nail enhancement Calgary",
+    "spa treatments Calgary",
+    "waxing services Calgary",
+    "massage therapy Calgary",
+    "eyelash extensions Calgary",
+    "nail art design Calgary",
+    "French manicure Calgary",
+    "bridal nail services Calgary"
+  ],
+  openGraph: {
+    title: "Professional Nail & Spa Services | Victoria Park Nails and Spa Calgary",
+    description: "Comprehensive nail and spa services in downtown Calgary. Expert manicures, luxury pedicures, custom nail art, extensions, and spa treatments with transparent pricing.",
+    url: "https://victoriaparknails.ca/services",
+    images: [{
+      url: "/services-og.jpg",
+      width: 1200,
+      height: 630,
+      alt: "Professional nail services at Victoria Park Nails and Spa Calgary - manicures, pedicures, nail art, and spa treatments"
+    }]
+  },
+  alternates: {
+    canonical: "https://victoriaparknails.ca/services"
+  }
+};
+
+export default function ServicesPage({
+  searchParams,
+}: {
+  searchParams?: {
+    category?: string;
+    search?: string;
+  };
+}) {
+  const currentCategoryId = searchParams?.category || 'all';
+  const searchTerm = searchParams?.search || '';
+  
+  // Get services based on category
+  let services = currentCategoryId === 'all' 
+    ? getAllServices() 
+    : getServicesByCategory(currentCategoryId);
+  
+  // Filter services by search term if provided
+  if (searchTerm) {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    services = services.filter((service: Service) => 
+      service.name.toLowerCase().includes(lowerSearchTerm) || 
+      service.shortDescription.toLowerCase().includes(lowerSearchTerm) ||
+      service.description.toLowerCase().includes(lowerSearchTerm)
+    );
+  }
+
+  // Get the current category information
+  const currentCategory = currentCategoryId === 'all' 
+    ? {
+        id: 'all',
+        name: 'All Services',
+        description: 'Browse our complete range of professional nail care and spa treatments'
+      }
+    : serviceCategories.find(c => c.id === currentCategoryId);
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="outline" className="mb-4">
-              Our Services
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Professional Nail & Spa Services
-            </h1>
-            <p className="text-lg text-gray-600">
-              Experience luxury nail care and spa treatments with our comprehensive range of services. 
-              From classic manicures to advanced nail art, we offer everything you need for beautiful, healthy nails.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Tabs */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <Tabs defaultValue={serviceCategories[0]?.id} className="w-full">
-            <div className="flex justify-center mb-8">
-              <TabsList className="grid w-full max-w-md grid-cols-2 md:max-w-2xl md:grid-cols-4">
-                {serviceCategories.map((category) => (
-                  <TabsTrigger key={category.id} value={category.id} className="text-sm">
-                    {category.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+    <div className="min-h-screen bg-background">
+      <HeroSection 
+        title="Professional Nail & Spa Services"
+        subtitle="Experience luxury nail care and spa treatments with our comprehensive range of services. From classic manicures to advanced nail art, we offer everything you need for beautiful, healthy nails."
+        videoSrc="/videos/hero-bg-video-002.mp4"
+      />
+      {/* Services Filter */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 font-serif text-balance">
+                Choose Your Service Category
+              </h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto text-balance">
+                Browse our comprehensive range of professional nail and spa services
+              </p>
             </div>
+            <Suspense key={`filter-${currentCategoryId}-${searchTerm}`} fallback={<div>Loading...</div>}>
+              <ServicesFilter />
+            </Suspense>
+          </div>
 
-            {serviceCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="space-y-8">
-                {/* Category Header */}
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">{category.name}</h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">{category.description}</p>
-                </div>
-
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {getServicesByCategory(category.id).map((service) => (
-                    <Card key={service.id} className="group hover:shadow-lg transition-shadow">
-                      <div className="relative h-48 overflow-hidden rounded-t-xl">
-                        <Image
-                          src={service.image}
-                          alt={service.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute top-3 left-3 flex gap-2">
-                          {service.featured && (
-                            <Badge variant="default" className="text-xs">
-                              Featured
-                            </Badge>
-                          )}
-                          {service.popular && (
-                            <Badge variant="destructive" className="text-xs">
-                              Popular
-                            </Badge>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <CardHeader>
-                        <div className="flex justify-between items-start">
+          {currentCategory && (
+            <div className="space-y-12 mt-12">
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif text-balance">
+                  {currentCategory.name}
+                </h2>
+                <p className="text-base text-muted-foreground max-w-3xl mx-auto leading-relaxed text-balance">
+                  {currentCategory.description}
+                </p>
+                {searchTerm && (
+                  <p className="text-sm mt-4 text-muted-foreground">
+                    Showing results for: <span className="font-medium">&quot;{searchTerm}&quot;</span> ({services.length} {services.length === 1 ? 'service' : 'services'} found)
+                  </p>
+                )}
+              </div>
+                {services.length > 0 ? (                <AnimatedList 
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  itemDelay={70}
+                  itemThreshold={0.3}
+                >
+                  {services.map((service: Service) => (
+                    <Card
+                      key={service.id}
+                      className="border bg-card flex flex-col overflow-hidden fade-on-hover"
+                    >
+                      <CardHeader className="flex-grow p-6">
+                        <div className="flex justify-between items-start gap-4 mb-4">
                           <div className="flex-1">
-                            <CardTitle className="text-xl mb-2">{service.name}</CardTitle>
-                            <CardDescription>{service.shortDescription}</CardDescription>
+                            <CardTitle className="text-xl mb-2 font-serif group-hover:text-primary transition-colors text-balance">
+                              {service.name}
+                            </CardTitle>
+                            <CardDescription className="text-sm leading-relaxed text-balance">
+                              {service.shortDescription}
+                            </CardDescription>
                           </div>
-                          <CardAction>
-                            <div className="text-right">
-                              <div className="text-xl font-bold text-primary">${service.price}</div>
-                              <div className="text-sm text-gray-500">{service.duration}</div>
+                          <div className="text-right flex-shrink-0">
+                            <div className="text-xl font-bold text-primary">
+                              {typeof service.price === 'number' ? `$${service.price}` : service.price}
                             </div>
-                          </CardAction>
+                            <div className="text-sm text-muted-foreground mt-1">
+                              {service.duration}
+                            </div>
+                          </div>
                         </div>
-                      </CardHeader>
-                      
-                      <CardContent className="space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-sm mb-2">Benefits:</h4>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            {service.benefits.slice(0, 3).map((benefit, index) => (
-                              <li key={index} className="flex items-center gap-2">
-                                <svg className="w-3 h-3 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                                {benefit}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        
-                        <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/90 transition-colors">
-                          Book Appointment
-                        </button>
-                      </CardContent>
+
+                        <div className="space-y-4">
+                          <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/70 dark:hover:bg-primary/70 transition-all text-sm font-semibold transform">
+                            Book This Service
+                          </button>
+                        </div>                      </CardHeader>
                     </Card>
                   ))}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+                </AnimatedList>
+              ) : (
+                <NoResultsMessage />
+              )}
+            </div>
+          )}
         </div>
       </section>
 
       {/* Call to Action Section */}
       <section className="bg-primary py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-primary-foreground mb-4">
+          <h2 className="text-2xl font-bold text-primary-foreground mb-4 font-serif text-balance">
             Ready to Book Your Appointment?
           </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Experience the Victoria Park Nails difference. Book your appointment today and let our expert team take care of you.
+          <p className="text-base text-primary-foreground/90 mb-6 max-w-2xl mx-auto text-balance">
+            Experience the Victoria Park Nails difference. Book your appointment
+            today and let our expert team take care of you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+            <button className="bg-primary-foreground text-primary px-6 py-2 rounded-lg font-semibold hover:bg-primary-foreground/90 transition-colors">
               Book Online
             </button>
-            <button className="border border-primary-foreground/20 text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors">
-              Call Us: (403) 555-NAIL
+            <button className="border border-primary-foreground/50 text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors">
+              Call Us: {businessInfo.contact.phone}
             </button>
           </div>
         </div>

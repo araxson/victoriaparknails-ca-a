@@ -17,6 +17,7 @@ export interface BusinessInfo {
     phone: string;
     email: string;
     website: string;
+    bookingUrl?: string;
   };
   hours: {
     [key: string]: string;
@@ -42,9 +43,7 @@ export interface Service {
     min: number;
     max: number;
   };
-  image: string;
   gallery?: string[];
-  benefits: string[];
   process?: string[];
   aftercare?: string[];
   featured?: boolean;
@@ -64,7 +63,7 @@ export interface TeamMember {
   name: string;
   position: string;
   bio: string;
-  image: string;
+  image?: string;
   specialties: string[];
   experience: string;
   certifications?: string[];

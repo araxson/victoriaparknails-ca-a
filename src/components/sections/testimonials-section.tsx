@@ -1,18 +1,54 @@
-import { testimonials } from '@/data';
-import { Card, CardContent, CardHeader } from '@/components/ui/shadcn/data-display/card';
-import { Badge } from '@/components/ui/shadcn/data-display/badge';
-import Image from 'next/image';
+"use client";
+import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
+import type { CarouselApi } from "@/components/ui/shadcn/data-display/carousel";
+
+import { testimonials } from "@/data/testimonials";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+} from "@/components/ui/shadcn/data-display/card";
+import { Badge } from "@/components/ui/shadcn/data-display/badge";
+import { Section } from "@/components/layouts";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/shadcn/data-display/carousel";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/shadcn/inputs/button";
 
 export function TestimonialsSection() {
-  // Show only first 6 testimonials for the homepage
-  const displayTestimonials = testimonials.slice(0, 6);
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
+  // Show only first 9 testimonials for the homepage carousel
+  const displayTestimonials = testimonials.slice(0, 9);
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <svg
         key={i}
-        className={`w-4 h-4 ${
-          i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+        className={`w-5 h-5 ${
+          i < rating ? "text-amber-400 fill-current" : "text-muted"
         }`}
         viewBox="0 0 20 20"
       >
@@ -20,78 +56,107 @@ export function TestimonialsSection() {
       </svg>
     ));
   };
-
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge variant="default" className="mb-4">
-            Client Reviews
+    <Section className="bg-background">
+      <div className="max-full mx-auto">
+        <div className="text-center mb-10 sm:mb-12">
+          <Badge variant="outline" size="lg" className="mb-6 rounded-full font-medium">
+            Testimonials
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-serif leading-tight max-w-4xl mx-auto">
             What Our Clients Say
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied clients about their experiences.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Don&apos;t just take our word for it. Here&apos;s what some of our
+            amazing clients have to say about their experience.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayTestimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="h-full">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-3">
-                  {testimonial.image && (
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-semibold">{testimonial.name}</h4>
-                      {testimonial.verified && (
-                        <Badge variant="outline" className="text-xs">
-                          Verified
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2 mt-1">
-                      <div className="flex">{renderStars(testimonial.rating)}</div>
-                      <span className="text-sm text-gray-500">
-                        {testimonial.service}
-                      </span>
-                    </div>
-                  </div>
+        <Carousel
+          setApi={setApi}
+          plugins={[plugin.current]}
+          className="w-full"
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
+        >
+          <CarouselContent className="-ml-6">
+            {displayTestimonials.map((testimonial) => (
+              <CarouselItem
+                key={testimonial.id}
+                className="pl-6 md:basis-1/2 xl:basis-1/4"
+              >
+                <div className="p-2 h-full">
+                  <Card className="h-full border bg-card flex flex-col">
+                    <CardHeader className="p-4">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-3 mb-2">
+                            <h4 className="font-semibold text-lg truncate">
+                              {testimonial.name}
+                            </h4>
+                          </div>
+                          <div className="flex gap-0.5">
+                            {renderStars(testimonial.rating)}
+                          </div>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex-grow flex flex-col justify-between p-6">
+                      <blockquote className="text-muted-foreground leading-relaxed text-base mb-4 italic border-l-2 border-primary/20 pl-4">
+                        {testimonial.review}
+                      </blockquote>
+                      <div className="flex justify-end items-center text-sm text-muted-foreground pt-4 border-t border-dashed">
+                        <span className="text-xs">
+                          {new Date(testimonial.date).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            }
+                          )}
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-              </CardHeader>
-              
-              <CardContent>
-                <blockquote className="text-gray-700 italic mb-3">
-                  "{testimonial.review}"
-                </blockquote>
-                <div className="text-xs text-gray-500">
-                  {new Date(testimonial.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </div>
-              </CardContent>
-            </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-[-20px] xl:left-[-50px] top-1/2 -translate-y-1/2 hidden lg:flex w-12 h-12" />
+          <CarouselNext className="absolute right-[-20px] xl:right-[-50px] top-1/2 -translate-y-1/2 hidden lg:flex w-12 h-12" />
+        </Carousel>
+        <div className="flex justify-center gap-3 mt-8">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={cn(
+                "h-3 w-3 rounded-full transition-all duration-300",
+                current === index + 1 ? "w-6 bg-primary" : "bg-primary/25"
+              )}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
         
-        <div className="text-center mt-8">
-          <button className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors">
-            View All Reviews
-          </button>
+        <div className="flex justify-center mt-10">
+          <Button 
+            variant="secondary" 
+            size="lg"
+            className="gap-2"
+            onClick={() => window.open("https://maps.app.goo.gl/Bybt5QQfCJKHycm86", "_blank")}
+          >
+            <svg 
+              viewBox="0 0 24 24" 
+              className="w-5 h-5"
+              fill="currentColor"
+            >
+              <path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z" />
+            </svg>
+            See All Reviews on Google
+          </Button>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

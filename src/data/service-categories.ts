@@ -2,55 +2,107 @@ import { ServiceCategory } from './types';
 
 export const serviceCategories: ServiceCategory[] = [
   {
-    id: "manicure",
-    name: "Manicures & Pedicures",
-    description: "Restore the health and beauty of your hands and feet with our meticulous nail care services. Each treatment is designed to be a relaxing escape, leaving you with a flawless, long-lasting finish.",
-    image: "/images/categories/manicure.webp",
+    id: 'manicure',
+    name: 'Manicure Services',
+    description: '',
+    image: '',
     services: [
-      "classic-manicure",
-      "gel-manicure", 
-      "french-manicure"
-    ]
+      'regular-manicure',
+      'shellac-manicure',
+      'shellac-manicure-with-gel-top',
+      'shellac-manicure-with-overlay',
+      'shellac-color-change-hands',
+      'child-manicure-under-8-with-regular-polish',
+      'child-manicure-under-8-with-shellac',
+      'nail-fix',
+      'nail-cut-only',
+    ],
   },
   {
-    id: "pedicure",
-    name: "Nail Enhancements",
-    description: "Add glamorous length, strength, and artistry to your nails. Our talented technicians specialize in creating durable, beautiful, and natural-looking enhancements, from classic looks to custom designs.",
-    image: "/images/categories/pedicure.webp",
+    id: 'pedicure',
+    name: 'Pedicure Services',
+    description: '',
+    image: '',
     services: [
-      "classic-pedicure",
-      "spa-pedicure",
-      "gel-pedicure"
-    ]
+      'basic-pedicure-regular-polish',
+      'basic-pedicure-shellac-polish',
+      'spa-pedicure-regular-polish',
+      'spa-pedicure-shellac-polish',
+      'shellac-color-change-toes',
+      'child-pedicure-under-8-with-regular-polish',
+      'child-pedicure-under-8-with-shellac',
+      'toe-nail-cut',
+      'foot-paraffin',
+    ],
   },
   {
-    id: "nail-art",
-    name: "Lash & Brow Bar",
-    description: "Perfectly frame your features with our professional lash and brow services. Our experts will help you achieve a polished and defined look.",
-    image: "/images/categories/nail-art.webp",
+    id: 'combo',
+    name: 'Manicure & Pedicure Combos',
+    description: '',
+    image: '',
     services: [
-      "nail-art-basic",
-      "nail-art-advanced"
-    ]
+      'basic-manicure-pedicure-regular-polish',
+      'spa-manicure-pedicure-regular-polish',
+      'spa-manicure-pedicure-shellac-polish',
+    ],
   },
   {
-    id: "extensions",
-    name: "Waxing & Massage",
-    description: "Silky smooth skin and deep relaxation await. Our professional waxing services use high-quality, gentle wax for effective, long-lasting hair removal and restorative massage treatments.",
-    image: "/images/categories/extensions.webp",
-    services: [
-      "acrylic-extensions",
-      "gel-extensions"
-    ]
+    id: 'artificial-nails',
+    name: 'Artificial Nails',
+    description: '',
+    image: '',
+    services: ['acrylic-new-set', 'acrylic-fill', 'uv-gel-new-set', 'uv-gel-fill'],
   },
   {
-    id: "spa",
-    name: "Spa Treatments",
-    description: "Therapeutic spa treatments for hands and feet. Rejuvenate your skin with our specialized treatments and relaxation services.",
-    image: "/images/categories/spa.webp",
+    id: 'nail-enhancements',
+    name: 'Nail Enhancements',
+    description: '',
+    image: '',
+    services: ['nail-design-each-nail', 'french-tips'],
+  },
+  {
+    id: 'removal',
+    name: 'Removal Services',
+    description: '',
+    image: '',
+    services: ['shellac-polish-removal', 'artificial-gel-nail-removal'],
+  },
+  {
+    id: 'waxing',
+    name: 'Waxing Services',
+    description: '',
+    image: '',
     services: [
-      "hand-treatment",
-      "paraffin-treatment"
-    ]
-  }
+      'eyebrow-waxing',
+      'face-waxing-per-area',
+      'face-waxing-full-face',
+      'under-arm-waxing',
+      'full-arm-waxing',
+      'half-leg-waxing',
+      'full-leg-waxing',
+      'bikini-waxing',
+      'brazilian-waxing',
+      'back-or-chest-waxing-each',
+    ],
+  },
+  {
+    id: 'massage',
+    name: 'Body Massage',
+    description: '',
+    image: '',
+    services: [
+      '60-minute-body-massage',
+      '60-minute-hot-stone-body-massage',
+      '90-minute-body-massage',
+      '90-minute-hot-stone-body-massage',
+      '120-minute-body-massage',
+    ],
+  },
+  {
+    id: 'eyelash',
+    name: 'Eyelash Services',
+    description: '',
+    image: '',
+    services: ['eye-lash-extensions-classic-new-set'],
+  },
 ];

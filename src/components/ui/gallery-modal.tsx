@@ -42,12 +42,12 @@ export function GalleryModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-background/80 backdrop-blur-sm"
         onClick={onClose}
       />
       
       {/* Modal content */}
-      <div className="relative z-10 w-full h-full max-w-7xl max-h-screen p-4 overflow-auto">
+      <div className="relative z-10 w-full h-full max-w-7xl max-h-screen p-4 sm:p-6 md:p-8 overflow-auto">
         <div className="flex items-center justify-center min-h-full">
           <GalleryCarousel
             images={images}
