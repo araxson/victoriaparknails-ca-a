@@ -2,6 +2,7 @@ import { businessInfo } from '@/data';
 import { Badge } from '@/components/ui/shadcn/data-display/badge';
 import { Button } from '@/components/ui/shadcn/inputs/button';
 import { Section } from '@/components/layouts';
+import { AnimatedDetail } from '@/components/ui/animated-elements';
 
 interface HeroSectionProps {
   title?: string;
@@ -39,48 +40,58 @@ export function HeroSection({
       <div className="relative z-20 w-full">
         <div className="max-w-7xl mx-auto text-center space-y-6 md:space-y-8 lg:space-y-10 px-4 md:px-6">
           {showBadge && (
-            <Badge
-              variant="secondary"
-              size="lg"
-              className="bg-card/60 rounded-full dark:bg-card/70 text-card-foreground dark:text-card-foreground backdrop-blur-sm border font-medium"
-            >
-              Est. {businessInfo.founded}
-            </Badge>
+            <AnimatedDetail animation="fade" delay={50}>
+              <Badge
+                variant="secondary"
+                size="lg"
+                className="bg-card/60 rounded-full dark:bg-card/70 text-card-foreground dark:text-card-foreground backdrop-blur-sm border font-medium"
+              >
+                Est. {businessInfo.founded}
+              </Badge>
+            </AnimatedDetail>
           )}
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance text-foreground font-serif leading-tight [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)] max-w-6xl mx-auto">
-            {title || businessInfo.name}
-          </h1>
+          <AnimatedDetail animation="scale" delay={200}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance text-foreground font-serif leading-tight [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)] max-w-6xl mx-auto">
+              {title || businessInfo.name}
+            </h1>
+          </AnimatedDetail>
 
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground font-sans leading-tight max-w-6xl mx-auto text-balance [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)] px-4">
-            {subtitle || businessInfo.tagline}
-          </p>
+          <AnimatedDetail animation="slideUp" delay={350}>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground font-sans leading-tight max-w-6xl mx-auto text-balance [text-shadow:_0_2px_4px_rgb(0_0_0_/_20%)] px-4">
+              {subtitle || businessInfo.tagline}
+            </p>
+          </AnimatedDetail>
 
           {(description || businessInfo.description) && (
-            <p className="text-base sm:text-lg md:text-xl text-foreground/90 max-w-5xl mx-auto font-sans leading-relaxed text-balance px-4 sm:px-6">
-              {description || businessInfo.description}
-            </p>
+            <AnimatedDetail animation="slideUp" delay={450}>
+              <p className="text-base sm:text-lg md:text-xl text-foreground/90 max-w-5xl mx-auto font-sans leading-relaxed text-balance px-4 sm:px-6">
+                {description || businessInfo.description}
+              </p>
+            </AnimatedDetail>
           )}
 
           {showButtons && (
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-8 px-4">
-              <Button size="lg" className="font-semibold text-base" asChild>
-                <a
-                  href={businessInfo.contact.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <AnimatedDetail animation="slideUp" delay={550}>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-8 px-4">
+                <Button size="lg" className="font-semibold text-base" asChild>
+                  <a
+                    href={businessInfo.contact.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book Appointment
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="font-semibold text-base backdrop-blur-sm bg-card/80 dark:bg-card/50 border-border/80"
                 >
-                  Book Appointment
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="font-semibold text-base backdrop-blur-sm bg-card/80 dark:bg-card/50 border-border/80"
-              >
-                View Services
-              </Button>
-            </div>
+                  View Services
+                </Button>
+              </div>
+            </AnimatedDetail>
           )}
         </div>
       </div>
