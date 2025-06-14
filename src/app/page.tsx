@@ -6,7 +6,6 @@ import { GallerySection } from '@/components/sections/gallery-section';
 import { FAQSection } from '@/components/sections/faq-section';
 import { AboutSection } from '@/components/sections/about-section';
 import { ServicesSection } from '@/components/sections/services-section';
-import { PromotionsSection } from '@/components/sections/promotions-section';
 
 export const metadata: Metadata = {
   title: "Victoria Park Nails and Spa | Calgary's Premier Nail Salon | Custom Nail Art & Luxury Spa Services",
@@ -54,14 +53,13 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="page-fade-in space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28">
+    <main className="space-y-0">
       {/* Hero section loads immediately without scroll animation */}
       <HeroSection showButtons={true} showBadge={true} videoSrc="/videos/hero-bg-video-001.mp4" />
       
       {/* All sections now have individual element animations within them */}
       <AboutSection />
       <ServicesSection />
-      <PromotionsSection />
       <GallerySection />
       <TeamSection />
       <TestimonialsSection />

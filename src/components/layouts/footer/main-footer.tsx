@@ -3,9 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, MapPin, Phone, Mail, Clock } from "lucide-react";
-import { Sparkles, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import { businessInfo } from "@/data";
-import { Button } from "@/components/ui/shadcn/inputs/button";
 import { Separator } from "@/components/ui/shadcn/layout/separator";
 import { LocationMap } from "@/components/sections/location-map";
 
@@ -19,7 +18,6 @@ const footerNavigation = {
   company: [
     { name: "About Us", href: "/#about" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Promotions", href: "/promotions" },
     { name: "FAQ", href: "/faq" },
   ],
   support: [

@@ -4,6 +4,8 @@ import "./globals.css";
 import { MainHeader, MainFooter } from "@/components/layouts";
 import { businessInfo } from "@/data";
 import { ThemeProvider } from "next-themes";
+import { PromotionNotification } from "@/components/ui/promotion-notification";
+import { Toaster } from "@/components/ui/shadcn/feedback/sonner";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -276,6 +278,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster />
+          <PromotionNotification />
           <div className="flex min-h-screen flex-col bg-background">
             <MainHeader />
             <main className="flex-1 w-full overflow-hidden">{children}</main>

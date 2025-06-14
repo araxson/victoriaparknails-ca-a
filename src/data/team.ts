@@ -14,7 +14,7 @@ export const teamMembers: TeamMember[] = [
       "Team Leadership",
       "Manicures & Pedicures"
     ],
-    experience: "10+ years",
+    experience: "15+ years",
     certifications: [
       "Certified Nail Technician (CNA)",
       "Advanced Gel Certification",

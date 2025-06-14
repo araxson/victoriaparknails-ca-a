@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import {
   Select,
   SelectContent,
@@ -16,7 +16,8 @@ import { AnimatedOnce } from '@/components/ui/animated-filtered-results';
 
 export function ServicesFilter() {
   const router = useRouter();
-  const searchParams = useSearchParams() || new URLSearchParams();
+  const searchParamsObj = useSearchParams();
+  const searchParams = useMemo(() => searchParamsObj || new URLSearchParams(), [searchParamsObj]);
   const currentCategory = searchParams.get('category') || 'all';
   const currentSearch = searchParams.get('search') || '';
   const scrollPositionRef = useRef(0);
@@ -98,8 +99,10 @@ export function ServicesFilter() {
     }
     
     updateFilters(params);
-  };  return (
-    <div className="w-full max-w-xl mx-auto space-y-4">      <AnimatedOnce animation="slideUp" delay={50}>
+  };
+
+  return (
+    <div className="w-full max-w-xl mx-auto space-y-4">      <AnimatedOnce>
         <form onSubmit={handleSearchSubmit} className="relative">
           <Input
             type="text"
@@ -112,7 +115,7 @@ export function ServicesFilter() {
         </form>
       </AnimatedOnce>
       
-      <AnimatedOnce animation="slideUp" delay={100}>
+      <AnimatedOnce>
         <Select onValueChange={handleCategoryChange} defaultValue={currentCategory}>
           <SelectTrigger className="w-full py-2 text-md">
             <SelectValue placeholder="Select a category" />

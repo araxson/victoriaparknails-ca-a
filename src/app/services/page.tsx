@@ -12,15 +12,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/shadcn/data-display/card';
-import { Badge } from '@/components/ui/shadcn/data-display/badge';
-import Image from 'next/image';
-import { CheckIcon } from 'lucide-react';
 import { businessInfo } from '@/data';
 import { HeroSection } from '@/components/sections/hero-section';
 import { ServicesFilter } from '@/components/sections/services-filter';
 import { AnimatedList } from '@/components/ui/animated-elements';
 import { NoResultsMessage } from '@/components/ui/no-results-message';
 import { Suspense } from 'react';
+import { Button } from '@/components/ui/shadcn/inputs/button';
 
 export const metadata: Metadata = {
   title: "Professional Nail & Spa Services | Manicures, Pedicures, Nail Art | Victoria Park Nails and Spa Calgary",
@@ -144,13 +142,11 @@ export default function ServicesPage({
               </div>
                 {services.length > 0 ? (                <AnimatedList 
                   className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                  itemDelay={70}
-                  itemThreshold={0.3}
                 >
                   {services.map((service: Service) => (
                     <Card
                       key={service.id}
-                      className="border bg-card flex flex-col overflow-hidden fade-on-hover"
+                      className="border bg-card flex flex-col overflow-hidden transition-opacity hover:opacity-80"
                     >
                       <CardHeader className="flex-grow p-6">
                         <div className="flex justify-between items-start gap-4 mb-4">
@@ -173,9 +169,16 @@ export default function ServicesPage({
                         </div>
 
                         <div className="space-y-4">
-                          <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/70 dark:hover:bg-primary/70 transition-all text-sm font-semibold transform">
-                            Book This Service
-                          </button>
+                          <Button asChild className="w-full">
+                            <a
+                              href="https://victoriaparknailsspa.setmore.com/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/70 dark:hover:bg-primary/70 transition-all text-sm font-semibold transform"
+                            >
+                              Book This Service
+                            </a>
+                          </Button>
                         </div>                      </CardHeader>
                     </Card>
                   ))}
@@ -199,12 +202,24 @@ export default function ServicesPage({
             today and let our expert team take care of you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-primary-foreground text-primary px-6 py-2 rounded-lg font-semibold hover:bg-primary-foreground/90 transition-colors">
-              Book Online
-            </button>
-            <button className="border border-primary-foreground/50 text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors">
-              Call Us: {businessInfo.contact.phone}
-            </button>
+            <Button asChild>
+              <a
+                href="https://victoriaparknailsspa.setmore.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-foreground text-primary px-6 py-2 rounded-lg font-semibold hover:bg-primary-foreground/90 transition-colors"
+              >
+                Book Online
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a
+                href={`tel:${businessInfo.contact.phone}`}
+                className="border border-primary-foreground/50 text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors"
+              >
+                Call Us: {businessInfo.contact.phone}
+              </a>
+            </Button>
           </div>
         </div>
       </section>

@@ -26,7 +26,7 @@ export default function GalleryPage() {
         <HeroSection 
           title="Our Gallery"
           subtitle="Browse through our collection of beautiful nail designs and salon photos"
-          videoSrc="/videos/hero-bg-video-002.mp4"
+          videoSrc="/videos/hero-bg-video-004.mp4"
         />
 
         <section className="w-full py-12 md:py-16 bg-background">

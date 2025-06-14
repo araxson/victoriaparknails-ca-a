@@ -36,17 +36,17 @@ export function GallerySection() {
     <Section className="bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <AnimatedDetail animation="fade" delay={50}>
+          <AnimatedDetail>
             <Badge variant="outline" className="mb-6 px-6 py-2 text-base rounded-full font-medium">
               Our Gallery
             </Badge>
           </AnimatedDetail>
           
-          <AnimatedDetail animation="slideUp" delay={100}>
+          <AnimatedDetail>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight max-w-4xl mx-auto">Our Work</h2>
           </AnimatedDetail>
           
-          <AnimatedDetail animation="slideUp" delay={150}>
+          <AnimatedDetail>
             <p className="mx-auto max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed">
               Browse our gallery of beautiful nail designs and services.
             </p>
@@ -59,7 +59,7 @@ export function GallerySection() {
             className="mx-auto"
           />
 
-          <AnimatedDetail animation="slideUp" delay={200} className="flex justify-center mt-10 sm:mt-12">
+          <AnimatedDetail className="flex justify-center mt-10 sm:mt-12">
             <Button asChild size="lg" className="font-semibold h-auto py-3 text-base">
               <Link href="/gallery">View Full Gallery</Link>
             </Button>

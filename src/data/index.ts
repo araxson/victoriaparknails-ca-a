@@ -73,6 +73,7 @@ export const getActivePromotions = () => {
   const now = new Date();
   return promotionsList.filter(promotion => {
     if (promotion.validUntil === 'Ongoing') return true;
+    if (!promotion.validUntil) return false;
     const validUntil = new Date(promotion.validUntil);
     return validUntil > now;
   });

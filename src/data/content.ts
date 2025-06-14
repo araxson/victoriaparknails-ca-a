@@ -110,16 +110,6 @@ export const websiteContent = {
     verifiedReview: "Verified Review"
   },
 
-  // Promotions section
-  promotions: {
-    title: "Current Promotions",
-    subtitle: "Special Offers & Deals",
-    description: "Take advantage of our current promotions and special offers. Save money while treating yourself to premium nail care and spa services.",
-    viewAllPromotions: "View All Promotions",
-    validUntil: "Valid Until",
-    termsConditions: "Terms & Conditions"
-  },
-
   // FAQ section
   faq: {
     title: "Frequently Asked Questions",

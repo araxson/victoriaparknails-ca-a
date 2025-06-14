@@ -2,7 +2,7 @@
 import { getServicesByCategory, serviceCategories, businessInfo } from '@/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/shadcn/data-display/card';
 import { Badge } from '@/components/ui/shadcn/data-display/badge';
-import { ClockIcon, DollarSignIcon, StarIcon, CheckCircleIcon } from 'lucide-react';
+import { ClockIcon, DollarSignIcon, StarIcon } from 'lucide-react';
 import { Button } from '@/components/ui/shadcn/inputs/button';
 import { Section } from '@/components/layouts';
 
@@ -77,22 +77,11 @@ export default function ServiceDetailsSection() {
                         </div>
                       </div>
 
-                      {/* Benefits */}
+                      {/* Description */}
                       <div>
-                        <h4 className="font-semibold text-base mb-4 text-foreground">Benefits:</h4>
-                        <div className="space-y-2">
-                          {service.benefits.slice(0, 3).map((benefit, index) => (
-                            <div key={index} className="flex items-start space-x-3">
-                              <CheckCircleIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-muted-foreground leading-relaxed">{benefit}</span>
-                            </div>
-                          ))}
-                          {service.benefits.length > 3 && (
-                            <div className="text-sm text-muted-foreground italic pl-7">
-                              +{service.benefits.length - 3} more benefits
-                            </div>
-                          )}
-                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {service.description}
+                        </p>
                       </div>
 
                       {/* Process (if available) */}

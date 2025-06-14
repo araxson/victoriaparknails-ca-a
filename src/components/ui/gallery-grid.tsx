@@ -23,13 +23,12 @@ export function GalleryGrid({
       className={cn(
         "grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4",
         className
-      )}      itemDelay={60}
-      itemThreshold={0.2}
+      )}
     >
       {images.map((image, index) => (
         <button
           key={image.id}
-          className="group relative block aspect-square w-full overflow-hidden rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background fade-on-hover"
+          className="group relative block aspect-square w-full overflow-hidden rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-opacity hover:opacity-80"
           onClick={() => onImageClick(index)}
         >
           <Image

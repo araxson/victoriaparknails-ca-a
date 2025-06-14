@@ -49,11 +49,11 @@ export function Services({ services }: ServicesProps) {
     }
     return 'Price varies';
   };    return (
-    <section className="container mx-auto py-12">      <AnimatedDetail animation="slideUp" delay={50}>
+    <section className="container mx-auto py-12">      <AnimatedDetail>
         <h2 className="text-3xl font-bold text-center mb-8">Our Services</h2>
       </AnimatedDetail>
       
-      <AnimatedOnce animation="slideUp" delay={100}>
+      <AnimatedOnce>
         <ServicesFilter 
           categories={categories}
           categoryLabels={categoryMap}
@@ -64,12 +64,9 @@ export function Services({ services }: ServicesProps) {
       
       <AnimatedFilteredResults 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        itemDelay={80}
-        itemThreshold={0.3}
-        triggerKey={activeCategory}
       >
         {filteredServices.map((service) => (
-          <div key={service.id} className="bg-white p-4 rounded-lg shadow-md fade-on-hover">
+          <div key={service.id} className="bg-white p-4 rounded-lg shadow-md transition-opacity hover:opacity-80">
             <h3 className="text-xl font-semibold mb-2">{service.name}</h3>
             <p className="text-gray-700 mb-4">{service.shortDescription}</p>
             <div className="flex justify-between items-center">

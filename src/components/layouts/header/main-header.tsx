@@ -12,18 +12,17 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  SheetHeader,
-  SheetTitle
+  SheetTitle,
 } from "@/components/ui/shadcn/overlays/sheet";
 import { ThemeToggle } from "@/components/layouts/theme-toggle";
-import { Menu, Phone, Clock, Home, HandHeart, ImageIcon, Tag, HelpCircle } from "lucide-react";
+import { Menu, Phone, Clock, Home, HandHeart, ImageIcon } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
   { name: "Services", href: "/services", icon: HandHeart },
   { name: "Gallery", href: "/gallery", icon: ImageIcon },
-  { name: "Promotions", href: "/promotions", icon: Tag },
-  { name: "FAQ", href: "/faq", icon: HelpCircle },
+  { name: "Contact", href: "/contact", icon: Phone },
+
 ];
 
 export function MainHeader() {
@@ -133,13 +132,11 @@ export function MainHeader() {
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" className="lg:hidden">
-                <Menu className="h-6 w-6 bg-secondary/50 hover:bg-secondary" />
+                <Menu className="hover:bg-secondary" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full max-w-sm p-0 overflow-y-auto">
-              <SheetHeader className="sr-only">
-                <SheetTitle>Navigation Menu</SheetTitle>
-              </SheetHeader>
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex h-full flex-col">
                 <div className="border-b p-6 bg-secondary/30">
                   <div className="flex flex-col">

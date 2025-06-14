@@ -18,7 +18,7 @@ import { AnimatedDetail, AnimatedList } from "@/components/ui/animated-elements"
 export function TeamSection() {
   return (
     <Section className="py-12 sm:py-16 md:py-20 bg-muted/30">      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12">          <AnimatedDetail animation="fade" delay={50}>
+        <div className="text-center mb-10 sm:mb-12">          <AnimatedDetail>
             <Badge
               variant="outline"
               className="mb-6 px-4 py-1 text-base font-medium"
@@ -27,13 +27,13 @@ export function TeamSection() {
             </Badge>
           </AnimatedDetail>
           
-          <AnimatedDetail animation="slideUp" delay={100}>
+          <AnimatedDetail>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-serif leading-tight max-w-4xl mx-auto">
               Meet Our Expert Professionals
             </h2>
           </AnimatedDetail>
           
-          <AnimatedDetail animation="slideUp" delay={150}>
+          <AnimatedDetail>
             <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Our skilled team of nail technicians and beauty professionals are dedicated to providing you with exceptional service.
             </p>
@@ -41,13 +41,11 @@ export function TeamSection() {
         </div>
           <AnimatedList 
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
-          itemDelay={80}
-          itemThreshold={0.3}
         >
           {teamMembers.map((member) => (
             <Card
               key={member.id}
-              className="text-center border bg-card flex flex-col fade-on-hover"
+              className="text-center border bg-card flex flex-col transition-opacity hover:opacity-80"
             >
               <CardHeader className="p-6 pb-4">
                 <Avatar className="w-28 h-28 mx-auto mb-6 ring-4 ring-primary/10">

@@ -10,19 +10,19 @@ export function AboutSection() {
   const yearsInBusiness = currentYear - parseInt(businessInfo.founded);
   return (
     <Section className="bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">        <div className="text-center mb-12 sm:mb-16 md:mb-20">          <AnimatedDetail animation="fade" delay={50}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">        <div className="text-center mb-12 sm:mb-16 md:mb-20">          <AnimatedDetail>
             <Badge variant="outline" size="lg" className="mb-6 rounded-full font-medium">
               About Us
             </Badge>
           </AnimatedDetail>
           
-          <AnimatedDetail animation="slideUp" delay={100}>
+          <AnimatedDetail>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-serif leading-tight max-w-4xl mx-auto">
               Welcome to {businessInfo.name}
             </h2>
           </AnimatedDetail>
           
-          <AnimatedDetail animation="slideUp" delay={150}>
+          <AnimatedDetail>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {businessInfo.tagline}
             </p>
@@ -31,8 +31,8 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Story & Description */}
-          <div className="space-y-8">            <AnimatedDetail animation="slideLeft" delay={50}>
-              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+          <div className="space-y-8">            <AnimatedDetail>
+              <Card className="border bg-card/80 backdrop-blur-sm transition-opacity hover:opacity-80">
                 <CardHeader className="p-6 pb-4">
                   <CardTitle className="text-2xl md:text-3xl text-card-foreground font-serif">
                     Our Story
@@ -58,8 +58,8 @@ export function AboutSection() {
             </AnimatedDetail>
 
             {/* Mission/Values */}
-            <AnimatedDetail animation="slideLeft" delay={100}>
-              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+            <AnimatedDetail>
+              <Card className="border bg-card/80 backdrop-blur-sm transition-opacity hover:opacity-80">
                 <CardHeader className="p-6 pb-4">
                   <CardTitle className="text-2xl md:text-3xl text-card-foreground font-serif">
                     What Sets Us Apart
@@ -68,8 +68,6 @@ export function AboutSection() {
                 <CardContent className="p-6 pt-0">
                   <AnimatedList
                     className="grid grid-cols-2 gap-4 sm:gap-6"
-                    itemDelay={60}
-                    itemThreshold={0.4}
                   >
                     {[
                       { value: `${yearsInBusiness}+`, label: 'Years Experience' },
@@ -93,8 +91,8 @@ export function AboutSection() {
           </div>
           
           {/* Location & Contact Info */}
-          <div className="space-y-8">            <AnimatedDetail animation="slideRight" delay={80}>
-              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+          <div className="space-y-8">            <AnimatedDetail>
+              <Card className="border bg-card/80 backdrop-blur-sm transition-opacity hover:opacity-80">
                 <CardHeader className="p-6 pb-4">
                   <CardTitle className="text-2xl md:text-3xl text-card-foreground flex items-center font-serif">
                     <MapPinIcon className="h-7 w-7 text-primary mr-3 flex-shrink-0" />
@@ -125,8 +123,8 @@ export function AboutSection() {
             </AnimatedDetail>
 
             {/* Hours Card */}
-            <AnimatedDetail animation="slideRight" delay={250}>
-              <Card className="border bg-card/80 backdrop-blur-sm fade-on-hover">
+            <AnimatedDetail>
+              <Card className="border bg-card/80 backdrop-blur-sm transition-opacity hover:opacity-80">
                 <CardHeader className="p-6 pb-4">
                   <CardTitle className="text-2xl md:text-3xl text-card-foreground flex items-center font-serif">
                     <ClockIcon className="h-7 w-7 text-primary mr-3 flex-shrink-0" />
