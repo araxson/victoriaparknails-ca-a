@@ -123,3 +123,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Single simple fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-animation {
+  animation: fadeIn 0.5s ease-out forwards;
+  will-change: opacity;
+}
+
+/* Accessibility - respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .fade-animation {
+    animation: none;
+    opacity: 1;
+  }
+}

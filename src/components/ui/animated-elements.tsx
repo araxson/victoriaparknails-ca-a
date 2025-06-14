@@ -193,6 +193,63 @@ export const AnimatedDetail = forwardRef<HTMLElement, AnimatedElementProps>(
 
 AnimatedDetail.displayName = 'AnimatedDetail';
 
+// Animation component specifically for card content with separate interface
+interface AnimatedCardItemProps {
+  children: ReactNode;
+  className?: string;
+  animation?: 'fade' | 'scale' | 'rotate';
+  delay?: number;
+  threshold?: number;
+  triggerOnce?: boolean;
+  as?: ElementType;
+}
+
+export const AnimatedCardItem = forwardRef<HTMLElement, AnimatedCardItemProps>(
+  ({ 
+    children, 
+    className = '', 
+    animation = 'fade', 
+    delay = 0,
+    threshold = 0.15, // Lower threshold for card items for quicker animation
+    triggerOnce = true,
+    as: Component = 'div'
+  }, ref) => {
+    const { elementRef, isVisible } = useElementScrollAnimation({
+      threshold,
+      delay,
+      triggerOnce,
+      rootMargin: '0px 0px -30px 0px' // Optimized for card items
+    });
+
+    const getAnimationClasses = () => {
+      switch (animation) {
+        case 'scale':
+          return 'card-item-scale-on-scroll';
+        case 'rotate':
+          return 'card-item-scale-on-scroll'; // Using scale for rotate since we don't have a dedicated class
+        case 'fade':
+        default:
+          return 'card-item-fade-on-scroll';
+      }
+    };
+
+    return (
+      <Component
+        ref={ref || elementRef}
+        className={cn(
+          getAnimationClasses(),
+          isVisible && 'visible',
+          className
+        )}
+      >
+        {children}
+      </Component>
+    );
+  }
+);
+
+AnimatedCardItem.displayName = 'AnimatedCardItem';
+
 // Component for lists where each item animates individually
 export function AnimatedList({ 
   children, 

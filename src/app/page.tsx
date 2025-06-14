@@ -6,6 +6,7 @@ import { GallerySection } from '@/components/sections/gallery-section';
 import { FAQSection } from '@/components/sections/faq-section';
 import { AboutSection } from '@/components/sections/about-section';
 import { ServicesSection } from '@/components/sections/services-section';
+import { PromotionsSection } from '@/components/sections/promotions-section';
 
 export const metadata: Metadata = {
   title: "Victoria Park Nails and Spa | Calgary's Premier Nail Salon | Custom Nail Art & Luxury Spa Services",
@@ -60,6 +61,7 @@ export default function Home() {
       {/* All sections now have individual element animations within them */}
       <AboutSection />
       <ServicesSection />
+      <PromotionsSection />
       <GallerySection />
       <TeamSection />
       <TestimonialsSection />

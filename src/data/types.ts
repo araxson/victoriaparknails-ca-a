@@ -92,7 +92,7 @@ export interface Promotion {
   title: string;
   description: string;
   discount: string;
-  validUntil: string;
+  validUntil?: string;
   terms: string[];
   image?: string;
   featured?: boolean;

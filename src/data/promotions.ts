@@ -2,124 +2,105 @@ import { Promotion } from './types';
 
 export const promotions: Promotion[] = [
   {
-    id: "new-client-special",
-    title: "New Client Special",
-    description: "First visit discount for new clients. Enjoy 20% off any service during your first appointment with us.",
+    id: "new-client",
+    title: "First Visit Discount",
+    description: "20% off your first service with us.",
     discount: "20% OFF",
-    validUntil: "2025-12-31",
     terms: [
-      "Valid for new clients only",
-      "Cannot be combined with other offers",
-      "Must mention offer when booking",
-      "Valid for services $30 and above"
+      "For new clients only",
+      "Mention when booking",
+      "For services $30+"
     ],
     image: "/images/promotions/new-client-special.webp",
     featured: true
   },
   {
-    id: "student-discount",
+    id: "student",
     title: "Student Discount",
-    description: "Students get 15% off all services with valid student ID. Perfect for maintaining beautiful nails on a budget.",
+    description: "15% off with your student ID.",
     discount: "15% OFF",
-    validUntil: "2025-12-31",
     terms: [
-      "Valid student ID required",
-      "Available Monday-Wednesday only",
-      "Cannot be combined with other offers",
-      "Valid for all services"
+      "Show student ID",
+      "Monday-Wednesday only",
+      "All services"
     ],
     image: "/images/promotions/student-discount.webp",
     featured: false
   },
   {
-    id: "loyalty-program",
-    title: "Loyalty Rewards Program",
-    description: "Collect points with every visit! Earn 1 point per dollar spent and redeem 100 points for $10 off your next service.",
-    discount: "Earn Points",
-    validUntil: "Ongoing",
+    id: "loyalty",
+    title: "Loyalty Points",
+    description: "Earn points with every visit. $10 off for every 100 points.",
+    discount: "POINTS",
     terms: [
-      "1 point per $1 spent",
+      "1 point = $1 spent",
       "100 points = $10 off",
-      "Points never expire",
-      "Cannot be combined with other discounts",
-      "Ask about signing up at your next visit"
+      "Points never expire"
     ],
     image: "/images/promotions/loyalty-program.webp",
     featured: true
   },
   {
-    id: "mother-daughter-package",
-    title: "Mother & Daughter Package",
-    description: "Special bonding experience! Book matching manicures or pedicures and save 10% on both services.",
-    discount: "10% OFF Both",
-    validUntil: "2025-12-31",
+    id: "family",
+    title: "Family Deal",
+    description: "10% off when 2+ family members book together.",
+    discount: "10% OFF",
     terms: [
-      "Must book same service type",
-      "Both appointments same day",
-      "Cannot be combined with other offers",
-      "Available for manicures and pedicures"
+      "Book 2+ people together",
+      "Same day appointments",
+      "All nail services"
     ],
     image: "/images/promotions/mother-daughter.webp",
-    featured: false
+    featured: true
   },
   {
-    id: "bridal-party-special",
-    title: "Bridal Party Special",
-    description: "Make your special day perfect! Groups of 4+ receive 15% off all services. Perfect for bridal parties and special events.",
+    id: "group",
+    title: "Group Discount",
+    description: "15% off for groups of 4 or more.",
     discount: "15% OFF",
-    validUntil: "2025-12-31",
     terms: [
-      "Minimum 4 people",
-      "Advanced booking required",
-      "Same day appointments",
-      "Valid for all services",
-      "Must mention when booking"
+      "Groups of 4+",
+      "Book in advance",
+      "Same day service"
     ],
     image: "/images/promotions/bridal-party.webp",
     featured: true
   },
   {
-    id: "seasonal-holiday",
-    title: "Holiday Season Special",
-    description: "Get festive for the holidays! 25% off all nail art services featuring holiday themes and seasonal designs.",
-    discount: "25% OFF Nail Art",
-    validUntil: "2025-01-31",
+    id: "nail-art",
+    title: "Nail Art Deal",
+    description: "25% off nail art with any manicure.",
+    discount: "25% OFF",
     terms: [
-      "Valid for nail art services only",
-      "Must feature holiday/seasonal theme",
-      "Cannot be combined with other offers",
-      "Book early for holiday season"
+      "With any manicure",
+      "All nail art styles",
+      "Any day of the week"
     ],
     image: "/images/promotions/holiday-special.webp",
     featured: false
   },
   {
-    id: "referral-program",
+    id: "referral",
     title: "Refer a Friend",
-    description: "Share the love! Refer a friend and you both get $10 off your next service when they complete their first appointment.",
-    discount: "$10 OFF Each",
-    validUntil: "Ongoing",
+    description: "You and your friend each get $10 off.",
+    discount: "$10 OFF",
     terms: [
-      "Friend must be new client",
-      "Friend must complete first service",
-      "Both receive $10 credit",
-      "No limit on referrals",
-      "Credits applied to future visits"
+      "Friend must be new",
+      "Applied to next visit",
+      "No referral limit"
     ],
     image: "/images/promotions/referral-program.webp",
     featured: false
   },
   {
-    id: "manicure-pedicure-combo",
-    title: "Mani-Pedi Combo Deal",
-    description: "Complete package deal! Book a manicure and pedicure together and save $15 off the total price.",
-    discount: "$15 OFF Combo",
-    validUntil: "2025-12-31",
+    id: "combo",
+    title: "Mani-Pedi Combo",
+    description: "$15 off when you book both manicure and pedicure.",
+    discount: "$15 OFF",
     terms: [
-      "Must book both services same day",
-      "Valid for classic or gel options",
-      "Cannot be combined with other offers",
-      "Available all days of the week"
+      "Same day service",
+      "Regular or gel",
+      "All days available"
     ],
     image: "/images/promotions/mani-pedi-combo.webp",
     featured: true
