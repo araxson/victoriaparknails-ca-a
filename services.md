@@ -1,236 +1,79 @@
-# Services & Pricing
+# Our Services
 
-## Manicure Services
-- **Regular Manicure**
-  - Duration: 30 mins
-  - Price: $25
-  - [Book](https://victoriaparknailsspa.setmore.com/)
+## Manicures
+| Service | Price | Approx. Duration |
+|---------|-------|------------------|
+| **Classic Manicure** | $25 | 30 min |
+| A revitalizing treatment including nail shaping, cuticle care, moisturizing hand massage, and regular polish application. Perfect for maintaining healthy nails with a quick refresh. |
+| **Deluxe Spa Manicure** | $40 | 45 min |
+| Our elevated manicure experience includes everything in the Classic service plus exfoliating scrub, hydrating hand mask with hot towels, and an extended massage targeting pressure points. Ideal for dry hands or anyone seeking extra pampering. |
+| **Gel Manicure (Shellac)** | $45 | 45 min |
+| Enjoy long-lasting color with our gel polish that cures instantly under LED light for a smudge-proof, high-shine finish. Includes all the care of our Classic manicure with polish that resists chipping for up to two weeks. Perfect for busy lifestyles. |
 
-- **Shellac Manicure**
-  - Duration: 1 hr
-  - Price: $35
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Shellac Manicure with Gel Top**
-  - Duration: 1 hr
-  - Price: $40
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Shellac Manicure with Overlay**
-  - Duration: 45 mins
-  - Price: $45
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Shellac Color Change (Hands)**
-  - Duration: 45 mins
-  - Price: $30
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Child Manicure (Under 8) with Regular Polish**
-  - Duration: 20 mins
-  - Price: $15
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Child Manicure (Under 8) with Shellac**
-  - Duration: 30 mins
-  - Price: $25
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Nail Fix**
-  - Duration: 15 mins
-  - Price: $5
-  - Details available
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Nail Cut Only**
-  - Duration: 10 mins
-  - Price: $15
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-## Pedicure Services
-- **Basic Pedicure (Regular Polish)**
-  - Duration: 45 mins
-  - Price: $40
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Basic Pedicure (Shellac Polish)**
-  - Duration: 45 mins
-  - Price: $45
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Spa Pedicure (Regular Polish)**
-  - Duration: 45 mins
-  - Price: $45
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Spa Pedicure (Shellac Polish)**
-  - Duration: 1 hr
-  - Price: $55
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Shellac Color Change (Toes)**
-  - Duration: 40 mins
-  - Price: $35
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Child Pedicure (Under 8) with Regular Polish**
-  - Duration: 20 mins
-  - Price: $25
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Child Pedicure (Under 8) with Shellac**
-  - Duration: 30 mins
-  - Price: $35
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Toe Nail Cut**
-  - Duration: 10 mins
-  - Price: $25
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Foot Paraffin**
-  - Duration: 15 mins
-  - Price: $25
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-## Manicure & Pedicure Combos
-- **Basic Manicure & Pedicure (Regular Polish)**
-  - Duration: 1 hr
-  - Price: $60
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Spa Manicure & Pedicure (Regular Polish)**
-  - Duration: 1 hr
-  - Price: $65
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Spa Manicure & Pedicure (Shellac Polish)**
-  - Duration: 1 hr 30 mins
-  - Price: $85
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-## Artificial Nails
-- **Acrylic New Set**
-  - Duration: 1 hr 15 mins
-  - Price: $60
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Acrylic Fill**
-  - Duration: 1 hr
-  - Price: $45
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **UV Gel New Set**
-  - Duration: 1 hr 15 mins
-  - Price: $60
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **UV Gel Fill**
-  - Duration: 1 hr 15 mins
-  - Price: $45
-  - [Book](https://victoriaparknailsspa.setmore.com/)
+## Pedicures
+| Service | Price | Approx. Duration |
+|---------|-------|------------------|
+| **Classic Pedicure** | $35 | 45 min |
+| This refreshing foot treatment includes a warm therapeutic soak, nail trimming and shaping, cuticle care, light callus removal, moisturizing massage, and polish application. Provides essential relief for tired feet and maintains foot health. |
+| **Deluxe Spa Pedicure** | $55 | 60 min |
+| Our premium pedicure builds on the Classic service with intensive callus treatment, exfoliating sugar scrub, nourishing foot mask with hot towels, and extended massage. Perfect for deep relaxation and revitalizing tired, rough feet. |
+| **Gel Pedicure (Shellac)** | $55 | 60 min |
+| All the benefits of our Classic pedicure finished with long-wearing gel polish that resists chips and scratches for up to three weeks. Ideal for vacations, sandal season, or active lifestyles when you need your polish to last. |
 
 ## Nail Enhancements
-- **Nail Design (Each Nail)**
-  - Duration: 15 mins
-  - Price: $5
-  - [Book](https://victoriaparknailsspa.setmore.com/)
+*All Full Sets include gel polish application.*
 
-- **French Tips**
-  - Duration: 10 mins
-  - Price: $10
-  - [Book](https://victoriaparknailsspa.setmore.com/)
+| Service | Price | Approx. Duration |
+|---------|-------|------------------|
+| **Acrylic Full Set** | $60 | 90 min |
+| Strong, durable nail extensions created with powder and liquid that hardens to form a protective layer. Customized to your preferred length and shape, these enhancements provide strength while allowing damaged natural nails to grow underneath. |
+| **Acrylic Fill-in (2-3 weeks)** | $45 | 60 min |
+| Maintenance service for existing acrylic nails to fill the growth area, prevent lifting, and maintain appearance. Includes reshaping and gel polish change if desired. Regular fills preserve enhancement integrity and protect natural nails. |
+| **Dip Powder on Natural Nails** | $50 | 45 min |
+| A lightweight, odorless enhancement that creates strong, beautiful nails without UV light or harsh chemicals. Multiple layers of colored powder are applied and sealed for exceptional durability that lasts 3-4 weeks. Ideal for strengthening natural nails. |
+| **Dip Powder with Tips (Full Set)** | $60 | 75 min |
+| Combines nail tips for added length with the dip powder technique for durable, natural-looking extensions. Creates lightweight, comfortable nails with remarkable strength and vibrant color that lasts for weeks. |
+| **Hard Gel / Builder Gel Full Set** | $70 | 90 min |
+| Premium extensions using sculptable gel that creates flexible, natural-feeling nails with exceptional clarity and shine. More lightweight than acrylic with better resistance to lifting. Perfect for those wanting durable enhancements with a more natural feel. |
+| **Hard Gel / Builder Gel Fill-in** | $55 | 60 min |
+| Maintenance service for hard gel enhancements that fills the growth area and rebalances the nail structure. Preserves the integrity of your extensions while allowing for shape adjustments and color changes. |
 
-## Removal Services
-- **Shellac Polish Removal**
-  - Duration: 15 mins
-  - Price: $15
-  - [Book](https://victoriaparknailsspa.setmore.com/)
+## Add-Ons & Extras
+| Service | Price | Added Duration |
+|---------|-------|----------------|
+| **Polish Change (Hands)** | $15 | 15 min |
+| Quick color update without full manicure maintenance. Includes removal of old polish, nail cleansing, base coat, two coats of color, and top coat. Perfect for refreshing your look between full services. |
+| **Polish Change (Feet)** | $20 | 20 min |
+| Refresh your toenail color without the complete pedicure. Includes polish removal, nail preparation, and application of new color with base and top coats for maximum durability. |
+| **French Tips** | $10 | 15 min |
+| Classic white-tipped design with a natural pink or beige base. Creates an elegant, timeless look that complements any outfit and makes fingers appear longer and more slender. |
+| **Matte Top Coat** | $5 | No extra time |
+| Transform any glossy polish into a sophisticated velvet-like finish. Creates depth and dimension that works beautifully with any color, particularly dramatic with dark shades. |
+| **Chrome / Cat Eye / Holographic** | $15 | 10 min |
+| Specialty finishes that create eye-catching effects: mirror-like metallic surface (Chrome), flowing magnetic patterns (Cat Eye), or rainbow-shifting colors (Holographic). Applied over gel polish for dramatic visual impact. |
+| **Simple Nail Art (2 nails)** | $10 | 10 min |
+| Basic designs such as dots, lines, minimalist flowers, or geometric patterns applied to two accent nails. Adds personal style without overwhelming your manicure. |
+| **Moderate Nail Art (2-4 nails)** | $15 | 20 min |
+| More detailed designs on multiple nails using techniques like hand-painting, gradients, marbling, or stylized motifs. Creates focal points that enhance your base color and express your creativity. |
+| **Intricate/Custom Art** | By Quote | Varies |
+| Personalized designs ranging from detailed imagery to complex multi-technique creations. Pricing based on complexity, time requirements, and techniques needed. Consultation required to discuss design and determine pricing. |
+| **Gems / Rhinestones** | $1 / stone | 5 min & up |
+| Add sparkle with premium crystals in various sizes and colors. Each gem is individually applied for long-lasting wear. Create subtle accents or bold statements with strategic placement. |
+| **Paraffin Wax Treatment** | $15 | 15 min |
+| Therapeutic treatment using warm wax to deeply hydrate skin and improve circulation. Particularly beneficial for dry, cracked skin, arthritis discomfort, or during winter months. Leaves skin noticeably softer. |
+| **Intensive Callus Removal** | $10 | 10 min |
+| Targeted treatment for stubborn calluses using professional softening solutions and gentle removal techniques. Focuses on problem areas like heels and pressure points to alleviate discomfort. |
+| **Nail Repair (per nail)** | $5 | 10 - 15 min |
+| Fix for broken, split, or damaged nails using specialized techniques tailored to the specific issue. Restores appearance and prevents further damage between appointments. |
+| **Soak-Off Removal (with service)** | $10 | 15 min |
+| Professional removal of previous enhancement products when combined with a new service. Uses appropriate techniques to protect natural nails while ensuring complete product removal. |
+| **Soak-Off Removal (alone)** | $20 | 20 min |
+| Standalone removal service that safely eliminates enhancement products without damaging natural nails. Includes gentle filing, proper soaking, and post-removal conditioning to restore nail health. |
 
-- **Artificial/Gel Nail Removal**
-  - Duration: 15 mins
-  - Price: $20
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-## Waxing Services
-- **Eyebrow Waxing**
-  - Duration: 15 mins
-  - Price: $15
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Face Waxing (Per Area)**
-  - Duration: 10 mins
-  - Price: $12
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Face Waxing (Full Face)**
-  - Duration: 30 mins
-  - Price: $45
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Under Arm Waxing**
-  - Duration: 15 mins
-  - Price: $20
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Full Arm Waxing**
-  - Duration: 30 mins
-  - Price: $40
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Half Leg Waxing**
-  - Duration: 30 mins
-  - Price: $30
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Full Leg Waxing**
-  - Duration: 1 hr
-  - Price: $50
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Bikini Waxing**
-  - Duration: 30 mins
-  - Price: $35
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Brazilian Waxing**
-  - Duration: 30 mins
-  - Price: $60
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **Back or Chest Waxing (Each)**
-  - Duration: 40 mins
-  - Price: $55
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-## Body Massage
-- **60 Minute Body Massage**
-  - Duration: 1 hr
-  - Price: $120
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **60 Minute Hot Stone Body Massage**
-  - Duration: 1 hr
-  - Price: $130
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **90 Minute Body Massage**
-  - Duration: 1 hr 30 mins
-  - Price: $180
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **90 Minute Hot Stone Body Massage**
-  - Duration: 1 hr 30 mins
-  - Price: $190
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-- **120 Minute Body Massage**
-  - Duration: 2 hrs
-  - Price: $240
-  - [Book](https://victoriaparknailsspa.setmore.com/)
-
-## Eyelash Services
-- **Eye Lash Extensions Classic New Set**
-  - Duration: 1 hr
-  - Price: $125
-  - [Book](https://victoriaparknailsspa.setmore.com/)
+## For The Kids (12 & Under)
+| Service | Price | Duration |
+|---------|-------|----------|
+| **Mini Manicure** | $15 | 20 min |
+| Child-friendly nail care including gentle shaping, light cuticle care, and application of kid-safe polish in their favorite color. Introduces proper nail hygiene in a fun, age-appropriate way. Perfect for special occasions or parent-child bonding. |
+| **Mini Pedicure** | $25 | 30 min |
+| Delightful foot care experience tailored for children featuring a bubbly foot soak, careful nail trimming, gentle buffing, light massage with kid-friendly lotion, and colorful polish application. Creates a positive introduction to self-care routines. |

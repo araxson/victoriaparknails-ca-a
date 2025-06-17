@@ -1,9 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { createPortal } from "react-dom";
 import { GalleryImage } from "@/data/types";
 import { GalleryCarousel } from "@/components/ui/gallery-carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/shadcn/dialog";
 
 interface GalleryModalProps {
   images: GalleryImage[];
@@ -18,37 +23,16 @@ export function GalleryModal({
   isOpen,
   onClose,
 }: GalleryModalProps) {
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
-  if (!mounted || !isOpen) return null;
-
-  return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      
-      {/* Modal content */}
-      <div className="relative z-10 w-full h-full max-w-7xl max-h-screen p-4 sm:p-6 md:p-8 overflow-auto">
-        <div className="flex items-center justify-center min-h-full">
+  return (
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent 
+        className="max-w-[95vw] sm:max-w-[90vw] md:max-w-[85vw] max-h-[95vh] w-full h-auto p-0 bg-background/95 backdrop-blur-sm border border-border/50 overflow-hidden flex flex-col rounded-lg"
+        showCloseButton={false}
+      >
+        <DialogHeader className="sr-only">
+          <DialogTitle>Image Gallery</DialogTitle>
+        </DialogHeader>
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col p-0">
           <GalleryCarousel
             images={images}
             initialIndex={initialIndex}
@@ -56,8 +40,7 @@ export function GalleryModal({
             showThumbnails={true}
           />
         </div>
-      </div>
-    </div>,
-    document.body
+      </DialogContent>
+    </Dialog>
   );
 }

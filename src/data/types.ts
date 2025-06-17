@@ -1,5 +1,4 @@
-// Data types for Victoria Park Nails and Spa website
-
+// Business Information Types
 export interface BusinessInfo {
   name: string;
   tagline: string;
@@ -10,14 +9,13 @@ export interface BusinessInfo {
     city: string;
     province: string;
     postalCode: string;
-    country: string;
     fullAddress: string;
   };
   contact: {
     phone: string;
     email: string;
     website: string;
-    bookingUrl?: string;
+    bookingUrl: string;
   };
   hours: {
     [key: string]: string;
@@ -25,39 +23,34 @@ export interface BusinessInfo {
   socialMedia: {
     facebook?: string;
     instagram?: string;
-    twitter?: string;
     tiktok?: string;
-    youtube?: string;
   };
 }
 
+// Service Types
 export interface Service {
   id: string;
   name: string;
-  category: string;
-  description: string;
-  shortDescription: string;
-  duration: string;
+  description?: string;
+  categoryId: string;
   price: number | string;
-  priceRange?: {
-    min: number;
-    max: number;
-  };
-  gallery?: string[];
-  process?: string[];
-  aftercare?: string[];
-  featured?: boolean;
-  popular?: boolean;
+  duration: string;
 }
 
 export interface ServiceCategory {
   id: string;
   name: string;
   description: string;
-  image: string;
-  services: string[]; // Service IDs
+  icon?: string;
 }
 
+// Gallery Types
+export interface GalleryImage {
+  src: string;
+  alt?: string;
+}
+
+// Team Types
 export interface TeamMember {
   id: string;
   name: string;
@@ -69,17 +62,18 @@ export interface TeamMember {
   certifications?: string[];
 }
 
+// Testimonial Types
 export interface Testimonial {
   id: string;
   name: string;
-  service: string;
   rating: number;
   review: string;
   date: string;
-  image?: string;
+  service?: string;
   verified?: boolean;
 }
 
+// FAQ Types
 export interface FAQ {
   id: string;
   question: string;
@@ -87,22 +81,23 @@ export interface FAQ {
   category: string;
 }
 
-export interface Promotion {
+// Offer Types
+export interface Offer {
   id: string;
   title: string;
   description: string;
   discount: string;
-  validUntil?: string;
   terms: string[];
+  validUntil?: string;
   image?: string;
-  featured?: boolean;
+  code?: string;
 }
 
-export interface GalleryImage {
+// Content Types
+export interface PageContent {
   id: string;
-  src: string;
-  alt: string;
-  category: string;
-  service?: string;
-  featured?: boolean;
+  title: string;
+  content: string;
+  excerpt?: string;
+  category?: string;
 }

@@ -1,130 +1,50 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/shadcn/data-display/card";
-import { Badge } from "@/components/ui/shadcn/data-display/badge";
-import { Button } from "@/components/ui/shadcn/inputs/button";
+import { serviceCategories, getServicesByCategory } from "@/data";
 import { Section } from "@/components/layouts";
-import { services } from "@/data";
-import { ClockIcon, DollarSignIcon, ArrowRightIcon } from "lucide-react";
+import { SectionHeader } from "@/components/layouts/section-header";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Button,
+} from "@/components/ui";
 import Link from "next/link";
-import { AnimatedDetail, AnimatedList, AnimatedCardItem } from "@/components/ui/animated-elements";
 
 export function ServicesSection() {
-  // Focus on popular nail services only
-  const popularNailServices = [
-    {
-      service: services.find(service => service.id === "shellac-manicure"),
-      category: "Manicure"
-    },
-    {
-      service: services.find(service => service.id === "spa-pedicure-shellac-polish"),
-      category: "Pedicure"
-    },
-    {
-      service: services.find(service => service.id === "acrylic-new-set"),
-      category: "Nail Extensions"
-    },
-    {
-      service: services.find(service => service.id === "nail-design-each-nail"),
-      category: "Nail Art"
-    },
-    {
-      service: services.find(service => service.id === "uv-gel-new-set"),
-      category: "Nail Extensions"
-    },
-    {
-      service: services.find(service => service.id === "french-tips"),
-      category: "Nail Design"
-    }
-  ].filter(item => item.service);
-  // Format price correctly to avoid double dollar signs
-  const formatPrice = (price: number | string): string => {
-    if (typeof price === 'number') {
-      return `$${price}`;
-    }
-    return price.startsWith('$') ? price : `$${price}`;
-  };
   return (
-    <Section className="bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <AnimatedDetail>
-            <Badge variant="outline" size="lg" className="mb-6 rounded-full font-medium">
-              Popular Services
-            </Badge>
-          </AnimatedDetail>
-          
-          <AnimatedDetail>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
-              Our Most Popular Nail Services
-            </h2>
-          </AnimatedDetail>
-          
-          <AnimatedDetail>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Discover our most requested professional nail services that keep our clients coming back
-            </p>
-          </AnimatedDetail>
-        </div>
+    <Section variant="default">
+      <div className="container">
+        {/* Section Header */}
+        <SectionHeader
+          badge="Our Services"
+          title="Explore Our Offerings"
+          description="Discover a curated selection of professional nail and spa services tailored to elevate your self-care routine."
+        />
 
-        <AnimatedList 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {popularNailServices.map(({service, category}) => (
-            service && (
-              <Card key={service.id} className="flex flex-col h-full border bg-card transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-                <CardHeader className="pb-2 text-center">
-                  <AnimatedCardItem>
-                    <Badge variant="secondary" size="default" className="mb-2 self-center">
-                      {category}
-                    </Badge>
-                  </AnimatedCardItem>
-                  <AnimatedCardItem>
-                    <CardTitle className="text-xl mt-1">{service.name}</CardTitle>
-                  </AnimatedCardItem>
+        {/* Category Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {serviceCategories.map((category) => {
+            const services = getServicesByCategory(category.id);
+            return (
+              <Card key={category.id}>
+                <CardHeader>
+                  <CardTitle>{category.name}</CardTitle>
                 </CardHeader>
-                <CardContent className="pt-4 flex-grow">
-                  <AnimatedCardItem>
-                    <p className="text-muted-foreground mb-6 text-center">
-                      {service.shortDescription}
-                    </p>
-                  </AnimatedCardItem>
-                  <AnimatedCardItem>
-                    <div className="flex items-center justify-between p-4 bg-muted/40 rounded-lg">
-                      <div className="flex items-center">
-                        <DollarSignIcon className="h-4 w-4 text-primary mr-2" />
-                        <span className="font-semibold text-lg">
-                          {formatPrice(service.price)}
-                        </span>
-                      </div>
-                      <div className="flex items-center">
-                        <ClockIcon className="h-4 w-4 text-muted-foreground mr-2" />
-                        <span className="text-muted-foreground">{service.duration}</span>
-                      </div>
-                    </div>
-                  </AnimatedCardItem>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground">
+                    {category.description ||
+                      `We offer ${services.length} specialised services under the ${category.name.toLowerCase()} category.`}
+                  </p>
+
+                  <Button asChild variant="outline" className="w-full">
+                    <Link href={`/services#${category.id}`}>View Details</Link>
+                  </Button>
                 </CardContent>
-                <CardFooter className="pt-2">
-                  <AnimatedCardItem>
-                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-                      <a href="https://victoriaparknailsspa.setmore.com/" target="_blank" rel="noopener noreferrer">
-                        Book Now
-                      </a>
-                    </Button>
-                  </AnimatedCardItem>
-                </CardFooter>
               </Card>
-            )
-          ))}
-        </AnimatedList>
-        
-        <AnimatedDetail className="text-center mt-14">
-          <Button variant="outline" size="lg" asChild>
-            <Link href="/services" className="px-8">
-              View All Services 
-              <ArrowRightIcon className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </AnimatedDetail>
+            );
+          })}
+        </div>
       </div>
     </Section>
   );
-} 
+}

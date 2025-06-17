@@ -1,29 +1,17 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Roboto } from "next/font/google";
 import "./globals.css";
-import { MainHeader, MainFooter } from "@/components/layouts";
+import { MainHeader, MainFooter, Breadcrumbs } from "@/components/layouts";
 import { businessInfo } from "@/data";
 import { ThemeProvider } from "next-themes";
-import { PromotionNotification } from "@/components/ui/promotion-notification";
-import { Toaster } from "@/components/ui/shadcn/feedback/sonner";
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  display: "swap",
-});
+import { Toaster } from "@/components/ui";
+import { cn } from "@/lib/utils";
+import { playfairDisplay, roboto } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://victoriaparknails.ca"),
   title: {
-    default: "Victoria Park Nails and Spa | Premier Nail Salon in Calgary | Custom Nail Art & Spa Services",
+    default:
+      "Victoria Park Nails and Spa | Premier Nail Salon in Calgary | Custom Nail Art & Spa Services",
     template: "%s | Victoria Park Nails and Spa | Calgary's Premier Nail Salon",
   },
   description:
@@ -51,7 +39,7 @@ export const metadata: Metadata = {
     "Calgary spa services",
     "nail art design Calgary",
     "bridal nails Calgary",
-    "nail salon 1st Street SE"
+    "nail salon 1st Street SE",
   ],
   authors: [{ name: businessInfo.name }],
   creator: businessInfo.name,
@@ -108,7 +96,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://victoriaparknails.ca",
     languages: {
-      'en-CA': 'https://victoriaparknails.ca',
+      "en-CA": "https://victoriaparknails.ca",
     },
   },
 };
@@ -119,7 +107,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-CA" suppressHydrationWarning>
+    <html
+      lang="en-CA"
+      className={cn(
+        "min-h-screen bg-background font-sans",
+        roboto.variable,
+        playfairDisplay.variable,
+      )}
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="application/ld+json"
@@ -132,7 +128,7 @@ export default function RootLayout({
               image: [
                 "https://victoriaparknails.ca/og-image.jpg",
                 "https://victoriaparknails.ca/images/salon-exterior.jpg",
-                "https://victoriaparknails.ca/images/salon-interior.jpg"
+                "https://victoriaparknails.ca/images/salon-interior.jpg",
               ],
               description:
                 "Calgary's premier nail salon and spa offering luxury manicures, pedicures, custom nail art, gel nails, acrylic extensions, and spa treatments since 2015.",
@@ -160,16 +156,16 @@ export default function RootLayout({
                 "@type": "City",
                 name: "Calgary",
                 addressRegion: "AB",
-                addressCountry: "CA"
+                addressCountry: "CA",
               },
               serviceArea: {
                 "@type": "GeoCircle",
                 geoMidpoint: {
                   "@type": "GeoCoordinates",
                   latitude: 51.0447,
-                  longitude: -114.0719
+                  longitude: -114.0719,
                 },
-                geoRadius: "25000"
+                geoRadius: "25000",
               },
               openingHoursSpecification: [
                 {
@@ -200,41 +196,44 @@ export default function RootLayout({
                     itemOffered: {
                       "@type": "Service",
                       name: "Manicure Services",
-                      description: "Professional manicure services including regular, shellac, and gel options"
-                    }
+                      description:
+                        "Professional manicure services including regular, shellac, and gel options",
+                    },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Pedicure Services", 
-                      description: "Luxury pedicure services with spa options and shellac finish"
-                    }
+                      name: "Pedicure Services",
+                      description:
+                        "Luxury pedicure services with spa options and shellac finish",
+                    },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
                       name: "Nail Extensions",
-                      description: "Acrylic and gel nail extensions with custom designs"
-                    }
+                      description:
+                        "Acrylic and gel nail extensions with custom designs",
+                    },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
                       name: "Custom Nail Art",
-                      description: "Professional nail art and custom designs"
-                    }
-                  }
-                ]
+                      description: "Professional nail art and custom designs",
+                    },
+                  },
+                ],
               },
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "4.8",
                 reviewCount: "150",
                 bestRating: "5",
-                worstRating: "1"
+                worstRating: "1",
               },
               review: [
                 {
@@ -242,14 +241,15 @@ export default function RootLayout({
                   reviewRating: {
                     "@type": "Rating",
                     ratingValue: "5",
-                    bestRating: "5"
+                    bestRating: "5",
                   },
                   author: {
                     "@type": "Person",
-                    name: "Jessica L."
+                    name: "Jessica L.",
                   },
-                  reviewBody: "This is hands-down the best nail salon in Calgary! The attention to detail is incredible, the salon is beautiful and clean, and my gel manicure lasts for weeks."
-                }
+                  reviewBody:
+                    "This is hands-down the best nail salon in Calgary! The attention to detail is incredible, the salon is beautiful and clean, and my gel manicure lasts for weeks.",
+                },
               ],
               sameAs: [
                 "https://www.facebook.com/victoriaparknails",
@@ -262,29 +262,45 @@ export default function RootLayout({
         {/* Favicons are automatically handled by Next.js through files in the app directory */}
         {/* The following are additional icons and configurations */}
         <link rel="manifest" href="/favicons/manifest.json" />
-        <meta name="theme-color" content="#d4af37" />
-        <meta name="msapplication-TileColor" content="#d4af37" />
-        <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+        <meta name="theme-color" content="#c2864b" />
+        <meta name="msapplication-TileColor" content="#c2864b" />
+        <meta
+          name="msapplication-TileImage"
+          content="/favicons/ms-icon-144x144.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicons/favicon-96x96.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicons/favicon-16x16.png"
+        />
       </head>
-      <body
-        className={`${playfairDisplay.variable} ${roboto.variable} antialiased min-h-screen`}
-      >
+      <body className="font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <MainHeader />
+          <main className="relative flex min-h-screen flex-col">
+            <Breadcrumbs />
+            <div className="flex-grow">{children}</div>
+          </main>
+          <MainFooter />
           <Toaster />
-          <PromotionNotification />
-          <div className="flex min-h-screen flex-col bg-background">
-            <MainHeader />
-            <main className="flex-1 w-full overflow-hidden">{children}</main>
-            <MainFooter />
-          </div>
         </ThemeProvider>
       </body>
     </html>

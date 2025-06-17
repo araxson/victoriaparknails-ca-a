@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import * as React from "react";
 import { useTheme } from "next-themes";
-import { Root, Thumb } from "@radix-ui/react-switch";
+import { Switch } from "@/components/ui";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-function ThemeToggle() {
+export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
-  useEffect(() => {
+  // Mount after client-side hydration to avoid hydration mismatch
+  React.useEffect(() => {
     setMounted(true);
   }, []);
 
+  // During SSR or before hydration, return a placeholder
   if (!mounted) {
     return (
       <div
@@ -23,38 +25,36 @@ function ThemeToggle() {
     );
   }
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  // Define custom styles for the switch based on theme
+  const switchStyle = {
+    '--switch-bg': theme === 'dark' ? '#1e3a8a' : '#f59e0b' // blue-900 : amber-500
+  } as React.CSSProperties;
+
   return (
-    <Root
-      checked={theme === "dark"}
-      onCheckedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className={cn(
-        "group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full",
-        "border-2 border-transparent transition-colors duration-300 ease-in-out",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
-        "data-[state=unchecked]:bg-amber-300",
-        "data-[state=checked]:bg-slate-800"
-      )}
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-    >
-      <Thumb
+    <div className="flex items-center gap-2">
+      <Sun 
         className={cn(
-          "pointer-events-none relative block h-5 w-5 rounded-full ring-0",
-          "transition-transform duration-300 ease-in-out",
-          "bg-white",
-          "data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
-        )}
-      >
-        <Sun
-          size={12}
-          className="absolute inset-0 m-auto text-amber-500 transition-all duration-300 ease-in-out group-data-[state=unchecked]:opacity-100 group-data-[state=unchecked]:rotate-0 group-data-[state=checked]:opacity-0 group-data-[state=checked]:-rotate-90"
-        />
-        <Moon
-          size={12}
-          className="absolute inset-0 m-auto text-slate-800 transition-all duration-300 ease-in-out group-data-[state=unchecked]:opacity-0 group-data-[state=unchecked]:rotate-90 group-data-[state=checked]:opacity-100 group-data-[state=checked]:rotate-0"
-        />
-      </Thumb>
-    </Root>
+          "h-4 w-4 transition-colors",
+          theme === "light" ? "text-amber-500" : "text-slate-400/60"
+        )} 
+      />
+      <Switch
+        checked={theme === "dark"}
+        onCheckedChange={toggleTheme}
+        style={switchStyle}
+        className="theme-toggle-switch [--switch-bg:var(--switch-bg)] data-[state=checked]:!bg-[var(--switch-bg)] data-[state=unchecked]:!bg-[var(--switch-bg)]"
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      />
+      <Moon 
+        className={cn(
+          "h-4 w-4 transition-colors",
+          theme === "dark" ? "text-blue-400" : "text-slate-400/60"
+        )} 
+      />
+    </div>
   );
 }
-
-export { ThemeToggle };

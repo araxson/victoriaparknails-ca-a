@@ -1,21 +1,34 @@
-import { GalleryImage } from './types';
+import { GalleryImage } from "./types";
 
-// Import gallery images
-const GALLERY_PATH = '/images/gallery';
+/**
+ * Fallback gallery images - these will be used if the API fails
+ * The actual gallery images are loaded dynamically from /api/gallery
+ */
+export const fallbackGalleryImages: GalleryImage[] = [
+  {
+    src: "/images/gallery/victoriaparknails-0001.webp",
+    alt: "Victoria Park Nails gallery image",
+  },
+  {
+    src: "/images/gallery/victoriaparknails-0002.webp",
+    alt: "Victoria Park Nails gallery image",
+  },
+  {
+    src: "/images/gallery/victoriaparknails-0003.webp",
+    alt: "Victoria Park Nails gallery image",
+  },
+  {
+    src: "/images/gallery/victoriaparknails-0004.webp",
+    alt: "Victoria Park Nails gallery image",
+  },
+];
 
-// Helper function to get image path
-const getImagePath = (path: string): string => `${GALLERY_PATH}/${path}`;
+// Legacy export for backward compatibility
+export const galleryImages = fallbackGalleryImages;
 
-export const galleryImages: GalleryImage[] = Array.from(
-  { length: 34 },
-  (_, i) => {
-    const imageNumber = (i + 1).toString().padStart(4, "0");
-    return {
-      id: `victoriaparknails-${imageNumber}`,
-      src: getImagePath(`victoriaparknails-${imageNumber}.webp`),
-      alt: `Victoria Park Nails and Spa Gallery Image ${i + 1}`,
-      category: "General",
-      featured: i < 8,
-    };
-  }
-);
+/**
+ * Get a subset of gallery images for featured display
+ */
+export function getFeaturedGalleryImages(count: number = 8): GalleryImage[] {
+  return galleryImages.slice(0, count);
+}
