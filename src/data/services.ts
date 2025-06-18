@@ -27,29 +27,29 @@ export const services: ServiceCategory[] = [
             name: "Classic Manicure",
             duration: "30 mins",
             price: "25",
-            shortDescription: "(w/ Regular Polish)",
-            details: "A revitalizing treatment including nail shaping, cuticle care, moisturizing hand massage, and regular polish application. Perfect for maintaining healthy nails with a quick refresh."
+            shortDescription: "Fresh & polished look",
+            details: "Refresh your hands with our signature manicure! We'll shape your nails, care for your cuticles, treat you to a relaxing hand massage, and finish with your choice of regular polish. Perfect for keeping your nails healthy and beautiful."
           },
           {
-            name: "Deluxe Manicure",
+            name: "Shellac Manicure",
             duration: "45 mins",
             price: "35",
-            shortDescription: "(w/ Shellac)",
-            details: "Our elevated manicure experience with shellac polish. Includes nail shaping, cuticle care, moisturizing hand massage, and long-lasting shellac polish application that resists chipping."
+            shortDescription: "Long-lasting shine",
+            details: "Get gorgeous nails that last! Our premium shellac manicure includes everything you love about our classic service, plus durable shellac polish that stays chip-free for weeks. Perfect for busy lifestyles and special occasions."
           },
           {
-            name: "Intensive Care Manicure",
+            name: "Gel Top Manicure",
             duration: "50 mins",
             price: "40",
-            shortDescription: "(w/ Gel Top)",
-            details: "Advanced manicure treatment with gel top coat. Includes comprehensive nail care, cuticle treatment, moisturizing massage, and protective gel top coat for enhanced durability and shine."
+            shortDescription: "Extra strength & protection",
+            details: "Give your nails the ultimate protection! This enhanced manicure features our complete nail care routine topped with a protective gel coat that adds incredible durability and mirror-like shine to your manicure."
           },
           {
-            name: "Gel Overlay Deluxe Manicure",
+            name: "Premium Gel Overlay",
             duration: "60 mins",
             price: "45",
-            shortDescription: "(Premium Protection)",
-            details: "Premium manicure service featuring gel overlay for maximum protection and shine. Includes complete nail care, cuticle treatment, massage, and professional gel overlay application."
+            shortDescription: "Maximum durability & glamour",
+            details: "Experience our most luxurious manicure! This premium service includes comprehensive nail care and a professional gel overlay that provides maximum protection, incredible shine, and long-lasting beauty that's perfect for any occasion."
           }
         ],
       },
@@ -60,234 +60,222 @@ export const services: ServiceCategory[] = [
             name: "Classic Pedicure",
             duration: "45 mins",
             price: "40",
-            shortDescription: "(w/ Regular Polish)",
-            details: "This refreshing foot treatment includes a warm therapeutic soak, nail trimming and shaping, cuticle care, light callus removal, moisturizing massage, and regular polish application. Provides essential relief for tired feet and maintains foot health."
+            shortDescription: "Relaxing foot refresh",
+            details: "Treat your feet to pure bliss! Start with a warm, therapeutic soak, then enjoy nail care, cuticle treatment, gentle callus removal, and a soothing massage. We'll finish with beautiful regular polish for happy, healthy feet."
           },
           {
-            name: "Deluxe Pedicure",
+            name: "Spa Pedicure with Hot Stones",
             duration: "60 mins",
             price: "50",
-            shortDescription: "(w/ Regular Polish + Massage + Hot Stone)",
-            details: "Our premium pedicure with regular polish, includes everything in the Classic service plus intensive callus treatment, extended massage, and hot stone treatment. Perfect for deep relaxation and revitalizing tired, rough feet."
+            shortDescription: "Ultimate relaxation experience",
+            details: "Indulge in our signature spa experience! Everything from our classic pedicure plus intensive callus treatment, extended massage, and luxurious hot stone therapy. Perfect for melting away stress and pampering tired feet."
           },
           {
-            name: "Classic Pedicure with Shellac",
+            name: "Shellac Pedicure",
             duration: "50 mins",
             price: "45",
-            shortDescription: "(w/ Shellac)",
-            details: "All the benefits of our Classic pedicure finished with long-wearing shellac polish that resists chips and scratches. Ideal for active lifestyles when you need your polish to last."
+            shortDescription: "Long-lasting beautiful toes",
+            details: "Beautiful feet that stay beautiful! All the pampering of our classic pedicure finished with chip-resistant shellac polish that keeps your toes looking perfect for weeks. Ideal for vacations and active lifestyles."
           },
           {
             name: "Deluxe Spa Pedicure",
             duration: "75 mins",
             price: "55",
-            shortDescription: "(w/ Shellac + Massage + Hot Stone)",
-            details: "Our ultimate pedicure experience with shellac polish, massage, and hot stone treatment. Includes intensive callus treatment, exfoliating scrub, nourishing foot mask, extended massage, and hot stone therapy for the ultimate relaxation."
+            shortDescription: "The ultimate foot indulgence",
+            details: "Our most luxurious foot treatment! Enjoy everything we offer: intensive callus care, exfoliating scrub, nourishing foot mask, extended massage, hot stone therapy, and long-lasting shellac polish. The ultimate self-care experience!"
           }
         ],
       },
       {
-        name: "Combo Services",
+        name: "Nail Extensions",
         services: [
           {
-            name: "Combo Deluxe Manicure & Pedicure",
-            duration: "2 hrs",
-            price: "85",
-            shortDescription: "(Complete Package)",
-            details: "Complete pampering package combining our Deluxe Manicure and Deluxe Pedicure services. Includes comprehensive nail care for hands and feet, cuticle treatment, moisturizing massage, and your choice of regular or shellac polish. Perfect for a full spa experience."
-          }
-        ],
-      },
-      {
-        name: "Nail Enhancements",
-        services: [
-          {
-            name: "Acrylic/Gel New Set",
+            name: "Full Set Extensions",
             duration: "90 mins",
             price: "60",
-            shortDescription: "(Full Set)",
-            details: "Strong, durable nail extensions created with acrylic or gel that hardens to form a protective layer. Customized to your preferred length and shape, these enhancements provide strength while allowing damaged natural nails to grow underneath."
+            shortDescription: "Strong, beautiful length",
+            details: "Get the nails you've always wanted! Our custom extensions give you beautiful length and strength while protecting your natural nails underneath. Choose your perfect shape and length for stunning, durable nails."
           },
           {
-            name: "Acrylic/Gel Fill-in",
+            name: "Extension Maintenance",
             duration: "60 mins",
             price: "45",
-            shortDescription: "(3 weeks)",
-            details: "Maintenance service for existing acrylic or gel nails to fill the growth area, prevent lifting, and maintain appearance. Includes reshaping and polish change if desired. Regular fills preserve enhancement integrity and protect natural nails."
+            shortDescription: "Keep your extensions perfect",
+            details: "Keep your extensions looking fresh! We'll fill in growth areas, reshape as needed, and give you a fresh polish change. Regular maintenance keeps your extensions strong and beautiful between appointments."
           }
         ],
       },
       {
-        name: "Add-Ons & Extras",
+        name: "Quick Services & Add-Ons",
         services: [
           {
-            name: "Color Change Only",
+            name: "Polish Change",
             duration: "15 mins",
             price: "15",
-            shortDescription: "(Regular Polish)",
-            details: "Quick color update with regular polish without full manicure maintenance. Includes removal of old polish, nail cleansing, base coat, two coats of color, and top coat. Perfect for refreshing your look between full services."
+            shortDescription: "Quick color refresh",
+            details: "Switch up your look in minutes! We'll remove your old polish and apply a fresh new color with regular polish. Perfect for trying new shades or refreshing your look between full services."
           },
           {
-            name: "Shellac Color Change Only",
+            name: "Shellac Polish Change",
             duration: "20 mins",
             price: "30",
-            shortDescription: "(Quick Update)",
-            details: "Quick color update with long-lasting shellac polish. Includes removal of old polish, nail preparation, and application of new shellac color for maximum durability."
+            shortDescription: "Long-lasting color switch",
+            details: "Change your color the smart way! Quick removal of old polish and application of beautiful new shellac that lasts for weeks. Great for keeping up with trends or matching special outfits."
           },
           {
-            name: "Nail Cut Only",
+            name: "Hand Nail Trim & Shape",
             duration: "10 mins",
             price: "15",
-            shortDescription: "(Hands)",
-            details: "Simple nail trimming and shaping service for hands. Perfect for maintenance between full manicure appointments."
+            shortDescription: "Quick nail maintenance",
+            details: "Keep your nails neat and tidy! Quick trimming and shaping service that's perfect for maintenance between full manicures or when you just need a quick touch-up."
           },
           {
-            name: "Toe Nail Cut Only",
+            name: "Foot Nail Trim & Shape",
+            duration: "15 mins",
+            price: "25",
+            shortDescription: "Toenail care made easy",
+            details: "Keep your toenails comfortable and neat! Professional trimming and shaping that's perfect for maintenance between pedicures or when you need quick foot care."
+          },
+          {
+            name: "Shellac Removal",
             duration: "15 mins",
             price: "15",
-            shortDescription: "(Feet)",
-            details: "Basic toenail trimming and shaping service. Ideal for maintenance between full pedicure appointments."
+            shortDescription: "Gentle, professional removal",
+            details: "Safe removal that protects your nails! We use proper techniques to gently remove shellac without damaging your natural nails. Your nails will thank you!"
           },
           {
-            name: "Shellac Removal Only",
-            duration: "15 mins",
-            price: "15",
-            shortDescription: "(Professional)",
-            details: "Professional removal of shellac polish without additional services. Uses proper soaking techniques to protect natural nails."
-          },
-          {
-            name: "Artificial/Gel Nail Removal",
+            name: "Extension Removal",
             duration: "30 mins",
             price: "20+",
-            shortDescription: "(Alone)",
-            details: "Standalone removal service that safely eliminates artificial or gel nail products with soak treatment. Includes gentle filing, proper soaking, and post-removal conditioning to restore nail health."
+            shortDescription: "Safe removal service",
+            details: "Professional removal that cares for your natural nails! We safely remove artificial or gel extensions with gentle soaking and conditioning to restore your nail health."
           },
           {
             name: "Paraffin Wax Treatment",
             duration: "15 mins",
             price: "15-25",
-            shortDescription: "(Therapeutic)",
-            details: "Therapeutic treatment using warm wax to deeply hydrate skin and improve circulation. Particularly beneficial for dry, cracked skin, arthritis discomfort, or during winter months. Leaves skin noticeably softer."
+            shortDescription: "Deep moisture therapy",
+            details: "Pamper your skin with warm, therapeutic wax! This luxurious treatment deeply moisturizes dry skin and soothes tired hands or feet. Especially wonderful during winter months or for extra-dry skin."
           },
           {
-            name: "Intensive Callus Removal",
+            name: "Callus Removal",
             duration: "10 mins",
             price: "10",
-            shortDescription: "(Targeted)",
-            details: "Targeted treatment for stubborn calluses using professional softening solutions and gentle removal techniques. Focuses on problem areas like heels and pressure points to alleviate discomfort."
+            shortDescription: "Smooth, comfortable feet",
+            details: "Say goodbye to rough, uncomfortable calluses! Our gentle but effective treatment focuses on problem areas to leave your feet feeling smooth and comfortable again."
           },
           {
             name: "Nail Repair",
             duration: "10 mins",
             price: "5",
-            shortDescription: "(per nail)",
-            details: "Fix for broken, split, or damaged nails using specialized techniques tailored to the specific issue. Restores appearance and prevents further damage between appointments. Price per nail."
+            shortDescription: "Fix broken nails instantly",
+            details: "Don't let a broken nail ruin your day! We'll repair splits, breaks, or damage using professional techniques. Get back to beautiful nails in no time. Priced per nail."
           },
           {
-            name: "French Tips",
+            name: "French Manicure",
             duration: "15 mins",
             price: "10",
-            shortDescription: "(Classic Style)",
-            details: "Classic white-tipped design with a natural pink or beige base. Creates an elegant, timeless look that complements any outfit and makes fingers appear longer and more slender."
+            shortDescription: "Timeless elegance",
+            details: "Classic never goes out of style! Beautiful white tips with a natural base create an elegant, sophisticated look that goes with everything and makes your fingers look longer and more graceful."
           },
           {
-            name: "Chrome/Cat Eye",
+            name: "Chrome & Cat Eye Effects",
             duration: "10 mins",
             price: "15",
-            shortDescription: "(Specialty Finish)",
-            details: "Specialty finishes that create eye-catching effects: mirror-like metallic surface (Chrome) or flowing magnetic patterns (Cat Eye). Applied over gel polish for dramatic visual impact."
+            shortDescription: "Eye-catching metallic magic",
+            details: "Make a statement with stunning effects! Choose mirror-like chrome for ultra-glam or mesmerizing cat eye patterns that shift and flow. These specialty finishes create nails that are truly show-stopping."
           },
           {
             name: "Simple Nail Art",
             duration: "10 mins",
             price: "10",
-            shortDescription: "(2 nails)",
-            details: "Basic designs such as dots, lines, minimalist flowers, or geometric patterns applied to 2 nails. Adds personal style without overwhelming your manicure."
+            shortDescription: "Cute accent details (2 nails)",
+            details: "Add personality to your manicure! Simple, charming designs like dots, stripes, tiny flowers, or geometric patterns on 2 accent nails. Perfect for adding just the right touch of creativity."
           },
           {
-            name: "Moderate Nail Art",
+            name: "Custom Nail Art",
             duration: "20 mins",
             price: "15",
-            shortDescription: "(2-4 nails)",
-            details: "More detailed designs on 3-4 nails using techniques like hand-painting, gradients, marbling, or stylized motifs. Creates focal points that enhance your base color and express your creativity."
+            shortDescription: "Creative designs (2-4 nails)",
+            details: "Express your style with beautiful hand-painted designs! From gradients and marbling to detailed motifs on 2-4 nails. Let us create something special that reflects your personality."
           },
           {
-            name: "Intricate/Custom Art",
+            name: "Intricate Nail Art",
             duration: "Varies",
             price: "By Quote",
-            shortDescription: "(By Quote)",
-            details: "Personalized designs ranging from detailed imagery to complex multi-technique creations. Pricing based on complexity, time requirements, and techniques needed. Consultation required to discuss design and determine pricing."
+            shortDescription: "One-of-a-kind masterpieces",
+            details: "Dream it, we'll create it! Custom artwork tailored to your vision, from detailed scenes to complex multi-technique designs. Let's discuss your ideas and create something truly unique together."
           }
         ],
       },
       {
-        name: "For The Kids",
+        name: "Kids' Services",
         services: [
           {
-            name: "Mini Manicure",
+            name: "Little Princess Manicure",
             duration: "20 mins",
             price: "15",
-            shortDescription: "(8 & Under)",
-            details: "Child-friendly nail care including gentle shaping, light cuticle care, and application of kid-safe polish in their favorite color. Introduces proper nail hygiene in a fun, age-appropriate way. Perfect for special occasions or parent-child bonding."
+            shortDescription: "Special treat for ages 8 & under",
+            details: "A magical first manicure experience! Gentle nail care and fun colors in a kid-friendly environment. Perfect for birthdays, special occasions, or teaching little ones about nail care in a fun way."
           },
           {
-            name: "Mini Pedicure",
+            name: "Little Princess Pedicure",
             duration: "30 mins",
             price: "25",
-            shortDescription: "(8 & Under)",
-            details: "Delightful foot care experience tailored for children featuring a bubbly foot soak, careful nail trimming, gentle buffing, light massage with kid-friendly lotion, and colorful polish application. Creates a positive introduction to self-care routines."
+            shortDescription: "Bubbly fun for tiny toes",
+            details: "Make foot care fun! A delightful experience with bubbly soaks, gentle nail care, tickly massages, and their favorite polish colors. Great for introducing self-care while creating precious memories together."
           }
         ],
       }
     ],
   },
   {
-    name: "Spa Services",
+    name: "Relaxation & Wellness",
     subcategories: [
       {
-        name: "Massage",
+        name: "Therapeutic Massage",
         services: [
           {
-            name: "60-Minute Body Massage",
+            name: "1-Hour Relaxation Massage",
             duration: "1 hr",
             price: "120",
-            shortDescription: "(Relaxation)",
-            details: "Full body therapeutic massage designed to relieve tension and promote deep relaxation. Uses gentle to moderate pressure to ease muscle tension, improve circulation, and provide a calming escape from daily stress. Perfect for unwinding and rejuvenating your body and mind."
+            shortDescription: "Melt away stress & tension",
+            details: "Escape the everyday with our therapeutic full-body massage! Perfect pressure to release muscle tension, improve circulation, and help you completely unwind. Leave feeling refreshed, relaxed, and renewed."
           },
           {
-            name: "60-Minute Hot Stone Body Massage",
+            name: "1-Hour Hot Stone Massage",
             duration: "1 hr",
             price: "130",
-            shortDescription: "(Hot Stone Therapy)",
-            details: "Luxurious hot stone massage combining the benefits of traditional massage with heated volcanic stones. The warmth penetrates deep into muscles, melting away tension and promoting profound relaxation. Stones are strategically placed and used to massage key points for maximum therapeutic benefit."
+            shortDescription: "Luxurious heated stone therapy",
+            details: "Experience pure bliss with warm volcanic stones! The gentle heat melts deep into your muscles while expert massage techniques ease tension. It's like being wrapped in warmth and relaxation from head to toe."
           },
           {
-            name: "90-Minute Body Massage",
+            name: "90-Minute Extended Massage",
             duration: "1 hr 30 mins",
             price: "180",
-            shortDescription: "(Extended Session)",
-            details: "Extended therapeutic massage session allowing for comprehensive full-body treatment with additional time for targeted problem areas. Includes deeper muscle work, focused attention on areas of tension, and extra time for complete relaxation and stress relief."
+            shortDescription: "Extra time for deeper relief",
+            details: "When you need more time to truly unwind! Extended session allows for comprehensive full-body treatment with extra attention to your trouble spots. Perfect for when you really want to disconnect and restore."
           },
           {
-            name: "90-Minute Hot Stone Body Massage",
+            name: "90-Minute Hot Stone Massage",
             duration: "1 hr 30 mins",
             price: "190",
-            shortDescription: "(Extended Hot Stone)",
-            details: "Premium extended hot stone massage experience combining traditional techniques with therapeutic heated stones. The longer session allows for deeper muscle penetration, comprehensive treatment of all tension areas, and ultimate relaxation through extended stone therapy."
+            shortDescription: "Extended heated stone bliss",
+            details: "The ultimate in heated stone relaxation! More time means deeper muscle penetration, complete tension relief, and an incredibly restorative experience. This is self-care at its finest."
           },
           {
-            name: "120-Minute Body Massage",
+            name: "2-Hour Ultimate Massage",
             duration: "2 hrs",
             price: "240",
-            shortDescription: "(Ultimate Relaxation)",
-            details: "Our most comprehensive massage experience offering the ultimate in relaxation and therapeutic benefit. Includes full-body massage with extra time for personalized treatment of specific areas, promoting deep muscle recovery, stress relief, and complete mind-body renewal."
+            shortDescription: "The ultimate escape experience",
+            details: "Our most comprehensive relaxation experience! Two full hours dedicated to your wellness with personalized attention to exactly what your body needs. Complete mind-body renewal and the ultimate treat for yourself."
           },
           {
-            name: "120-Minute Hot Stone Body Massage",
+            name: "2-Hour Ultimate Hot Stone",
             duration: "2 hrs",
             price: "250",
-            shortDescription: "(Ultimate Hot Stone Experience)",
-            details: "The pinnacle of relaxation combining our longest massage session with therapeutic hot stone treatment. Features comprehensive full-body work with extended hot stone therapy, allowing for maximum muscle penetration, complete tension release, and the ultimate spa experience."
+            shortDescription: "The pinnacle of relaxation",
+            details: "The absolute ultimate in spa luxury! Two hours combining our best massage techniques with therapeutic hot stone treatment. This is the experience you'll dream about long after it's over."
           },
         ],
       },
@@ -295,11 +283,11 @@ export const services: ServiceCategory[] = [
         name: "Facial Treatments",
         services: [
           {
-            name: "Full Face Facial",
+            name: "Refreshing Facial",
             duration: "30 mins",
             price: "45",
-            shortDescription: "(Complete Treatment)",
-            details: "Comprehensive facial treatment that cleanses, exfoliates, and nourishes your skin. Includes deep cleansing, gentle exfoliation, extractions if needed, moisturizing mask, and finishing with appropriate moisturizer and SPF. Customized to your skin type for optimal results."
+            shortDescription: "Glowing, refreshed skin",
+            details: "Give your skin the love it deserves! Deep cleansing, gentle exfoliation, and nourishing treatments customized for your skin type. Walk out with a healthy glow and skin that feels amazing."
           },
         ],
       },
@@ -309,77 +297,77 @@ export const services: ServiceCategory[] = [
     name: "Hair Removal",
     subcategories: [
       {
-        name: "Waxing Services",
+        name: "Professional Waxing",
         services: [
           {
-            name: "Eyebrow Waxing",
+            name: "Eyebrow Shaping",
             duration: "15 mins",
             price: "15",
-            shortDescription: "(Shape & Define)",
-            details: "Professional eyebrow shaping using high-quality wax to remove unwanted hair and create defined, well-groomed brows. Includes tweezing for precision and finishing with soothing aftercare to minimize irritation."
+            shortDescription: "Perfect brow definition",
+            details: "Frame your face beautifully! Professional eyebrow shaping creates the perfect arch for your face shape. Includes waxing, tweezing for precision, and soothing aftercare for gorgeous, defined brows."
           },
           {
-            name: "Face Waxing",
+            name: "Facial Hair Removal",
             duration: "10 mins",
             price: "12",
-            shortDescription: "(Per Area)",
-            details: "Targeted facial hair removal for specific areas such as upper lip, chin, or cheeks. Quick and effective treatment using gentle wax formulated for sensitive facial skin. Price listed is per individual area."
+            shortDescription: "Smooth, hair-free skin",
+            details: "Quick and comfortable facial hair removal for areas like upper lip, chin, or cheeks. Gentle wax designed for delicate facial skin leaves you smooth and confident. Price per area."
           },
           {
-            name: "Full Face Waxing",
+            name: "Complete Facial Waxing",
             duration: "30 mins",
             price: "45",
-            shortDescription: "(Complete)",
-            details: "Comprehensive facial hair removal covering all areas including eyebrows, upper lip, chin, cheeks, and any other facial hair concerns. Provides smooth, hair-free skin with professional technique and gentle aftercare."
+            shortDescription: "Full-face smooth perfection",
+            details: "Complete facial hair removal for ultimate smoothness! Covers all areas including brows, lips, chin, and cheeks. Professional technique with gentle aftercare for beautifully smooth, hair-free skin."
           },
           {
-            name: "Under Arm Waxing",
+            name: "Underarm Waxing",
             duration: "15 mins",
             price: "20",
-            shortDescription: "(Quick & Clean)",
-            details: "Fast and efficient underarm hair removal providing smooth, clean results that last weeks longer than shaving. Uses gentle wax suitable for sensitive underarm skin with proper aftercare to prevent irritation."
+            shortDescription: "Quick & comfortable",
+            details: "Smooth underarms in minutes! Fast, effective hair removal that lasts much longer than shaving. Gentle technique designed for sensitive underarm skin with proper aftercare."
           },
           {
             name: "Full Arm Waxing",
             duration: "30 mins",
             price: "40",
-            shortDescription: "(Complete Arms)",
-            details: "Complete arm hair removal from shoulders to fingertips, including hands if desired. Provides smooth, hair-free arms with long-lasting results. Professional technique ensures even coverage and minimal discomfort."
+            shortDescription: "Silky smooth arms",
+            details: "Beautiful, hair-free arms from shoulder to fingertips! Professional technique ensures even coverage and long-lasting smoothness. Perfect for sleeveless seasons and special occasions."
           },
           {
-            name: "Half Leg Waxing",
+            name: "Lower Leg Waxing",
             duration: "30 mins",
             price: "30",
-            shortDescription: "(Lower Legs)",
-            details: "Hair removal for lower legs from knee to ankle, perfect for those who prefer partial leg waxing or have minimal upper leg hair. Provides smooth, touchable skin with results lasting 3-6 weeks."
+            shortDescription: "Smooth from knee down",
+            details: "Perfect for those who prefer partial leg waxing! Hair removal from knee to ankle gives you smooth, touchable skin that lasts weeks longer than shaving."
           },
           {
             name: "Full Leg Waxing",
             duration: "1 hr",
             price: "50",
-            shortDescription: "(Complete Legs)",
-            details: "Complete leg hair removal from upper thighs to toes, including knees and any areas in between. Comprehensive service providing smooth, hair-free legs with professional technique and attention to detail."
+            shortDescription: "Complete leg smoothness",
+            details: "Gorgeous, hair-free legs from top to toe! Complete removal for silky smooth skin that's perfect for dresses, swimwear, or just feeling confident in your own skin."
           },
           {
-            name: "Bikini Waxing",
+            name: "Bikini Line Waxing",
             duration: "30 mins",
             price: "35",
-            shortDescription: "(Bikini Line)",
-            details: "Hair removal along the bikini line for a clean, groomed appearance in swimwear. Removes hair that would be visible outside of underwear or bikini bottoms while maintaining your desired level of coverage."
+            shortDescription: "Swimsuit-ready confidence",
+            details: "Clean, groomed bikini line for confidence in swimwear! Removes hair that would show outside underwear or bikini bottoms while keeping you comfortable and confident."
           },
           {
             name: "Brazilian Waxing",
             duration: "30 mins",
             price: "60",
-            shortDescription: "(Complete Removal)",
-            details: "Complete intimate hair removal providing the smoothest possible result. Professional service performed with the utmost care and discretion, using high-quality wax and proper techniques for comfort and effectiveness."
+            shortDescription: "Complete smooth confidence",
+            details: "Our most comprehensive intimate hair removal service performed with the utmost professionalism and care. Completely smooth results in a comfortable, private environment."
           },
           {
             name: "Back or Chest Waxing",
             duration: "40 mins",
             price: "55",
-            shortDescription: "(Each Area)",
-            details: "Professional hair removal for back or chest area (priced per area). Effective treatment for removing unwanted body hair with long-lasting, smooth results. Performed with attention to comfort and thorough coverage."
+            shortDescription: "Smooth, confident torso",
+            details: "Professional body hair removal for back or chest (price per area). Effective, long-lasting results with attention to your comfort. Feel confident whether you're at the beach or the gym!"
           },
         ],
       },

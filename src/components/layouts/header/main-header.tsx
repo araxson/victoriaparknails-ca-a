@@ -65,7 +65,7 @@ export function MainHeader() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300 ease-in-out",
-        "transform-gpu border-b", // Use GPU acceleration for better performance
+        "transform-gpu border-b isolate", // Added isolate to create a stacking context
         isScrolled
           ? "bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80"
           : "bg-transparent",

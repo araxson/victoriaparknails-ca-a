@@ -17,6 +17,22 @@ const Toaster = ({ ...props }: ToasterProps) => {
           "--normal-border": "var(--border)",
         } as React.CSSProperties
       }
+      position="bottom-right"
+      expand={false}
+      richColors={false}
+      closeButton={false}
+      swipeDirections={['right', 'left']}
+      gap={12}
+      visibleToasts={5}
+      toastOptions={{
+        style: {
+          border: 'none',
+          background: 'transparent',
+          backdropFilter: 'none',
+          zIndex: 40,
+        },
+        className: 'sonner-toast',
+      }}
       {...props}
     />
   );

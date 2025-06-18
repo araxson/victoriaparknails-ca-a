@@ -155,10 +155,18 @@ export default function ServiceDetailsSection() {
                                 <Button 
                                   variant="outline" 
                                   size="lg"
+                                  asChild
                                   className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200 w-full justify-center"
                                 >
-                                  Book Service
-                                  <ArrowRight className="ml-1.5 h-3 w-3 group-hover/btn:translate-x-1 transition-transform" />
+                                  <a 
+                                    href="https://victoriaparknailsspa.setmore.com/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center"
+                                  >
+                                    Book Service
+                                    <ArrowRight className="ml-1.5 h-3 w-3 group-hover/btn:translate-x-1 transition-transform" />
+                                  </a>
                                 </Button>
                               </div>
                             </div>
