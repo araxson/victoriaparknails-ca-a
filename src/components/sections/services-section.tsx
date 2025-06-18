@@ -43,7 +43,7 @@ export function ServicesSection() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="default" className="w-full group">
+                  <Button asChild variant="default" size="lg" className="w-full group">
                     <Link href={`/services#${category.id}`} className="flex items-center justify-center">
                       View Details
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

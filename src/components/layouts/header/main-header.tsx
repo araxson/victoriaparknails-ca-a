@@ -203,7 +203,7 @@ function HeaderActions({
 }) {
   return (
     <div className="flex items-center space-x-2">
-      <Button size="sm" asChild className="hidden sm:inline-flex">
+      <Button size="lg" asChild className="hidden sm:inline-flex">
         <a
           href={businessInfo.contact.bookingUrl}
           target="_blank"
@@ -239,7 +239,7 @@ function MobileNavigation({
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          size="sm"
+          size="lg"
           className="lg:hidden"
           aria-label="Open navigation menu"
         >
@@ -305,7 +305,7 @@ function MobileMenuFooter() {
 
   return (
     <div className="border-t p-4 space-y-4">
-      <Button className="w-full" asChild>
+      <Button size="lg" className="w-full" asChild>
         <a
           href={businessInfo.contact.bookingUrl}
           target="_blank"

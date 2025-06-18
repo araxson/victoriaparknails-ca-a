@@ -55,3 +55,4 @@ export * from "./image";
 export * from "./gallery-carousel";
 export * from "./gallery-grid";
 export * from "./gallery-skeleton";
+export * from "./scroll-to-top";

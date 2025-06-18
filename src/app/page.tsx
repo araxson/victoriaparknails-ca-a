@@ -6,6 +6,7 @@ import { GallerySection } from "@/components/sections/gallery-section";
 import { FAQSection } from "@/components/sections/faq-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { ServicesSection } from "@/components/sections/services-section";
+import { ServicePricingComparison } from "@/components/sections/service-combinations";
 import { CtaSection } from "@/components/sections/cta-section";
 
 export const metadata: Metadata = {
@@ -71,6 +72,7 @@ export default function Home() {
       {/* All sections now have individual element animations within them */}
       <AboutSection />
       <ServicesSection />
+      <ServicePricingComparison />
       <GallerySection />
       <TeamSection />
       <TestimonialsSection />

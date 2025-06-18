@@ -28,7 +28,7 @@ export function LocationMap({ className }: LocationMapProps) {
 
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-7xl mx-auto">
         {" "}
-        <Button variant="outline" size="sm" className="text-sm w-full" asChild>
+        <Button variant="outline" size="lg" className="text-sm w-full" asChild>
           <a
             href="https://maps.app.goo.gl/Bybt5QQfCJKHycm86"
             target="_blank"
@@ -39,7 +39,7 @@ export function LocationMap({ className }: LocationMapProps) {
             Get Directions
           </a>
         </Button>
-        <Button variant="outline" size="sm" className="text-sm w-full" asChild>
+        <Button variant="outline" size="lg" className="text-sm w-full" asChild>
           <a
             href={`tel:${businessInfo.contact.phone}`}
             className="flex items-center justify-center gap-2"

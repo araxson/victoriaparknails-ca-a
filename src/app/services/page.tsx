@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/hero-section";
 import { Suspense } from "react";
 import ServiceDetailsSection from "@/components/sections/service-details-section";
+import { ServicePricingComparison } from "@/components/sections/service-combinations";
 import { CtaSection } from "@/components/sections/cta-section";
+import { Section } from "@/components/layouts";
 
 export const metadata: Metadata = {
   title:
@@ -67,9 +69,21 @@ export default function ServicesPage() {
       />
 
       {/* Services Content */}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={
+        <Section variant="default" className="py-20">
+          <div className="container">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="text-muted-foreground">Loading our beautiful services menu...</p>
+            </div>
+          </div>
+        </Section>
+      }>
         <ServiceDetailsSection />
       </Suspense>
+
+      {/* Service Package Pricing Comparison */}
+      <ServicePricingComparison />
 
       {/* Call to Action Section */}
       <CtaSection />

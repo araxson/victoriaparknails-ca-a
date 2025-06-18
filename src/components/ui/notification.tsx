@@ -12,21 +12,49 @@ export const Notification = () => {
   const pathname = usePathname();
   const { theme } = useTheme();
   const timersRef = useRef<NodeJS.Timeout[]>([]);
-
-  const showNotifications = useCallback(() => {
+  const notificationsShownRef = useRef<Set<string>>(new Set());
+  const hasShownForPathRef = useRef<string>("");  const showNotifications = useCallback(() => {
     // Clear any existing timers
     timersRef.current.forEach(timer => clearTimeout(timer));
     timersRef.current = [];
+
+    // Check if notifications have already been shown for this path
+    if (hasShownForPathRef.current === pathname) {
+      return;
+    }
+
+    // Mark this path as having shown notifications
+    hasShownForPathRef.current = pathname;
+
+    console.log('Showing notifications for path:', pathname, 'Offers count:', offers.length);
 
     if (offers.length > 0) {
       offers.forEach((offer, index) => {
         const delay = 2000 + (index * 4000); // Start at 2s, then every 4s after
         
         const timer = setTimeout(() => {
-          const isDark = theme === "dark";          toast(
+          const isDark = theme === "dark";
+          
+          console.log('Displaying notification:', offer.title);
+          
+          const toastId = toast(
             <div 
-              onClick={() => router.push("/offers")} 
-              className="cursor-pointer w-full group"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toast.dismiss(toastId);
+                router.push("/offers");
+              }} 
+              className="w-full group cursor-pointer"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toast.dismiss(toastId);
+                  router.push("/offers");
+                }
+              }}
             >
               <div className="flex items-start gap-3 p-1">
                 {/* Icon with gradient background */}
@@ -76,11 +104,14 @@ export const Notification = () => {
                   `} />
                 </div>
               </div>
-            </div>, 
-            {
+            </div>,            {
               duration: 12000, // 12 seconds for better readability
+              onDismiss: () => {
+                // Track that this notification was dismissed
+                notificationsShownRef.current.add(`${pathname}-${offer.title}`);
+              },
               className: `
-                group relative overflow-hidden border-0 shadow-xl
+                group relative overflow-hidden border-0 shadow-xl cursor-pointer
                 ${isDark 
                   ? 'bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900' 
                   : 'bg-gradient-to-r from-white via-slate-50 to-white'
@@ -101,25 +132,17 @@ export const Notification = () => {
         timersRef.current.push(timer);
       });
     }
-  }, [theme, router]);
-
-  // Show notifications on initial load
+  }, [theme, router, pathname]);
+  // Show notifications on initial load and path changes
   useEffect(() => {
-    const initialTimer = setTimeout(() => {
-      showNotifications();
-    }, 1000); // Wait 1 second after page load
+    // Reset tracking when pathname changes
+    hasShownForPathRef.current = "";
     
-    return () => clearTimeout(initialTimer);
-  }, [showNotifications]);
-
-  // Show notifications on page change
-  useEffect(() => {
-    // Don't show notifications immediately on the first load (handled by the initial useEffect)
-    const pageChangeTimer = setTimeout(() => {
+    const timer = setTimeout(() => {
       showNotifications();
-    }, 1500); // Show notifications 1.5 seconds after page change
-
-    return () => clearTimeout(pageChangeTimer);
+    }, 1000); // Wait 1 second after page load or change
+    
+    return () => clearTimeout(timer);
   }, [pathname, showNotifications]);
 
   // Cleanup function

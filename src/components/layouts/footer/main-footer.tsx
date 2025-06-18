@@ -213,7 +213,7 @@ export function MainFooter() {
                   <span className="font-semibold text-sm text-primary">10:00 AM - 5:30 PM</span>
                 </div>
                 <div className="pt-4 border-t border-muted">
-                  <Button className="w-full transition-colors" size="sm" asChild>
+                  <Button className="w-full transition-colors" size="lg" asChild>
                     <a
                       href={businessInfo.contact.bookingUrl}
                       target="_blank"

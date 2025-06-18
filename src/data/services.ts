@@ -71,7 +71,7 @@ export const services: ServiceCategory[] = [
             details: "Our premium pedicure with regular polish, includes everything in the Classic service plus intensive callus treatment, extended massage, and hot stone treatment. Perfect for deep relaxation and revitalizing tired, rough feet."
           },
           {
-            name: "Classic Pedicure",
+            name: "Classic Pedicure with Shellac",
             duration: "50 mins",
             price: "45",
             shortDescription: "(w/ Shellac)",

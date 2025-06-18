@@ -89,6 +89,7 @@ export function OfferCard({ offer }: OfferCardProps) {
       <Separator />
       <CardFooter className="pt-4">
         <Button 
+          size="lg"
           className="w-full"
           asChild
         >
@@ -118,7 +119,7 @@ export function CompactOfferCard({ offer }: OfferCardProps) {
             </div>
           </div>
           <Button 
-            size="sm" 
+            size="lg" 
             asChild
           >
             <a

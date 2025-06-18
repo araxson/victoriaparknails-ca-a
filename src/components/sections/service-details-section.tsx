@@ -3,7 +3,6 @@
 import { getServicesByCategory, serviceCategories } from "@/data";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -12,33 +11,48 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
+  Button,
 } from "@/components/ui";
-import { ClockIcon } from "lucide-react";
+import { ClockIcon, Star, Sparkles, Crown, Heart, ArrowRight } from "lucide-react";
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
 
+// Icon mapping for different service categories
+const categoryIcons = {
+  "nail-services": Sparkles,
+  "spa-services": Heart,
+  "hair-removal": Star,
+  "kids-services": Crown,
+} as const;
+
 export default function ServiceDetailsSection() {
   return (
-    <Section variant="muted">
+    <Section variant="default" className="bg-gradient-to-b from-background to-muted/30">
       <div className="container">
         <SectionHeader
           badge="Our Services"
           title="Complete Service Menu"
-          description="Explore our full range of professional nail and spa services, each designed to provide you with exceptional results."
+          description="Explore our full range of professional nail and spa services, each designed to provide you with exceptional results and an unforgettable experience."
         />
         
-        <Tabs defaultValue={serviceCategories[0]?.id} className="w-full mb-10">
-          <div className="flex justify-center mb-6">
-            <TabsList className="flex-wrap w-full md:w-auto">
-              {serviceCategories.map((category) => (
-                <TabsTrigger 
-                  key={category.id} 
-                  value={category.id}
-                  className="flex-1 md:flex-initial"
-                >
-                  {category.name}
-                </TabsTrigger>
-              ))}
+        <Tabs defaultValue={serviceCategories[0]?.id} className="w-full">
+          {/* Enhanced Tab Navigation */}
+          <div className="flex justify-center mb-8">
+            <TabsList className="flex-wrap w-full md:w-auto bg-card/50 backdrop-blur-sm border shadow-lg p-1.5 rounded-xl">
+              {serviceCategories.map((category) => {
+                const Icon = categoryIcons[category.id as keyof typeof categoryIcons] || Sparkles;
+                return (
+                  <TabsTrigger 
+                    key={category.id} 
+                    value={category.id}
+                    className="flex-1 md:flex-initial data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-200 rounded-lg px-4 py-2.5 font-medium"
+                  >
+                    <Icon className="h-4 w-4 mr-2" />
+                    <span className="hidden sm:inline">{category.name}</span>
+                    <span className="sm:hidden">{category.name.split(' ')[0]}</span>
+                  </TabsTrigger>
+                );
+              })}
             </TabsList>
           </div>
           
@@ -58,69 +72,97 @@ export default function ServiceDetailsSection() {
               <TabsContent 
                 key={category.id} 
                 value={category.id}
-                className="space-y-6 animate-in fade-in-50 duration-300"
+                className="space-y-8 animate-in fade-in-50 slide-in-from-bottom-4 duration-500"
               >
-                <div className="mb-6 text-center">
-                  <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                {/* Category Header */}
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                    {(() => {
+                      const Icon = categoryIcons[category.id as keyof typeof categoryIcons] || Sparkles;
+                      return <Icon className="h-8 w-8 text-primary" />;
+                    })()}
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-playfair font-semibold tracking-tight mb-2">
                     {category.name}
                   </h3>
-                  {category.description && (
-                    <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
-                      {category.description}
-                    </p>
-                  )}
+                  <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                    {category.id === 'nail-services' && "Professional nail care services including manicures, pedicures, and artistic nail enhancements."}
+                    {category.id === 'spa-services' && "Luxurious spa treatments designed to relax, rejuvenate, and restore your body and mind."}
+                    {category.id === 'hair-removal' && "Professional waxing services for smooth, hair-free skin using gentle, effective techniques."}
+                    {category.id === 'kids-services' && "Child-friendly nail services in a safe, fun environment perfect for little ones."}
+                  </p>
                 </div>
                 
                 {Object.entries(servicesBySubcategory).map(([subcategoryName, subcategoryServices]) => (
-                  <div key={`${category.id}-${subcategoryName}`} className="mb-8">
-                    <div className="text-center mb-4">
+                  <div key={`${category.id}-${subcategoryName}`} className="mb-12">
+                    {/* Subcategory Header */}
+                    <div className="text-center mb-6">
                       <Badge 
-                        variant="outline" 
-                        className="py-0.5 px-3 mb-3 inline-block text-sm font-medium"
+                        variant="secondary" 
+                        className="py-2 px-4 mb-4 text-sm font-medium bg-primary/5 text-primary border-primary/20"
                       >
                         {subcategoryName}
                       </Badge>
+                      <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent mx-auto"></div>
                     </div>
                     
-                    <div className="grid gap-3 md:gap-4">
-                      {subcategoryServices.map((service) => (
+                    {/* Services Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-7xl mx-auto">
+                      {subcategoryServices.map((service, serviceIndex) => (
                         <Card
-                          key={service.name + "-" + service.subcategory}
-                          className="transition-all duration-200 border-border/50 hover:border-border hover:shadow-sm"
+                          key={`${service.name}-${service.subcategory}-${serviceIndex}`}
+                          className="group transition-all duration-300 border-border/50 hover:border-primary/20 bg-card/80 backdrop-blur-sm"
                         >
-                          <CardHeader className="pb-2">
-                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                              <div className="flex-1">
-                                <CardTitle className="text-lg md:text-xl font-semibold text-foreground leading-tight">
-                                  {service.name}
+                          <CardHeader>
+                            <div className="grid grid-rows-[auto_auto_auto] gap-4">
+                              {/* First Row: Service Info + Pricing (2 columns) */}
+                              <div className="grid grid-cols-[1fr_auto] gap-4 items-start">
+                                {/* Service Info Column */}
+                                <div className="grid gap-2">
+                                  <CardTitle className="text-lg md:text-xl font-playfair font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
+                                    {service.name}
+                                  </CardTitle>
                                   {service.shortDescription && (
-                                    <span className="text-sm font-normal text-muted-foreground ml-2">
+                                    <p className="text-sm text-muted-foreground font-medium">
                                       {service.shortDescription}
-                                    </span>
+                                    </p>
                                   )}
-                                </CardTitle>
-                              </div>
-                              <div className="flex flex-col sm:items-end gap-0.5 shrink-0">
-                                <div className="flex items-center gap-1">
-                                  <span className="font-bold text-lg text-foreground">
+                                </div>
+                                
+                                {/* Pricing Column */}
+                                <div className="grid gap-1 items-center justify-items-end">
+                                  <span className="text-xl md:text-2xl font-bold text-primary leading-none">
                                     ${service.price}
                                   </span>
+                                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                                    <ClockIcon className="h-3 w-3" />
+                                    <span>{service.duration}</span>
+                                  </div>
                                 </div>
-                                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                                  <ClockIcon className="h-3 w-3" />
-                                  <span>{service.duration}</span>
+                              </div>
+                              
+                              {/* Second Row: Service Details (Full Width) */}
+                              {service.details && (
+                                <div className="grid">
+                                  <CardDescription className="text-xs text-muted-foreground leading-relaxed">
+                                    {service.details}
+                                  </CardDescription>
                                 </div>
+                              )}
+                              
+                              {/* Third Row: Action Button (Full Width) */}
+                              <div className="grid">
+                                <Button 
+                                  variant="outline" 
+                                  size="lg"
+                                  className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200 w-full justify-center"
+                                >
+                                  Book Service
+                                  <ArrowRight className="ml-1.5 h-3 w-3 group-hover/btn:translate-x-1 transition-transform" />
+                                </Button>
                               </div>
                             </div>
                           </CardHeader>
-                          
-                          {service.details && (
-                            <CardContent className="pt-0 pb-3">
-                              <CardDescription className="text-sm text-muted-foreground leading-relaxed">
-                                {service.details}
-                              </CardDescription>
-                            </CardContent>
-                          )}
                         </Card>
                       ))}
                     </div>

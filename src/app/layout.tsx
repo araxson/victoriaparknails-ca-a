@@ -5,6 +5,7 @@ import { businessInfo } from "@/data";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui";
 import { Notification } from "@/components/ui/notification";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { cn } from "@/lib/utils";
 import { playfairDisplay, roboto } from "@/lib/fonts";
 
@@ -302,6 +303,7 @@ export default function RootLayout({
             <div className="flex-grow">{children}</div>
           </main>
           <MainFooter />
+          <ScrollToTop />
           <Toaster />
         </ThemeProvider>
       </body>

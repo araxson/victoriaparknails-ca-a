@@ -78,7 +78,7 @@ export function ContactSection() {
                 </div>
               </div>
               <div className="pt-4">
-                <Button asChild className="w-full">
+                <Button asChild size="lg" className="w-full">
                   <a
                     href={`https://maps.google.com/?q=${encodeURIComponent(businessInfo.address.fullAddress)}`}
                     target="_blank"

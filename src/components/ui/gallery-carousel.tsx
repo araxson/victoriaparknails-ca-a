@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, ChevronRight, X, Download, Share2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Share2 } from "lucide-react";
 import { GalleryImage } from "@/data/types";
 import {
   Carousel,
@@ -12,6 +12,16 @@ import {
   Image,
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
+
+// Constants
+const THUMBNAIL_BREAKPOINTS = {
+  lg: { width: 1024, cols: 10 },
+  md: { width: 768, cols: 8 },
+  sm: { width: 640, cols: 6 },
+  xs: { width: 0, cols: 4 },
+} as const;
+
+const BUTTON_STYLES = "bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 text-white border border-white/20 transition-all duration-200";
 
 interface GalleryCarouselProps {
   images: GalleryImage[];
@@ -29,110 +39,112 @@ export function GalleryCarousel({
   const [api, setApi] = React.useState<CarouselApi>();
   const [thumbApi, setThumbApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(initialIndex);
-  const [thumbnailCols, setThumbnailCols] = React.useState(3);
+  const [thumbnailCols, setThumbnailCols] = React.useState(4);
   const [isImageLoaded, setIsImageLoaded] = React.useState(false);
   const isProgrammaticScroll = React.useRef(false);
 
-  // Handle responsive thumbnail columns
+  // Get thumbnail column count based on screen width
+  const getThumbnailCols = React.useCallback((width: number) => {
+    return Object.values(THUMBNAIL_BREAKPOINTS)
+      .reverse()
+      .find(bp => width >= bp.width)?.cols ?? 4;
+  }, []);
+
+  // Calculate thumbnail flex basis
+  const getThumbnailBasis = React.useCallback((cols: number) => {
+    const percentage = 100 / cols;
+    return `calc(${percentage}% - 4px)`;
+  }, []);
+
+  // Handle responsive thumbnail columns and keyboard events
   React.useEffect(() => {
     const updateThumbnailCols = () => {
       if (typeof window !== 'undefined') {
-        const width = window.innerWidth;
-        if (width >= 1024) {
-          setThumbnailCols(8);
-        } else if (width >= 768) {
-          setThumbnailCols(6);
-        } else if (width >= 480) {
-          setThumbnailCols(4);
-        } else {
-          setThumbnailCols(3);
-        }
+        setThumbnailCols(getThumbnailCols(window.innerWidth));
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!api) return;
+      
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        api.scrollPrev();
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        api.scrollNext();
       }
     };
 
     updateThumbnailCols();
-    window?.addEventListener('resize', updateThumbnailCols);
-    return () => window?.removeEventListener('resize', updateThumbnailCols);
-  }, []);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', updateThumbnailCols);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateThumbnailCols);
+      }
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [api, getThumbnailCols]);
 
-  const scrollTo = React.useCallback(
-    (index: number) => {
-      if (!api || !thumbApi) return;
-      isProgrammaticScroll.current = true;
-      api.scrollTo(index);
-      // Center the selected thumbnail in the carousel
-      thumbApi.scrollTo(index);
-    },
-    [api, thumbApi],
-  );
-
+  // Handle carousel selection and synchronization
   React.useEffect(() => {
     if (!api) return;
 
-    // Set initial current state and scroll to the initial index
     setCurrent(initialIndex);
     api.scrollTo(initialIndex, true);
 
     const onSelect = () => {
-      if (isProgrammaticScroll.current) {
-        isProgrammaticScroll.current = false;
-        const selected = api.selectedScrollSnap();
-        setCurrent(selected);
-        return;
-      }
       const selected = api.selectedScrollSnap();
       setCurrent(selected);
-      // Center the thumbnail when navigating with arrow keys
-      thumbApi?.scrollTo(selected);
+      
+      if (!isProgrammaticScroll.current) {
+        thumbApi?.scrollTo(selected);
+      }
+      isProgrammaticScroll.current = false;
     };
 
     api.on("select", onSelect);
-
     return () => {
       api.off("select", onSelect);
     };
   }, [api, thumbApi, initialIndex]);
 
-  // Ensure thumbnail is centered when initialIndex changes
+  // Center thumbnail when initialIndex changes
   React.useEffect(() => {
     if (thumbApi && initialIndex !== undefined) {
       thumbApi.scrollTo(initialIndex);
     }
   }, [thumbApi, initialIndex]);
 
-  React.useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      // Let the dialog handle the Escape key, so we don't need to handle it here
-      if (event.key === "ArrowLeft" && api) {
-        event.preventDefault();
-        api.scrollPrev();
-      } else if (event.key === "ArrowRight" && api) {
-        event.preventDefault();
-        api.scrollNext();
+  const scrollTo = React.useCallback(
+    (index: number) => {
+      if (!api || !thumbApi) return;
+      isProgrammaticScroll.current = true;
+      api.scrollTo(index);
+      thumbApi.scrollTo(index);
+    },
+    [api, thumbApi],
+  );
+
+  const navigation = React.useMemo(() => ({
+    next: () => api?.scrollNext(),
+    prev: () => api?.scrollPrev(),
+    share: () => {
+      if (typeof navigator !== 'undefined' && 'share' in navigator && images[current]) {
+        navigator.share({
+          title: `Gallery Image ${current + 1}`,
+          text: images[current].alt || `Gallery image ${current + 1}`,
+          url: window.location.href,
+        }).catch(console.error);
       }
-    };
+    },
+  }), [api, current, images]);
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [api]);
-
-  const nextImage = React.useCallback(() => {
-    api?.scrollNext();
-  }, [api]);
-
-  const prevImage = React.useCallback(() => {
-    api?.scrollPrev();
-  }, [api]);
-
-  const shareImage = React.useCallback(() => {
-    if (typeof navigator !== 'undefined' && 'share' in navigator && images[current]) {
-      navigator.share({
-        title: `Gallery Image ${current + 1}`,
-        text: images[current].alt || `Gallery image ${current + 1}`,
-        url: window.location.href,
-      }).catch(console.error);
-    }
-  }, [current, images]);
+  const thumbnailBasis = getThumbnailBasis(thumbnailCols);
 
   return (
     <div className="w-full flex flex-col items-center h-full max-h-full p-0 m-0 bg-transparent">
@@ -168,14 +180,14 @@ export function GalleryCarousel({
               ))}
             </CarouselContent>
 
-            {/* Enhanced controls */}
+            {/* Controls */}
             <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
               {typeof navigator !== 'undefined' && 'share' in navigator && (
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  onClick={shareImage}
-                  className="bg-white/10 backdrop-blur-md rounded-full w-10 h-10 hover:bg-white/20 text-white border border-white/20 transition-all duration-200"
+                  onClick={navigation.share}
+                  className={cn(BUTTON_STYLES, "w-10 h-10")}
                 >
                   <Share2 className="h-5 w-5" />
                   <span className="sr-only">Share image</span>
@@ -187,7 +199,7 @@ export function GalleryCarousel({
                   variant="ghost" 
                   size="icon" 
                   onClick={onClose} 
-                  className="bg-white/10 backdrop-blur-md rounded-full w-10 h-10 hover:bg-white/20 text-white border border-white/20 transition-all duration-200"
+                  className={cn(BUTTON_STYLES, "w-10 h-10")}
                 >
                   <X className="h-5 w-5" />
                   <span className="sr-only">Close gallery</span>
@@ -195,12 +207,12 @@ export function GalleryCarousel({
               )}
             </div>
 
-            {/* Enhanced navigation buttons */}
+            {/* Navigation buttons */}
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 z-10 h-12 w-12 text-white border border-white/20 transition-all duration-200 hover:scale-110"
-              onClick={prevImage}
+              className={cn(BUTTON_STYLES, "absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12")}
+              onClick={navigation.prev}
               aria-label="Previous image"
             >
               <ChevronLeft className="h-6 w-6" />
@@ -209,24 +221,24 @@ export function GalleryCarousel({
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 z-10 h-12 w-12 text-white border border-white/20 transition-all duration-200 hover:scale-110"
-              onClick={nextImage}
+              className={cn(BUTTON_STYLES, "absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12")}
+              onClick={navigation.next}
               aria-label="Next image"
             >
               <ChevronRight className="h-6 w-6" />
             </Button>
 
             {/* Progress indicator */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-sm font-medium border border-white/20">
+            <div className={cn(BUTTON_STYLES, "absolute bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 text-sm font-medium")}>
               {current + 1} / {images.length}
             </div>
           </Carousel>
         </div>
 
-        {/* Enhanced Thumbnails */}
+        {/* Thumbnails */}
         {showThumbnails && (
-          <div className="w-full bg-black/30 backdrop-blur-md border-t border-white/10 py-4 px-3">
-            <div className="w-full max-w-6xl mx-auto">
+          <div className="w-full bg-black/50 backdrop-blur-sm border-t border-white/20 pt-3">
+            <div className="w-full">
               <Carousel
                 setApi={setThumbApi}
                 className="w-full"
@@ -237,36 +249,23 @@ export function GalleryCarousel({
                   slidesToScroll: 1,
                 }}
               >
-                <CarouselContent className="gap-3">
+                <CarouselContent className="-ml-1">
                   {images.map((image, index) => (
                     <CarouselItem
                       key={`thumb-${index}`}
-                      className="pl-0"
+                      className="pl-1"
                       style={{
-                        flexBasis: thumbnailCols === 8 
-                          ? 'calc(12.5% - 12px)' // 8 thumbnails per view
-                          : thumbnailCols === 6 
-                            ? 'calc(16.666667% - 12px)' // 6 thumbnails per view
-                            : thumbnailCols === 4 
-                              ? 'calc(25% - 12px)' // 4 thumbnails per view  
-                              : 'calc(33.333333% - 12px)', // 3 thumbnails per view
-                        minWidth: thumbnailCols === 8 
-                          ? 'calc(12.5% - 12px)'
-                          : thumbnailCols === 6 
-                            ? 'calc(16.666667% - 12px)'
-                            : thumbnailCols === 4 
-                              ? 'calc(25% - 12px)' 
-                              : 'calc(33.333333% - 12px)',
-                        marginRight: '6px',
+                        flexBasis: thumbnailBasis,
+                        minWidth: thumbnailBasis,
                       }}
                     >
                       <div className="aspect-square w-full">
                         <button
                           className={cn(
-                            "relative h-full w-full overflow-hidden rounded-lg transition-all duration-200 transform",
+                            "relative h-full w-full overflow-hidden rounded-lg transition-all duration-200 border-1",
                             current === index
-                              ? "border-2 border-white opacity-100 scale-105 shadow-lg"
-                              : "border border-white/30 opacity-60 hover:opacity-90 hover:border-white/60 hover:scale-102",
+                              ? "border-primary opacity-100 ring-1 ring-primary/50"
+                              : "border-primary/30 opacity-70 hover:opacity-100 hover:border-primary/60",
                           )}
                           onClick={() => scrollTo(index)}
                           aria-label={`View image ${index + 1}: ${image.alt || 'Gallery image'}`}
@@ -276,11 +275,11 @@ export function GalleryCarousel({
                             alt={image.alt || `Gallery image ${index + 1}`}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 480px) 60px, (max-width: 768px) 70px, 80px"
+                            sizes="(max-width: 640px) 10vw, (max-width: 768px) 8vw, 6vw"
                             loading="lazy"
                           />
                           {current === index && (
-                            <div className="absolute inset-0 bg-white/10" />
+                            <div className="absolute inset-0 bg-white/20 border border-white/40 rounded-md" />
                           )}
                         </button>
                       </div>
