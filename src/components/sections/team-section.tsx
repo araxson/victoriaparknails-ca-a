@@ -58,13 +58,6 @@ export function TeamSection() {
                     <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
                     <span>{member.experience}</span>
                   </div>
-                  
-                  {member.certifications && (
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                      <GraduationCap className="h-3.5 w-3.5 text-primary" />
-                      <span>{member.certifications.length} Cert{member.certifications.length > 1 ? 's' : ''}</span>
-                    </div>
-                  )}
                 </div>
               </CardHeader>
 
@@ -76,23 +69,37 @@ export function TeamSection() {
                   <div>
                     <h4 className="text-xs font-medium uppercase tracking-wide mb-2 text-muted-foreground">Specialties</h4>
                     <div className="flex flex-wrap gap-1.5">
-                      {member.specialties.slice(0, 4).map((specialty, index) => (
+                      {member.specialties.map((specialty, index) => (
                         <Badge key={index} variant="outline" className="text-xs font-normal">
                           {specialty}
                         </Badge>
                       ))}
-                      {member.specialties.length > 4 && (
-                        <Badge variant="outline" className="text-xs font-normal">
-                          +{member.specialties.length - 4} more
-                        </Badge>
-                      )}
                     </div>
                   </div>
+                  
+                  {/* Certifications */}
+                  {member.certifications && member.certifications.length > 0 && (
+                    <div>
+                      <h4 className="text-xs font-medium uppercase tracking-wide mb-2 text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <GraduationCap className="h-3.5 w-3.5 text-primary" />
+                          Certifications
+                        </span>
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {member.certifications.map((cert, index) => (
+                          <Badge key={index} variant="secondary" className="text-xs font-normal">
+                            {cert}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   
                   {/* Mini bio */}
                   <div>
                     <h4 className="text-xs font-medium uppercase tracking-wide mb-2 text-muted-foreground">About</h4>
-                    <p className="text-xs line-clamp-3 text-foreground/80">
+                    <p className="text-xs text-foreground/80">
                       {member.bio}
                     </p>
                   </div>

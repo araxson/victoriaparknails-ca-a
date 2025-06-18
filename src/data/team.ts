@@ -25,7 +25,7 @@ export const teamMembers: TeamMember[] = [
     id: "evon",
     name: "Evon",
     position: "Senior Nail Technician",
-    bio: "Evon brings artistic flair and technical precision to every service. Known for her gentle touch and attention to detail, she creates beautiful, long-lasting results. With extensive experience in Calgary salons, she focuses on client satisfaction while keeping up with the latest industry trends.",
+    bio: "Evon brings artistic flair and technical precision to every service. With 18+ years of extensive experience in Calgary salons, she is known for her gentle touch and attention to detail, creating beautiful, long-lasting results. She focuses on client satisfaction while keeping up with the latest industry trends.",
     image: "/avatar-placeholder.webp",
     specialties: [
       "Classic Manicures",
@@ -35,7 +35,11 @@ export const teamMembers: TeamMember[] = [
       "Shellac Applications",
     ],
     experience: "18+ years",
-    certifications: ["Certified Nail Technician", "Pedicure Specialist"],
+    certifications: [
+      "Certified Nail Technician",
+      "Pedicure Specialist",
+      "Advanced Nail Art Certification"
+    ],
   },
   {
     id: "samie",
@@ -52,7 +56,7 @@ export const teamMembers: TeamMember[] = [
     ],
     experience: "7+ years",
     certifications: [
-      "Nail Art & Nail Technology Certification from international ibi institution",
+      "Nail Art & Nail Technology Certification from the international ibi institution",
       "Acrylic Extension Specialist",
     ],
   },

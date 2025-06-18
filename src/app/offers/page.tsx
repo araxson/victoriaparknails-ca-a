@@ -6,7 +6,7 @@ import { OfferCard } from "@/components/ui/offer-card";
 import { Button } from "@/components/ui/shadcn/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/shadcn/card";
 import { Section } from "@/components/layouts";
-import { Sparkles, Gift, Tag, Phone, CalendarCheck } from "lucide-react";
+import { Gift, Tag, Phone, CalendarCheck, Percent } from "lucide-react";
 import { Separator } from "@/components/ui/shadcn/separator";
 import { Badge } from "@/components/ui/shadcn/badge";
 
@@ -45,8 +45,8 @@ export default async function OffersPage() {
       {/* Hero Section */}
       <HeroSection
         title="Special Offers & Promotions"
-        subtitle="Discover amazing deals and save on your favorite nail and spa services"
-        description="From new client welcome bonuses to exclusive loyalty rewards, we have something special for everyone."
+        subtitle="Exclusive deals on premium nail & spa services"
+        description="Save on your favorite services with our limited-time offers and seasonal specials."
         showButtons={true}
         showBadge={false}
       />
@@ -55,13 +55,13 @@ export default async function OffersPage() {
       <Section variant="muted">
         <div className="container py-12 md:py-16">
           <div className="flex flex-col items-center text-center mb-10">
-            <Badge variant="outline" className="mb-3">
-              <Sparkles className="w-4 h-4 mr-1" /> Limited Time
+            <Badge variant="outline" className="mb-3 bg-primary text-primary-foreground">
+              <Percent className="w-4 h-4 mr-1" /> Exclusive Savings
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight mb-3">Special Offers</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-3">Current Special Offers</h2>
             <Separator className="w-24 mb-5" />
             <p className="text-muted-foreground max-w-2xl">
-              Don&apos;t miss out on these exclusive limited-time offers
+              Take advantage of these limited-time savings on our most popular services
             </p>
           </div>
           
@@ -146,13 +146,21 @@ export default async function OffersPage() {
                   and book your appointment.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="gap-2">
-                    <Phone className="w-4 h-4" /> 
-                    Call {businessInfo.contact.phone}
+                  <Button size="lg" className="gap-2" asChild>
+                    <a href={`tel:${businessInfo.contact.phone}`}>
+                      <Phone className="w-4 h-4" /> 
+                      Call {businessInfo.contact.phone}
+                    </a>
                   </Button>
-                  <Button size="lg" variant="outline" className="gap-2">
-                    <CalendarCheck className="w-4 h-4" />
-                    Book Online
+                  <Button size="lg" variant="outline" className="gap-2" asChild>
+                    <a 
+                      href={businessInfo.contact.bookingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <CalendarCheck className="w-4 h-4" />
+                      Book Online
+                    </a>
                   </Button>
                 </div>
               </div>

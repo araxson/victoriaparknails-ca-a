@@ -2,30 +2,43 @@ import { Offer } from "./types";
 
 export const offers: Offer[] = [
   {
-    id: "summer-ready",
-    title: "Summer Ready Package",
-    description: "Get both a Shellac manicure and pedicure at a $10 discount. Perfect for summer events, vacations, or simply showing off in sandals.",
-    discount: "SAVE $10 - ONLY $90",
+    id: "rewards-program",
+    title: "Reward & Redeem Points",
+    description: "Earn points for every visit and redeem them for services and discounts.",
+    discount: "EARN POINTS EVERY VISIT",
     terms: [
-      "Gel Manicure (Shellac) + Gel Pedicure (Shellac)",
-      "Regular price $100 ($45 + $55), now $90",
-      "Limited time offer through August 2025",
-      "Book both services in one visit"
+      "Earn 1 point for every visit",
+      "Redeem points for discounts on future services",
+      "Ask our staff about point values and redemption options",
+      "Points accumulate with each visit"
     ],
-    validUntil: "2025-08-31",
-    image: "/images/offers/summer-ready-package.webp"
+    image: "/images/offers/rewards-program.webp"
   },
   {
-    id: "new-client-welcome",
-    title: "New Client Welcome",
-    description: "New to Victoria Park Nails & Spa? Enjoy 20% off your first service! Applies to any service, from a basic manicure to a premium gel full set.",
-    discount: "20% OFF FIRST SERVICE",
+    id: "mani-pedi-combo",
+    title: "Manicure & Pedicure Combo",
+    description: "Get both a manicure and pedicure together for a special combo price.",
+    discount: "BOTH FOR $80",
     terms: [
-      "For new clients only",
-      "Applies to any service",
-      "Mention offer when booking",
-      "Cannot be combined with other offers"
+      "Must book both manicure and pedicure in same visit",
+      "Applies to regular manicure and pedicure services",
+      "Cannot be combined with other offers",
+      "Book both services together to receive discount"
     ],
-    image: "/images/offers/new-client-welcome.webp"
+    image: "/images/offers/mani-pedi-combo.webp"
   },
+  {
+    id: "wedding-group-discount",
+    title: "Wedding Group Special",
+    description: "Special discount for wedding parties with 4 or more people. Available on weekends with advance booking.",
+    discount: "SPECIAL GROUP DISCOUNT",
+    terms: [
+      "Groups of 4 or more people",
+      "Available only on Saturday and Sunday",
+      "Must book by appointment in advance",
+      "Call to discuss group pricing and availability",
+      "Perfect for bridal parties and wedding preparations"
+    ],
+    image: "/images/offers/wedding-group-special.webp"
+  }
 ];

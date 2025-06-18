@@ -12,6 +12,7 @@ import { MapPinIcon, PhoneIcon, ClockIcon, CalendarIcon, Award, Smile, ThumbsUp,
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { LocationMap } from "@/components/sections/location-map";
 
 export function AboutSection() {
   const currentYear = new Date().getFullYear();
@@ -27,8 +28,8 @@ export function AboutSection() {
           description={businessInfo.tagline}
         />
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Content Grid - Changed to 2x2 layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Story Card */}
           <Card className="flex flex-col">
             <CardHeader className="flex-shrink-0">
@@ -48,6 +49,43 @@ export function AboutSection() {
                 <Badge variant="secondary">
                   {yearsInBusiness}+ Years of Excellence
                 </Badge>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Location & Contact Card - Moved to second position */}
+          <Card className="flex flex-col">
+            <CardHeader className="flex-shrink-0">
+              <CardTitle className="flex items-center">
+                <MapPinIcon className="h-5 w-5 text-primary mr-2" />
+                Visit Us
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 flex-grow">
+              <p className="font-medium">
+                {businessInfo.address.fullAddress}
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <PhoneIcon className="h-4 w-4 text-muted-foreground" />
+                  <a
+                    href={`tel:${businessInfo.contact.phone}`}
+                    className="text-primary"
+                  >
+                    {businessInfo.contact.phone}
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <ClockIcon className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-muted-foreground">
+                    Open 7 days a week
+                  </span>
+                </div>
+              </div>
+              
+              {/* Location Map */}
+              <div className="mt-4">
+                <LocationMap />
               </div>
             </CardContent>
           </Card>
@@ -86,45 +124,13 @@ export function AboutSection() {
             </CardContent>
           </Card>
 
-          {/* Location & Contact Card */}
+          {/* Our Values Card */}
           <Card className="flex flex-col">
-            <CardHeader className="flex-shrink-0">
-              <CardTitle className="flex items-center">
-                <MapPinIcon className="h-5 w-5 text-primary mr-2" />
-                Visit Us
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 flex-grow">
-              <p className="font-medium">
-                {businessInfo.address.fullAddress}
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <PhoneIcon className="h-4 w-4 text-muted-foreground" />
-                  <a
-                    href={`tel:${businessInfo.contact.phone}`}
-                    className="text-primary"
-                  >
-                    {businessInfo.contact.phone}
-                  </a>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <ClockIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">
-                    Open 7 days a week
-                  </span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* New Card: Our Values */}
-          <Card className="flex flex-col lg:col-span-3">
             <CardHeader className="flex-shrink-0">
               <CardTitle>Our Values</CardTitle>
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 gap-4">
                 {[
                   { 
                     title: "Quality",

@@ -6,9 +6,12 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
+  CardFooter,
   Button,
+  Badge,
 } from "@/components/ui";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export function ServicesSection() {
   return (
@@ -22,24 +25,31 @@ export function ServicesSection() {
         />
 
         {/* Category Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {serviceCategories.map((category) => {
             const services = getServicesByCategory(category.id);
             return (
-              <Card key={category.id}>
+              <Card key={category.id} className="flex flex-col h-full border transition-all hover:shadow-md">
                 <CardHeader>
-                  <CardTitle>{category.name}</CardTitle>
+                  <Badge variant="outline" className="w-fit mb-2">
+                    {services.length} services
+                  </Badge>
+                  <CardTitle className="text-xl">{category.name}</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="flex-grow">
                   <p className="text-muted-foreground">
                     {category.description ||
                       `We offer ${services.length} specialised services under the ${category.name.toLowerCase()} category.`}
                   </p>
-
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href={`/services#${category.id}`}>View Details</Link>
-                  </Button>
                 </CardContent>
+                <CardFooter>
+                  <Button asChild variant="default" className="w-full group">
+                    <Link href={`/services#${category.id}`} className="flex items-center justify-center">
+                      View Details
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                </CardFooter>
               </Card>
             );
           })}
