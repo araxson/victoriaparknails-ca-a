@@ -15,7 +15,7 @@ import {
   Clock, 
   Facebook, 
   Instagram, 
-  Sparkles 
+  ArrowRight 
 } from "lucide-react";
 import { TikTokIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
@@ -47,9 +47,7 @@ function MobileNavigation({
         >
           <Menu className="h-4 w-4" />
         </Button>
-      </SheetTrigger>
-
-      <SheetContent side="right" className="w-80 sm:w-96">
+      </SheetTrigger>      <SheetContent side="right" className="w-80 sm:w-96 p-0">
         <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
 
         <div className="flex h-full flex-col">
@@ -67,10 +65,10 @@ function MobileNavigation({
  */
 function MobileMenuHeader() {
   return (
-    <div className="border-b p-4">
-      <div className="space-y-1">
-        <h2 className="font-semibold text-lg">{businessInfo.name}</h2>
-        <p className="text-sm text-muted-foreground">{businessInfo.tagline}</p>
+    <div className="border-b px-4 py-2">
+      <div>
+        <h2 className="font-semibold text-sm">{businessInfo.name}</h2>
+        <p className="text-xs text-muted-foreground">{businessInfo.tagline}</p>
       </div>
     </div>
   );
@@ -85,22 +83,21 @@ function MobileMenuNavigation({
 }: { 
   pathname: string; 
   onClose: () => void; 
-}) {
-  return (
-    <nav className="flex-1 py-4" role="navigation" aria-label="Mobile navigation">
-      <div className="space-y-6">
+}) {  return (
+    <nav className="flex-1 py-2" role="navigation" aria-label="Mobile navigation">
+      <div className="space-y-3">
         {/* Primary Navigation */}
         <div>
-          <h3 className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+          <h3 className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
             Main Pages
           </h3>
-          <div className="space-y-1">
+          <div>
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center px-4 py-3 text-sm font-medium transition-colors rounded-md mx-2",
+                  "flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-md mx-2",
                   pathname === item.href
                     ? "bg-accent text-accent-foreground"
                     : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
@@ -117,16 +114,16 @@ function MobileMenuNavigation({
 
         {/* Secondary Navigation - Sections */}
         <div>
-          <h3 className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+          <h3 className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
             Quick Links
           </h3>
-          <div className="space-y-1">
+          <div>
             {sectionNavigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center px-4 py-3 text-sm font-medium transition-colors rounded-md mx-2",
+                  "flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-md mx-2",
                   "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
                 )}
                 onClick={(e) => {
@@ -139,18 +136,16 @@ function MobileMenuNavigation({
               </Link>
             ))}
           </div>
-        </div>
-
-        {/* Book Online Action */}
+        </div>        {/* Book Online Action */}
         <div className="mx-2">
           <Link
             href={businessInfo.contact.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center px-4 py-3 text-sm font-medium transition-colors rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
+            className="flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
             onClick={onClose}
           >
-            <Sparkles className="mr-3 h-4 w-4" />
+            <ArrowRight className="mr-3 h-4 w-4" />
             Book Online
           </Link>
         </div>
@@ -164,31 +159,28 @@ function MobileMenuNavigation({
  */
 function MobileMenuFooter({ onClose }: { onClose: () => void }) {
   const todayHours = getTodayHours();
-
   return (
-    <div className="border-t p-4 space-y-3">
+    <div className="border-t px-4 py-4 space-y-3">
       {/* Business Info */}
-      <div className="space-y-2">
-        <a
-          href={`tel:${businessInfo.contact.phone}`}
-          className="flex items-center space-x-2 p-2 rounded-md bg-secondary/50 transition-colors hover:bg-secondary/80 text-sm"
-          aria-label={`Call ${businessInfo.contact.phone}`}
-          onClick={onClose}
-        >
-          <Phone className="h-3 w-3" />
-          <span className="text-xs">{businessInfo.contact.phone}</span>
-        </a>
-
-        <div className="flex items-center space-x-2 p-2 rounded-md bg-secondary/50 text-sm">
-          <Clock className="h-3 w-3" />
+      <div className="space-y-3">        {/* Phone Number - Button matching Book Online styling */}
+        <div className="mx-2">
+          <a
+            href={`tel:${businessInfo.contact.phone}`}
+            aria-label={`Call ${businessInfo.contact.phone}`}
+            onClick={onClose}
+            className="flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-md bg-primary text-primary-foreground hover:bg-primary/90 w-full"
+          >
+            <Phone className="mr-3 h-4 w-4" />
+            {businessInfo.contact.phone}
+          </a>
+        </div>        <div className="flex items-center space-x-2 p-3 rounded-md bg-secondary/50 text-sm mx-2">
+          <Clock className="h-4 w-4" />
           <div>
-            <div className="text-xs font-medium">Open Today</div>
+            <div className="text-sm font-medium">Open Today</div>
             <div className="text-xs text-muted-foreground">{todayHours}</div>
           </div>
         </div>
-      </div>
-
-      {/* Social Media */}
+      </div>      {/* Social Media */}
       <div className="flex justify-center space-x-4 pt-2">
         {businessInfo.socialMedia.facebook && (
           <SocialMediaLink

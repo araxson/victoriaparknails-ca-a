@@ -41,8 +41,7 @@ export function MainHeader({ className }: HeaderProps = {}) {
         isHidden ? "-translate-y-full" : "translate-y-0",
         className
       )}
-    >
-      <div className="max-w-[90%] mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+    >      <div className="w-full lg:max-w-[90%] lg:mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <HeaderLogo />
         
         <DesktopNavigation 

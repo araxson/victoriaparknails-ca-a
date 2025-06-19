@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle, Badge, Button, Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui";
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
-import { CheckCircle, Star, Crown, Sparkles, Clock, Award, Gem } from "lucide-react";
+import { CheckCircle, Star, Crown, Clock, Award, Gem } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import * as React from "react";
 
@@ -12,7 +12,7 @@ const popularPackages = [
 		name: "Bronze Package",
 		price: "60",
 		originalPrice: "65",
-		duration: "1.25 hrs",
+		duration: "1 hr 15 mins",
 		popular: false,
 		icon: Award,
 		services: [
@@ -26,7 +26,7 @@ const popularPackages = [
 		name: "Silver Package",
 		price: "80",
 		originalPrice: "90",
-		duration: "1.5 hrs",
+		duration: "1 hr 40 mins",
 		popular: true,
 		icon: Star,
 		services: [
@@ -41,7 +41,7 @@ const popularPackages = [
 		name: "Gold Package",
 		price: "115",
 		originalPrice: "135",
-		duration: "2.25 hrs",
+		duration: "2 hr 20 mins",
 		popular: false,
 		icon: Crown,
 		services: [
@@ -150,26 +150,23 @@ export function ServicePricingComparison() {
 									{pkg.description}
 								</p>
 							</div>
-						</div>
-								{/* Third Row: Services (Full Width) */}						<div className="grid">
-							<div className="bg-muted/15 p-4 rounded-xl border border-muted/20">
-								<h4 className="font-semibold text-sm text-foreground mb-3 flex items-center justify-center gap-2">
-									<Sparkles className="h-4 w-4 text-primary" />
+						</div>						{/* Third Row: Services (Full Width) */}						<div className="grid">							<div className="bg-muted/15 p-3 rounded-lg border border-muted/20">
+								<h4 className="font-semibold text-xs text-foreground mb-2 flex items-center justify-center gap-1.5">
 									What&apos;s Included
-								</h4>								<div className="grid grid-cols-1 gap-2">
+								</h4><div className="grid grid-cols-1 gap-0.5">
 									{pkg.services.map((service, serviceIndex) => (
 										<div 
 											key={serviceIndex} 
-											className={`flex items-center gap-3 text-sm px-3 py-2 rounded-lg border transition-colors ${
+											className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-md border transition-colors ${
 												service.included 
 													? "bg-background/70 border-muted/10 hover:bg-background/90" 
 													: "bg-muted/20 border-muted/30"
 											}`}
 										>
 											{service.included ? (
-												<CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+												<CheckCircle className="h-3 w-3 text-green-600 flex-shrink-0" />
 											) : (
-												<div className="h-4 w-4 rounded-full border border-muted-foreground/30 flex-shrink-0" />
+												<div className="h-3 w-3 rounded-full border border-muted-foreground/30 flex-shrink-0" />
 											)}
 											<span 
 												className={`font-medium ${
