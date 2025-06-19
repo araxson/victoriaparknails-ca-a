@@ -10,6 +10,20 @@ import * as React from "react";
 
 const popularPackages = [
 	{
+		name: "Deluxe",
+		price: "80",
+		originalPrice: "90",
+		duration: "2 hrs",
+		popular: true,
+		icon: Crown,
+		services: [
+			{ name: "Shellac Manicure", included: true },
+			{ name: "Deluxe Spa Pedicure", included: true }
+		],
+		description: "Your ultimate spa retreat to melt away stress.",
+		savings: "You save $10!",
+	},
+	{
 		name: "Classic",
 		price: "60",
 		originalPrice: "65",
@@ -17,8 +31,8 @@ const popularPackages = [
 		popular: false,
 		icon: Award,
 		services: [
-			{ name: "Classic Manicure", included: true },
-			{ name: "Classic Pedicure", included: true }
+			{ name: "Classic Manicure with regular polish", included: true },
+			{ name: "Classic Pedicure with regular polish", included: true }
 		],
 		description: "The essential for a timeless, elegant look.",
 		savings: "You save $5!",
@@ -28,28 +42,14 @@ const popularPackages = [
 		price: "70",
 		originalPrice: "75",
 		duration: "1 hr 35 mins",
-		popular: true,
+		popular: false,
 		icon: Star,
 		services: [
 			{ name: "Shellac Manicure", included: true },
-			{ name: "Classic Pedicure", included: true }
+			{ name: "Classic Pedicure with regular polish", included: true }
 		],
 		description: "The smart choice for long-lasting hands and beautiful feet.",
 		savings: "You save $5!",
-	},
-	{
-		name: "Deluxe",
-		price: "80",
-		originalPrice: "90",
-		duration: "2 hrs",
-		popular: false,
-		icon: Crown,
-		services: [
-			{ name: "Classic Manicure with Paraffin", included: true },
-			{ name: "Spa Pedicure with Hot Stones", included: true }
-		],
-		description: "Your ultimate spa retreat to melt away stress.",
-		savings: "You save $10!",
 	},
 	{
 		name: "Perfection",

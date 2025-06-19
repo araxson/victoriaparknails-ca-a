@@ -1,7 +1,7 @@
 import { serviceCategories } from "@/data";
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
-import { ServiceDetailsClient } from "./service-details-client";
+import { ServiceDetailsClient } from "@/components/sections/service-details-client";
 
 export default function ServiceDetailsSection() {
   const defaultActiveTab = serviceCategories[0]?.id || '';

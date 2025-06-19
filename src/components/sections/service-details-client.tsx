@@ -12,7 +12,7 @@ import {
   TabsContent,
   Button,
 } from "@/components/ui";
-import { ClockIcon, ArrowRight, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { ClockIcon, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface ServiceCategoryItem {
@@ -29,7 +29,6 @@ interface ServiceDetailsClientProps {
 
 export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: ServiceDetailsClientProps) {
   const [activeTab, setActiveTab] = useState(defaultActiveTab);
-  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     // Check for URL fragment on mount
@@ -50,13 +49,6 @@ export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: Se
     setActiveTab(value);
     // Update URL hash without triggering a page refresh
     window.history.replaceState(null, '', `#${value}`);
-  };
-
-  const toggleDescription = (serviceId: string) => {
-    setExpandedDescriptions(prev => ({
-      ...prev,
-      [serviceId]: !prev[serviceId]
-    }));
   };
 
   return (
@@ -124,11 +116,7 @@ export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: Se
                 </div>
                 
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-7xl mx-auto">
-                  {subcategoryServices.map((service, serviceIndex) => {
-                    const serviceId = `${category.id}-${service.name}-${serviceIndex}`;
-                    const isExpanded = expandedDescriptions[serviceId] || false;
-                    
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-7xl mx-auto">                  {subcategoryServices.map((service, serviceIndex) => {
                     return (                      <Card
                         key={`${service.name}-${service.subcategory}-${serviceIndex}`}
                         className="border-border/50 bg-card/80 backdrop-blur-sm"
@@ -159,44 +147,11 @@ export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: Se
                                 </div>
                               </div>
                             </div>
-                            
-                            {/* Second Row: Service Details (Full Width) */}
+                              {/* Second Row: Service Details (Full Width) */}
                             {service.details && (
                               <div className="grid">
-                                <div className="relative">
-                                  {!isExpanded ? (
-                                    // Collapsed view with read more inline
-                                    <div className="text-xs text-muted-foreground leading-relaxed">
-                                      <span className="inline">
-                                        {service.details.length > 80 
-                                          ? `${service.details.substring(0, 80).trim()}... `
-                                          : service.details
-                                        }                                        {service.details.length > 80 && (
-                                          <Button 
-                                            variant="outline"
-                                            size="sm"
-                                            onClick={() => toggleDescription(serviceId)}
-                                            className="inline-flex items-center font-medium text-primary p-0 h-auto"
-                                          >
-                                            <span className="inline">Read more</span>
-                                            <ChevronDownIcon className="inline h-3 w-3 ml-0.5" />
-                                          </Button>
-                                        )}
-                                      </span>
-                                    </div>
-                                  ) : (
-                                    // Expanded view with consistent text size
-                                    <div className="text-xs text-muted-foreground leading-relaxed">                                      <span>{service.details}</span>                                      <Button 
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() => toggleDescription(serviceId)}
-                                        className="inline-flex items-center font-medium text-primary ml-1 p-0 h-auto"
-                                      >
-                                        <span>Show less</span>
-                                        <ChevronUpIcon className="h-3 w-3 ml-0.5" />
-                                      </Button>
-                                    </div>
-                                  )}
+                                <div className="text-xs text-muted-foreground leading-relaxed">
+                                  {service.details}
                                 </div>
                               </div>
                             )}

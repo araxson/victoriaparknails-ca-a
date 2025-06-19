@@ -28,6 +28,9 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <Section className="relative min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Rewards Announcement Banner */}
+      <RewardsAnnouncementBanner />
+      
       {/* Video Background */}
       <VideoBackground src={videoSrc} />
 
@@ -42,6 +45,25 @@ export function HeroSection({
         />
       </ContentOverlay>
     </Section>
+  );
+}
+
+function RewardsAnnouncementBanner() {
+  return (
+    <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-3 px-4">
+      <div className="container">
+        <div className="flex items-center justify-center text-center">
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+            <span className="font-semibold text-sm sm:text-base">
+              NEW! Reward & Redeem Points Program
+            </span>
+            <span className="text-xs sm:text-sm opacity-90">
+              Earn points with every visit - Ask us how to start earning today!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

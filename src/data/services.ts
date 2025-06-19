@@ -90,18 +90,18 @@ export const services: ServiceCategory[] = [
         name: "Nail Extensions",
         services: [
           {
-            name: "Full Set Extensions",
+            name: "Nail New Set",
             duration: "90 mins",
             price: "60",
-            shortDescription: "Strong, beautiful length",
+            shortDescription: "Acrylic or gel will be same price",
             details: "Get the nails you've always wanted! Our custom extensions give you beautiful length and strength while protecting your natural nails underneath. Choose your perfect shape and length for stunning, durable nails."
           },
           {
-            name: "Extension Refill",
+            name: "Nail Refill",
             duration: "60 mins",
             price: "45",
-            shortDescription: "Keep your extensions perfect",
-            details: "Keep your extensions looking fresh! We'll fill in growth areas, reshape as needed, and give you a fresh polish change. Regular maintenance keeps your extensions strong and beautiful between appointments."
+            shortDescription: "Keep your nails always perfect",
+            details: "Keep your nails always perfect, nail extensions to nails. We'll fill in growth areas, reshape as needed, and give you a fresh polish change. Regular maintenance keeps your extensions strong and beautiful between appointments."
           }
         ],
       },
@@ -186,7 +186,7 @@ export const services: ServiceCategory[] = [
             details: "Classic never goes out of style! Beautiful white tips with a natural base create an elegant, sophisticated look that goes with everything and makes your fingers look longer and more graceful."
           },
           {
-            name: "Cat Eyes Ombre",
+            name: "Chrome, Cateye Ombre",
             duration: "10 mins",
             price: "15",
             shortDescription: "Eye-catching metallic magic",

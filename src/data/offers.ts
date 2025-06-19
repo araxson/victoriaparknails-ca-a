@@ -7,7 +7,7 @@ export const offers: Offer[] = [
     description: "Earn points for every visit and redeem them for services and discounts.",
     discount: "EARN POINTS EVERY VISIT",
     terms: [
-      "Earn 1 point for every visit",
+      "Earn points for every visit",
       "Redeem points for discounts on future services",
       "Ask our staff about point values and redemption options",
       "Points accumulate with each visit"

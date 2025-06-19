@@ -66,7 +66,7 @@ export function OfferCard({ offer }: OfferCardProps) {
           
           <div>
             <Button 
-              variant="outline"
+              variant="ghost"
               size="sm"
               onClick={() => setShowTerms(!showTerms)} 
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors w-full justify-start p-0 h-auto"
