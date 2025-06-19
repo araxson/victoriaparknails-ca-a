@@ -20,6 +20,10 @@ export interface BusinessInfo {
   hours: {
     [key: string]: string;
   };
+  holidayHours?: {
+    hours: string;
+    note?: string;
+  };
   socialMedia: {
     facebook?: string;
     instagram?: string;

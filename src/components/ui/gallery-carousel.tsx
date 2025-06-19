@@ -262,7 +262,7 @@ export function GalleryCarousel({
                       <div className="aspect-square w-full">
                         <button
                           className={cn(
-                            "relative h-full w-full overflow-hidden rounded-lg transition-all duration-200 border-1",
+                            "relative h-full w-full overflow-hidden rounded-lg transition-all duration-200 border",
                             current === index
                               ? "border-primary opacity-100 ring-1 ring-primary/50"
                               : "border-primary/30 opacity-70 hover:opacity-100 hover:border-primary/60",

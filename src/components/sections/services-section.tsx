@@ -15,7 +15,7 @@ import { ArrowRight } from "lucide-react";
 
 export function ServicesSection() {
   return (
-    <Section variant="default">
+    <Section variant="default" id="services">
       <div className="container">
         {/* Section Header */}
         <SectionHeader

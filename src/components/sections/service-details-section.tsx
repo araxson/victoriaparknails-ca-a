@@ -13,21 +13,36 @@ import {
   TabsContent,
   Button,
 } from "@/components/ui";
-import { ClockIcon, Star, Sparkles, Crown, Heart, ArrowRight } from "lucide-react";
+import { ClockIcon, ArrowRight } from "lucide-react";
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
-
-// Icon mapping for different service categories
-const categoryIcons = {
-  "nail-services": Sparkles,
-  "spa-services": Heart,
-  "hair-removal": Star,
-  "kids-services": Crown,
-} as const;
+import { useEffect, useState } from "react";
 
 export default function ServiceDetailsSection() {
+  const [activeTab, setActiveTab] = useState(serviceCategories[0]?.id || '');
+
+  useEffect(() => {
+    // Check for URL fragment on mount
+    const hash = window.location.hash.substring(1);
+    if (hash && serviceCategories.some(cat => cat.id === hash)) {
+      setActiveTab(hash);
+      // Scroll to the section after a short delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.getElementById('service-details-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    // Update URL hash without triggering a page refresh
+    window.history.replaceState(null, '', `#${value}`);
+  };
   return (
-    <Section variant="default" className="bg-gradient-to-b from-background to-muted/30">
+    <Section variant="default" className="bg-gradient-to-b from-background to-muted/30" id="service-details-section">
       <div className="container">
         <SectionHeader
           badge="Our Services"
@@ -35,19 +50,17 @@ export default function ServiceDetailsSection() {
           description="Explore our full range of professional nail and spa services, each designed to provide you with exceptional results and an unforgettable experience."
         />
         
-        <Tabs defaultValue={serviceCategories[0]?.id} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           {/* Enhanced Tab Navigation */}
           <div className="flex justify-center mb-8">
             <TabsList className="flex-wrap w-full md:w-auto bg-card/50 backdrop-blur-sm border shadow-lg p-1.5 rounded-xl">
               {serviceCategories.map((category) => {
-                const Icon = categoryIcons[category.id as keyof typeof categoryIcons] || Sparkles;
                 return (
                   <TabsTrigger 
                     key={category.id} 
                     value={category.id}
                     className="flex-1 md:flex-initial data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-200 rounded-lg px-4 py-2.5 font-medium"
                   >
-                    <Icon className="h-4 w-4 mr-2" />
                     <span className="hidden sm:inline">{category.name}</span>
                     <span className="sm:hidden">{category.name.split(' ')[0]}</span>
                   </TabsTrigger>
@@ -76,12 +89,6 @@ export default function ServiceDetailsSection() {
               >
                 {/* Category Header */}
                 <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                    {(() => {
-                      const Icon = categoryIcons[category.id as keyof typeof categoryIcons] || Sparkles;
-                      return <Icon className="h-8 w-8 text-primary" />;
-                    })()}
-                  </div>
                   <h3 className="text-3xl md:text-4xl font-playfair font-semibold tracking-tight mb-2">
                     {category.name}
                   </h3>

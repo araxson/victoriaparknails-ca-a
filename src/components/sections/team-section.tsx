@@ -44,10 +44,10 @@ export function TeamSection() {
     return (
       <Card 
         key={member.id} 
-        className="flex flex-col overflow-hidden transition-all duration-300 p-0 border-2 border-border h-full"
+        className="flex flex-col overflow-hidden transition-all duration-300 p-0 border border-border h-full"
       >
         <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-secondary/20 pt-8 pb-4">
-          <Avatar className="w-28 h-28 mx-auto border-4 border-background">
+          <Avatar className="w-28 h-28 mx-auto border border-background">
             <AvatarImage
               src={member.image ?? "/avatar-placeholder.webp"}
               alt={member.name}

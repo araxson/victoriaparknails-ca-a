@@ -151,6 +151,19 @@ export function ContactSection() {
                 </Table>
               </div>
 
+              {businessInfo.holidayHours && (
+                <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+                  <p className="text-amber-800 dark:text-amber-200 text-sm text-center font-medium">
+                    <strong>Holiday Hours:</strong> {businessInfo.holidayHours.hours}
+                  </p>
+                  {businessInfo.holidayHours.note && (
+                    <p className="text-amber-700 dark:text-amber-300 text-xs text-center mt-1">
+                      {businessInfo.holidayHours.note}
+                    </p>
+                  )}
+                </div>
+              )}
+
               <div className="mt-4 p-4 bg-muted rounded-lg">
                 <p className="text-sm text-muted-foreground text-center">
                   <strong>Note:</strong> We recommend calling ahead to confirm

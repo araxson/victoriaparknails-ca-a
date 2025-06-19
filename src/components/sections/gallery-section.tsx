@@ -33,7 +33,7 @@ export function GallerySection() {
 
   return (
     <>
-      <Section variant="accent">
+      <Section variant="accent" id="gallery">
         <div className="container">
           <SectionHeader
             badge="Our Gallery"

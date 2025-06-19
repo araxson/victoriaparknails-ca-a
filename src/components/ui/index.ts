@@ -50,7 +50,7 @@ export * from "./shadcn/tooltip";
 
 // Custom UI Components
 export * from "./animated-counter";
-export * from "./notification";
+export * from "./notifications";
 export * from "./image";
 export * from "./gallery-carousel";
 export * from "./gallery-grid";

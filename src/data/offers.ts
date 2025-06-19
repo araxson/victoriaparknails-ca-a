@@ -15,19 +15,6 @@ export const offers: Offer[] = [
     image: "/images/offers/rewards-program.webp"
   },
   {
-    id: "mani-pedi-combo",
-    title: "Manicure & Pedicure Combo",
-    description: "Get both a manicure and pedicure together for a special combo price.",
-    discount: "BOTH FOR $80",
-    terms: [
-      "Must book both manicure and pedicure in same visit",
-      "Applies to regular manicure and pedicure services",
-      "Cannot be combined with other offers",
-      "Book both services together to receive discount"
-    ],
-    image: "/images/offers/mani-pedi-combo.webp"
-  },
-  {
     id: "wedding-group-discount",
     title: "Wedding Group Special",
     description: "Special discount for wedding parties with 4 or more people. Available on weekends with advance booking.",

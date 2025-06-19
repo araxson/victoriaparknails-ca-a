@@ -4,7 +4,7 @@ import { MainHeader, MainFooter, Breadcrumbs } from "@/components/layouts";
 import { businessInfo } from "@/data";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui";
-import { Notification } from "@/components/ui/notification";
+import { Notification } from "@/components/ui/notifications";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { cn } from "@/lib/utils";
 import { playfairDisplay, roboto } from "@/lib/fonts";
@@ -112,7 +112,7 @@ export default function RootLayout({
     <html
       lang="en-CA"
       className={cn(
-        "min-h-screen bg-background font-sans overflow-x-hidden",
+        "min-h-screen bg-background font-sans",
         roboto.variable,
         playfairDisplay.variable,
       )}
@@ -289,7 +289,7 @@ export default function RootLayout({
           href="/favicons/favicon-16x16.png"
         />
       </head>
-      <body className="font-sans overflow-x-hidden">
+      <body className="font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

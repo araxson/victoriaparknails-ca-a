@@ -12,7 +12,7 @@ export function FAQSection() {
   const categories = [...new Set(faqs.map((faq) => faq.category))] as string[];
 
   return (
-    <Section variant="secondary">
+    <Section variant="secondary" id="faq">
       <div className="container">
         <SectionHeader
           badge="FAQ"

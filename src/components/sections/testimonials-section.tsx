@@ -85,7 +85,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <Section variant="default">
+    <Section variant="default" id="testimonials">
       <div className="container">
         <SectionHeader
           badge="Testimonials"

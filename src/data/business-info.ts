@@ -28,6 +28,10 @@ export const businessInfo: BusinessInfo = {
     saturday: "10:00 AM - 5:30 PM",
     sunday: "10:00 AM - 5:30 PM",
   },
+  holidayHours: {
+    hours: "10:00 AM - 5:30 PM",
+    note: "Holiday hours apply on statutory holidays",
+  },
   socialMedia: {
     facebook: "https://www.facebook.com/victoriaparknails",
     instagram: "https://www.instagram.com/victoriaparknails",

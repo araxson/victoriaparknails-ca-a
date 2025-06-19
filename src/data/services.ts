@@ -24,7 +24,7 @@ export const services: ServiceCategory[] = [
         name: "Manicures",
         services: [
           {
-            name: "Classic Manicure",
+            name: "Classic Manicure with regular polish",
             duration: "30 mins",
             price: "25",
             shortDescription: "Fresh & polished look",
@@ -57,7 +57,7 @@ export const services: ServiceCategory[] = [
         name: "Pedicures",
         services: [
           {
-            name: "Classic Pedicure",
+            name: "Classic Pedicure with regular polish",
             duration: "45 mins",
             price: "40",
             shortDescription: "Relaxing foot refresh",
@@ -68,7 +68,7 @@ export const services: ServiceCategory[] = [
             duration: "60 mins",
             price: "50",
             shortDescription: "Ultimate relaxation experience",
-            details: "Indulge in our signature spa experience! Everything from our classic pedicure plus intensive callus treatment, extended massage, and luxurious hot stone therapy. Perfect for melting away stress and pampering tired feet."
+            details: "Indulge in our signature spa experience! Everything from our classic pedicure plus intensive callus treatment, extended massage, and luxurious hot stone therapy finished with regular polish. Perfect for melting away stress and pampering tired feet."
           },
           {
             name: "Shellac Pedicure",
@@ -97,7 +97,7 @@ export const services: ServiceCategory[] = [
             details: "Get the nails you've always wanted! Our custom extensions give you beautiful length and strength while protecting your natural nails underneath. Choose your perfect shape and length for stunning, durable nails."
           },
           {
-            name: "Extension Maintenance",
+            name: "Extension Refill",
             duration: "60 mins",
             price: "45",
             shortDescription: "Keep your extensions perfect",
@@ -151,11 +151,18 @@ export const services: ServiceCategory[] = [
             details: "Professional removal that cares for your natural nails! We safely remove artificial or gel extensions with gentle soaking and conditioning to restore your nail health."
           },
           {
-            name: "Paraffin Wax Treatment",
+            name: "Paraffin Wax Treatment - Hands",
             duration: "15 mins",
-            price: "15-25",
-            shortDescription: "Deep moisture therapy",
-            details: "Pamper your skin with warm, therapeutic wax! This luxurious treatment deeply moisturizes dry skin and soothes tired hands or feet. Especially wonderful during winter months or for extra-dry skin."
+            price: "15",
+            shortDescription: "Deep moisture therapy for hands",
+            details: "Pamper your hands with warm, therapeutic wax! This luxurious treatment deeply moisturizes dry skin and soothes tired hands. Especially wonderful during winter months or for extra-dry skin."
+          },
+          {
+            name: "Paraffin Wax Treatment - Feet",
+            duration: "15 mins",
+            price: "25",
+            shortDescription: "Deep moisture therapy for feet",
+            details: "Pamper your feet with warm, therapeutic wax! This luxurious treatment deeply moisturizes dry skin and soothes tired feet. Especially wonderful during winter months or for extra-dry skin."
           },
           {
             name: "Callus Removal",
@@ -172,14 +179,14 @@ export const services: ServiceCategory[] = [
             details: "Don't let a broken nail ruin your day! We'll repair splits, breaks, or damage using professional techniques. Get back to beautiful nails in no time. Priced per nail."
           },
           {
-            name: "French Manicure",
+            name: "French Tip",
             duration: "15 mins",
             price: "10",
             shortDescription: "Timeless elegance",
             details: "Classic never goes out of style! Beautiful white tips with a natural base create an elegant, sophisticated look that goes with everything and makes your fingers look longer and more graceful."
           },
           {
-            name: "Chrome & Cat Eye Effects",
+            name: "Cat Eyes Ombre",
             duration: "10 mins",
             price: "15",
             shortDescription: "Eye-catching metallic magic",
@@ -230,7 +237,7 @@ export const services: ServiceCategory[] = [
     ],
   },
   {
-    name: "Relaxation & Wellness",
+    name: "Massage & Spa",
     subcategories: [
       {
         name: "Therapeutic Massage",
@@ -294,7 +301,7 @@ export const services: ServiceCategory[] = [
     ],
   },
   {
-    name: "Hair Removal",
+    name: "Waxing",
     subcategories: [
       {
         name: "Professional Waxing",

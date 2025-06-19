@@ -34,7 +34,7 @@ export function MainFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-gradient-to-b from-muted/20 pt-6 pb-12 to-muted/40">
+    <footer className="main-footer border-t bg-gradient-to-b from-muted/20 pt-6 pb-12 to-muted/40">
       <div className="container py-12 lg:py-16">
         {/* Hero Section - Centered Business Info */}
         <div className="text-center space-y-6 mb-12 lg:mb-16">
@@ -212,6 +212,14 @@ export function MainFooter() {
                   </span>
                   <span className="font-semibold text-sm text-primary">10:00 AM - 5:30 PM</span>
                 </div>
+                {businessInfo.holidayHours && (
+                  <div className="flex justify-between items-center py-3 px-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                    <span className="text-amber-800 dark:text-amber-200 font-medium text-sm">
+                      Holiday Hours
+                    </span>
+                    <span className="font-semibold text-sm text-amber-800 dark:text-amber-200">{businessInfo.holidayHours.hours}</span>
+                  </div>
+                )}
                 <div className="pt-4 border-t border-muted">
                   <Button className="w-full transition-colors" size="lg" asChild>
                     <a

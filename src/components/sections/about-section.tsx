@@ -19,7 +19,7 @@ export function AboutSection() {
   const yearsInBusiness = currentYear - parseInt(businessInfo.founded);
 
   return (
-    <Section variant="muted">
+    <Section variant="muted" id="about">
       <div className="container">
         {/* Section Header */}
         <SectionHeader

@@ -122,6 +122,18 @@ export function ContactInfoSection() {
                   </div>
                 ))}
               </div>{" "}
+              {businessInfo.holidayHours && (
+                <div className="rounded-lg p-4 text-center mt-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                  <p className="text-amber-800 dark:text-amber-200 font-medium text-sm">
+                    <strong>Holiday Hours:</strong> {businessInfo.holidayHours.hours}
+                  </p>
+                  {businessInfo.holidayHours.note && (
+                    <p className="text-amber-700 dark:text-amber-300 text-xs mt-1">
+                      {businessInfo.holidayHours.note}
+                    </p>
+                  )}
+                </div>
+              )}
               <div className="rounded-lg p-4 text-center mt-6 bg-muted">
                 <p className="text-primary font-medium">
                   Walk-ins welcome! Appointments recommended.
