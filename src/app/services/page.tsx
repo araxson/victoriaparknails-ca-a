@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-// import { services } from '@/data';
 import { HeroSection } from "@/components/sections/hero-section";
-import { Suspense } from "react";
 import ServiceDetailsSection from "@/components/sections/service-details-section";
 import { ServicePricingComparison } from "@/components/sections/service-combinations";
 import { CtaSection } from "@/components/sections/cta-section";
-import { Section } from "@/components/layouts";
+import { businessInfo } from "@/data";
+
+// Force static generation for maximum SSG performance
+export const dynamic = 'force-static';
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title:
-    "Professional Nail & Spa Services | Manicures, Pedicures, Nail Art | Victoria Park Nails and Spa Calgary",
+    `Professional Nail & Spa Services | Manicures, Pedicures, Nail Art | ${businessInfo.name} Calgary`,
   description:
-    "Explore our comprehensive menu of professional nail and spa services in Calgary. Expert manicures, luxury pedicures, custom nail art, gel & acrylic extensions, waxing, massage, and lash services. View pricing and book online at Calgary's premier nail salon.",
+    `Professional nail and spa services in Calgary. Expert manicures, pedicures, nail art, gel & acrylic extensions, waxing, and lash services with transparent pricing. Located in downtown Calgary at ${businessInfo.address.street}. Experience luxury nail care by certified technicians since ${businessInfo.founded}.`,
   keywords: [
     "Calgary nail services",
     "manicure prices Calgary",
@@ -38,24 +40,44 @@ export const metadata: Metadata = {
     "nail art design Calgary",
     "French manicure Calgary",
     "bridal nail services Calgary",
+    "nail care packages Calgary",
+    "professional manicures",
+    "luxury pedicures",
+    "nail salon menu Calgary",
+    "beauty services Calgary",
   ],
   openGraph: {
     title:
-      "Professional Nail & Spa Services | Victoria Park Nails and Spa Calgary",
+      `Professional Nail & Spa Services | ${businessInfo.name} Calgary`,
     description:
-      "Comprehensive nail and spa services in downtown Calgary. Expert manicures, luxury pedicures, custom nail art, extensions, and spa treatments with transparent pricing.",
-    url: "https://victoriaparknails.ca/services",
+      "Comprehensive nail and spa services in downtown Calgary. Expert manicures, luxury pedicures, custom nail art, extensions, and spa treatments with transparent pricing. Professional certified technicians.",
+    url: `${businessInfo.contact.website}/services`,
+    type: "website",
+    locale: "en_CA",
     images: [
       {
-        url: "/services-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Professional nail services at Victoria Park Nails and Spa Calgary - manicures, pedicures, nail art, and spa treatments",
+        url: "/Victoria_Park_Nails_Spa_Logo_Primary_small.png",
+        width: 800,
+        height: 600,
+        alt: `Professional nail services at ${businessInfo.name} Calgary - manicures, pedicures, nail art, and spa treatments`,
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Professional Nail & Spa Services | ${businessInfo.name} Calgary`,
+    description:
+      "Expert nail services including manicures, pedicures, custom nail art, and spa treatments in downtown Calgary.",
+    images: ["/Victoria_Park_Nails_Spa_Logo_Primary_small.png"],
+    creator: "@victoriaparknails",
+  },
   alternates: {
-    canonical: "https://victoriaparknails.ca/services",
+    canonical: `${businessInfo.contact.website}/services`,
+  },
+  other: {
+    "page-topic": "Nail Services, Spa Services, Beauty Treatments",
+    "service-types": "Manicures, Pedicures, Nail Art, Extensions, Spa",
+    "price-range": "$$",
   },
 };
 
@@ -68,19 +90,8 @@ export default function ServicesPage() {
         videoSrc="/videos/hero-bg-video-002.mp4"
       />
 
-      {/* Services Content */}
-      <Suspense fallback={
-        <Section variant="default" className="py-20">
-          <div className="container">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-muted-foreground">Loading our beautiful services menu...</p>
-            </div>
-          </div>
-        </Section>
-      }>
-        <ServiceDetailsSection />
-      </Suspense>
+      {/* Services Content - Now fully static */}
+      <ServiceDetailsSection />
 
       {/* Service Package Pricing Comparison */}
       <ServicePricingComparison />

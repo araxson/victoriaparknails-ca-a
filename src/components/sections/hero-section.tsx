@@ -127,7 +127,7 @@ function HeroButtons() {
         <Button 
           size="lg" 
           asChild 
-          className="w-full sm:w-auto rounded-full backdrop-blur-sm bg-primary/70 hover:bg-primary/80 border border-white/20"
+          className="w-full sm:w-auto rounded-full backdrop-blur-sm bg-primary/70 border border-white/20"
         >
           <a
             href={businessInfo.contact.bookingUrl}
@@ -142,7 +142,7 @@ function HeroButtons() {
           size="lg"
           variant="outline"
           asChild
-          className="w-full sm:w-auto rounded-full backdrop-blur-sm bg-background/50 hover:bg-background/60 border border-white/20"
+          className="w-full sm:w-auto rounded-full backdrop-blur-sm bg-background/50 border border-white/20"
         >
           <Link href="/services">View Services</Link>
         </Button>

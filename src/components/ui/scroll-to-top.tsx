@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/shadcn/button";
 
 export const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,12 +34,12 @@ export const ScrollToTop = () => {
       behavior: "smooth",
     });
   };
-
   return (
-    <button
-      onClick={scrollToTop}
+    <Button      onClick={scrollToTop}
+      variant="outline"
+      size="icon"
       className={cn(
-        "fixed bottom-6 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 hover:bg-primary/90 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+        "fixed bottom-6 right-6 z-40 rounded-full transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
         isVisible 
           ? "opacity-100 translate-y-0" 
           : "opacity-0 translate-y-8 pointer-events-none"
@@ -47,6 +48,6 @@ export const ScrollToTop = () => {
       title="Scroll to top"
     >
       <ArrowUp className="h-5 w-5" />
-    </button>
+    </Button>
   );
 };

@@ -5,6 +5,7 @@ import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
 import { CheckCircle, Star, Crown, Clock, Award, Gem } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { businessInfo } from "@/data/business-info";
 import * as React from "react";
 
 const popularPackages = [
@@ -80,51 +81,61 @@ export function ServicePricingComparison() {
 			setCurrent(api.selectedScrollSnap());
 		});
 	}, [api]);
+	
 	const renderPackageCard = (pkg: typeof popularPackages[0]) => {
-		const Icon = pkg.icon;		return (			<Card
+		const Icon = pkg.icon;
+		
+		return (			<Card
 				key={pkg.name}
-				className={`relative h-full flex flex-col transition-all duration-300 ${
+				className={`relative h-full flex flex-col ${
 					pkg.popular 
 						? "border-primary/50 bg-muted/20" 
-						: "border-border/50 hover:border-primary/30 bg-background"
+						: "border-border/50 bg-background"
 				}`}
 			>
 				{pkg.popular && (
 					<div className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground text-center text-sm font-semibold py-2 rounded-t-lg z-10">
 						Most Popular
 					</div>
-				)}				<CardHeader className="flex-shrink-0 pt-8">
+				)}
+				
+				<CardHeader className="flex-shrink-0 pt-8">
 					<div className="grid grid-rows-[auto_auto_auto] gap-4">
 						{/* First Row: Icon + Title + Pricing (3 columns) */}
 						<div className="grid grid-cols-[auto_1fr_auto] gap-4 items-start">
-							{/* Icon Column */}							<div className="flex-shrink-0">
+							{/* Icon Column */}
+							<div className="flex-shrink-0">
 								<div className="inline-flex items-center justify-center w-12 h-12 rounded-md bg-primary/15">
 									<Icon className="h-6 w-6 text-primary" />
 								</div>
 							</div>
-									{/* Title Column */}
+							
+							{/* Title Column */}
 							<div className="grid gap-2 min-w-0">
 								<CardTitle className="text-xl font-playfair font-semibold text-foreground leading-tight">
 									{pkg.name}
 								</CardTitle>
-								<div className="flex items-center gap-2">									<div className="flex items-center gap-1.5 text-sm text-muted-foreground bg-muted/40 px-3 py-1 rounded-full">
-										<Clock className="h-3.5 w-3.5" />
-										<span className="font-medium">{pkg.duration}</span>
+								<div className="flex items-center gap-2">
+									<div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/40 px-3 py-1 rounded-full">
+										<Clock className="h-3 w-3" />
+										<span className="font-small">{pkg.duration}</span>
 									</div>
 								</div>
 							</div>
-									{/* Pricing Column */}
+							
+							{/* Pricing Column */}
 							<div className="grid gap-2 items-center justify-items-end">
 								<div className="text-right">
 									<div className="flex items-baseline gap-2 justify-end">
 										<span className="text-2xl font-bold text-primary leading-none">
-											${pkg.price}
+											{'$' + pkg.price}
 										</span>
 										<span className="text-sm text-muted-foreground line-through">
-											${pkg.originalPrice}
+											{'$' + pkg.originalPrice}
 										</span>
 									</div>
-								</div>								<div className="flex items-center justify-end">
+								</div>
+								<div className="flex items-center justify-end">
 									<Badge 
 										variant="secondary" 
 										className="bg-green-100 text-green-700 border-green-200 text-xs font-semibold px-3 py-1"
@@ -134,23 +145,28 @@ export function ServicePricingComparison() {
 								</div>
 							</div>
 						</div>
-								{/* Second Row: Description (Full Width) */}
+						
+						{/* Second Row: Description (Full Width) */}
 						<div className="grid">
 							<div className="text-center px-2">
 								<p className="text-sm text-muted-foreground leading-relaxed italic font-medium">
 									{pkg.description}
 								</p>
 							</div>
-						</div>						{/* Third Row: Services (Full Width) */}						<div className="grid">							<div className="bg-muted/15 p-3 rounded-lg border border-muted/20">
+						</div>
+						
+						{/* Third Row: Services (Full Width) */}
+						<div className="grid">
+							<div className="bg-muted/15 p-3 rounded-lg border border-muted/20">
 								<h4 className="font-semibold text-xs text-foreground mb-2 flex items-center justify-center gap-1.5">
 									What&apos;s Included
-								</h4><div className="grid grid-cols-1 gap-0.5">
+								</h4>
+								<div className="grid grid-cols-1 gap-0.5">
 									{pkg.services.map((service, serviceIndex) => (
 										<div 
-											key={serviceIndex} 
-											className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-md border transition-colors ${
+											key={serviceIndex}											className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-md border ${
 												service.included 
-													? "bg-background/70 border-muted/10 hover:bg-background/90" 
+													? "bg-background/70 border-muted/10" 
 													: "bg-muted/20 border-muted/30"
 											}`}
 										>
@@ -174,17 +190,25 @@ export function ServicePricingComparison() {
 							</div>
 						</div>
 					</div>
-				</CardHeader>				<CardContent className="flex-grow flex flex-col">
+				</CardHeader>
+						<CardContent className="flex-grow flex flex-col">
 					{/* Action Button (Full Width) */}
 					<div className="grid mt-auto pt-2">						<Button 
+							asChild
 							variant="outline" 
 							size="lg"
-							className={`group/btn transition-all duration-300 w-full justify-center font-semibold text-sm ${
+							className={`w-full justify-center font-semibold text-sm ${
 								pkg.popular
-									? "bg-primary text-primary-foreground border-primary hover:bg-primary/90"
-									: "border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary"
+									? "bg-primary text-primary-foreground border-primary"
+									: "border border-primary/30 text-primary"
 							}`}
-						>							<span className="flex items-center justify-center gap-2">
+						>
+							<a
+								href={businessInfo.contact.bookingUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center justify-center gap-2"
+							>
 								{pkg.popular ? (
 									<>
 										<Star className="h-4 w-4" />
@@ -200,20 +224,23 @@ export function ServicePricingComparison() {
 										Book {pkg.name}
 									</>
 								)}
-							</span>
+							</a>
 						</Button>
 					</div>
 				</CardContent>
 			</Card>
 		);
 	};
+
 	return (
 		<Section variant="muted" className="py-16" id="packages">
-			<div className="container">				<SectionHeader
+			<div className="container">
+				<SectionHeader
 					badge="Nail Care Packages"
 					title="Service Combinations That Save You More"
 					description="Choose from our curated service combinations designed to give you the perfect nail care experience at unbeatable value. Each package combines complementary services for maximum savings and beauty."
-				/>{" "}
+				/>
+
 				{/* Mobile Carousel */}
 				{isMobile ? (
 					<div className="relative px-[-4px]">
@@ -236,24 +263,25 @@ export function ServicePricingComparison() {
 									))}
 								</CarouselContent>
 							</Carousel>
-						</div>
-
-						{/* Interactive Dots indicator */}
+						</div>						{/* Interactive Dots indicator */}
 						<div className="flex justify-center mt-6 gap-2">
 							{popularPackages.map((_, index) => (
-								<button
+								<Button
 									key={index}
-									className={`w-2 h-2 rounded-full transition-colors ${
+									variant="outline"
+									size="icon"
+									className={`w-2 h-2 rounded-full p-0 ${
 										index === current
 											? "bg-primary"
-											: "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+											: "bg-muted-foreground/30"
 									}`}
 									onClick={() => api?.scrollTo(index)}
 									aria-label={`Go to slide ${index + 1}`}
 								/>
 							))}
 						</div>
-					</div>				) : (
+					</div>
+				) : (
 					/* Desktop Grid */
 					<div className="grid md:grid-cols-2 gap-6 lg:gap-8">
 						{popularPackages.map((pkg) => renderPackageCard(pkg))}

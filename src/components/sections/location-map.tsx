@@ -21,7 +21,7 @@ export function LocationMap({ className }: LocationMapProps) {
           allowFullScreen={true}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Victoria Park Nails and Spa Location"
+          title={`${businessInfo.name} Location`}
           className="w-full"
         />
       </div>

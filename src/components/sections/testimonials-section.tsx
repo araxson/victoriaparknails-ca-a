@@ -123,12 +123,14 @@ export function TestimonialsSection() {
             {/* Interactive Dots indicator */}
             <div className="flex justify-center mt-6 gap-2">
               {displayTestimonials.map((_, index) => (
-                <button
+                <Button
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-colors ${
+                  variant="outline"
+                  size="icon"
+                  className={`w-2 h-2 rounded-full p-0 ${
                     index === current 
                       ? 'bg-primary' 
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      : 'bg-muted-foreground/30'
                   }`}
                   onClick={() => api?.scrollTo(index)}
                   aria-label={`Go to slide ${index + 1}`}
@@ -163,12 +165,14 @@ export function TestimonialsSection() {
             {/* Custom Slider Dots */}
             <div className="flex justify-center mt-6 gap-2">
               {displayTestimonials.map((_, index) => (
-                <button
+                <Button
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-colors ${
+                  variant="outline"
+                  size="icon"
+                  className={`w-2 h-2 rounded-full p-0 ${
                     index === current 
                       ? 'bg-primary' 
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      : 'bg-muted-foreground/30'
                   }`}
                   onClick={() => api?.scrollTo(index)}
                   aria-label={`Go to slide ${index + 1}`}

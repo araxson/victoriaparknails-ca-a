@@ -1,6 +1,7 @@
 'use client';
 
 import { teamMembers } from "@/data/team";
+import { businessInfo } from "@/data/business-info";
 import {
   Card,
   CardContent,
@@ -42,7 +43,7 @@ export function TeamSection() {
     return (
       <Card 
         key={member.id} 
-        className="flex flex-col overflow-hidden transition-all duration-300 p-0 border border-border h-full"
+        className="flex flex-col overflow-hidden p-0 border border-border h-full"
       >
         <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-secondary/20 p-4">
           <div className="flex items-start gap-4">
@@ -116,14 +117,14 @@ export function TeamSection() {
 
         <CardFooter className="p-4 pt-2">
           <Link 
-            href={`https://victoriaparknailsspa.setmore.com/`}
+            href={businessInfo.contact.bookingUrl}
             passHref
             target="_blank"
             rel="noopener noreferrer"
             className="w-full"
           >
-            <Button variant="secondary" size="lg" className="w-full group">
-              <Calendar className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
+            <Button variant="outline" size="lg" className="w-full">
+              <Calendar className="h-4 w-4 mr-2" />
               Book with {member.name}
             </Button>
           </Link>
@@ -169,12 +170,14 @@ export function TeamSection() {
             {/* Interactive Dots indicator */}
             <div className="flex justify-center mt-6 gap-2">
               {teamMembers.map((_, index) => (
-                <button
+                <Button
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-colors ${
+                  variant="outline"
+                  size="icon"
+                  className={`w-2 h-2 rounded-full p-0 ${
                     index === current 
                       ? 'bg-primary' 
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      : 'bg-muted-foreground/30'
                   }`}
                   onClick={() => api?.scrollTo(index)}
                   aria-label={`Go to slide ${index + 1}`}

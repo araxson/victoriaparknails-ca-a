@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { businessInfo } from "@/data";
 
 export const metadata: Metadata = {
   title: "Gallery | Nail Art & Salon Photos | Victoria Park Nails & Spa",
   description:
-    "Browse our gallery of beautiful nail designs, custom nail art, and salon photos. See examples of our work at Victoria Park Nails and Spa in Calgary.",
+    "View our showcase of nail designs, custom nail art, and salon photos at Victoria Park Nails and Spa in Calgary. See our professional nail work.",
   keywords: [
     "nail art gallery",
     "Calgary nail designs",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     title: "Gallery | Victoria Park Nails and Spa",
     description:
       "Browse our collection of beautiful nail designs and salon photos from Calgary's premier nail salon.",
-    url: "https://victoriaparknails.ca/gallery",
+    url: `${businessInfo.contact.website}/gallery`,
     images: [
       {
         url: "/gallery-og.jpg",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://victoriaparknails.ca/gallery",
+    canonical: `${businessInfo.contact.website}/gallery`,
   },
 };
 

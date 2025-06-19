@@ -40,7 +40,7 @@ function MobileNavigation({
     <Sheet open={isOpen} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="lg"
           className="lg:hidden"
           aria-label="Open navigation menu"
@@ -136,18 +136,18 @@ function MobileMenuNavigation({
               </Link>
             ))}
           </div>
-        </div>        {/* Book Online Action */}
-        <div className="mx-2">
-          <Link
-            href={businessInfo.contact.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
-            onClick={onClose}
-          >
-            <ArrowRight className="mr-3 h-4 w-4" />
-            Book Online
-          </Link>
+        </div>        {/* Book Online Action */}        <div className="mx-2">
+          <Button variant="outline" size="sm" className="w-full" asChild>
+            <Link
+              href={businessInfo.contact.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+            >
+              <ArrowRight className="mr-3 h-4 w-4" />
+              Book Online
+            </Link>
+          </Button>
         </div>
       </div>
     </nav>
@@ -164,16 +164,17 @@ function MobileMenuFooter({ onClose }: { onClose: () => void }) {
       {/* Business Info */}
       <div className="space-y-3">        {/* Phone Number - Button matching Book Online styling */}
         <div className="mx-2">
-          <a
-            href={`tel:${businessInfo.contact.phone}`}
-            aria-label={`Call ${businessInfo.contact.phone}`}
-            onClick={onClose}
-            className="flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-md bg-primary text-primary-foreground hover:bg-primary/90 w-full"
-          >
-            <Phone className="mr-3 h-4 w-4" />
-            {businessInfo.contact.phone}
-          </a>
-        </div>        <div className="flex items-center space-x-2 p-3 rounded-md bg-secondary/50 text-sm mx-2">
+          <Button variant="outline" size="sm" className="w-full" asChild>
+            <a
+              href={`tel:${businessInfo.contact.phone}`}
+              aria-label={`Call ${businessInfo.contact.phone}`}
+              onClick={onClose}
+            >
+              <Phone className="mr-3 h-4 w-4" />
+              {businessInfo.contact.phone}
+            </a>
+          </Button>
+        </div><div className="flex items-center space-x-2 p-3 rounded-md bg-secondary/50 text-sm mx-2">
           <Clock className="h-4 w-4" />
           <div>
             <div className="text-sm font-medium">Open Today</div>
@@ -248,7 +249,7 @@ export const HeaderActions = memo(function HeaderActions({
 }: HeaderActionsProps) {
   return (
     <div className="flex items-center space-x-2">
-      <Button size="lg" asChild className="hidden sm:inline-flex">
+      <Button variant="outline" size="lg" asChild className="hidden sm:inline-flex">
         <a
           href={businessInfo.contact.bookingUrl}
           target="_blank"

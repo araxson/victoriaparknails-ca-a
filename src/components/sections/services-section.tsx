@@ -28,8 +28,7 @@ export function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {serviceCategories.map((category) => {
             const services = getServicesByCategory(category.id);
-            return (
-              <Card key={category.id} className="flex flex-col h-full border transition-all hover:shadow-md">
+            return (              <Card key={category.id} className="flex flex-col h-full border">
                 <CardHeader>
                   <Badge variant="outline" className="w-fit mb-2">
                     {services.length} services
@@ -43,10 +42,10 @@ export function ServicesSection() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild variant="default" size="lg" className="w-full group">
+                  <Button asChild variant="outline" size="lg" className="w-full">
                     <Link href={`/services#${category.id}`} className="flex items-center justify-center">
                       View Details
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>

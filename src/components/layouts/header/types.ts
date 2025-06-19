@@ -1,5 +1,3 @@
-import type { ComponentPropsWithoutRef } from "react";
-
 export interface NavigationItem {
   name: string;
   href: string;

@@ -43,6 +43,9 @@ export function ContactInfoSection() {
                 <p className="text-muted-foreground">
                   {businessInfo.address.fullAddress}
                 </p>
+                <p className="text-sm text-green-600 font-medium">
+                  ✓ Free Parking Available
+                </p>
               </div>
 
               <div className="space-y-2">

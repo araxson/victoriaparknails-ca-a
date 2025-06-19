@@ -1,4 +1,5 @@
 // Website content and copy text
+import { businessInfo } from "./business-info";
 
 export const websiteContent = {
   // Navigation
@@ -16,11 +17,11 @@ export const websiteContent = {
 
   // Hero section
   hero: {
-    title: "Experience Tranquility. Unveil Your Radiance.",
+    title: businessInfo.tagline,
     subtitle:
-      "Welcome to Victoria Park Nails and Spa, your downtown Calgary oasis for exceptional nail care, custom art, and restorative spa services.",
+      `Welcome to ${businessInfo.name}, your downtown Calgary oasis for exceptional nail care, custom art, and restorative spa services.`,
     description:
-      "Discover your downtown Calgary oasis. Victoria Park Nails and Spa offers exceptional manicures, pedicures, nail art, and spa services. Book your escape today!",
+      `Discover your downtown Calgary oasis. ${businessInfo.name} offers exceptional manicures, pedicures, nail art, and spa services. Book your escape today!`,
     primaryCTA: "Book an Appointment",
     secondaryCTA: "Explore Our Services",
     features: [
@@ -36,9 +37,9 @@ export const websiteContent = {
     title: "A Trusted Haven for Beauty and Relaxation",
     subtitle: "A Passion for Pampering, A Commitment to Care",
     description:
-      "Victoria Park Nails and Spa was founded in 2015 with a clear mission: to create a trusted and elegant haven for beauty and relaxation in the heart of Calgary. We saw the need for a salon that didn't just perform services, but delivered an experience—one where artistry, hygiene, and genuine customer care were the pillars of the business. Our vision is to be the city's most sought-after destination for creative, custom nail art and unparalleled spa services, where every client leaves feeling more confident and cared for than when they arrived.",
+      `${businessInfo.name} was founded in ${businessInfo.founded} with a clear mission: to create a trusted and elegant haven for beauty and relaxation in the heart of Calgary. We saw the need for a salon that didn't just perform services, but delivered an experience—one where artistry, hygiene, and genuine customer care were the pillars of the business. Our vision is to be the city's most sought-after destination for creative, custom nail art and unparalleled spa services, where every client leaves feeling more confident and cared for than when they arrived.`,
     mission:
-      "At Victoria Park Nails and Spa, we believe self-care is an essential ritual. Since 2015, our mission has been to provide a trusted sanctuary where you can unwind, rejuvenate, and leave feeling utterly refreshed. We combine technical artistry with uncompromising hygiene and a passion for customer satisfaction to create your perfect escape from the city's hustle.",
+      `At ${businessInfo.name}, we believe self-care is an essential ritual. Since ${businessInfo.founded}, our mission has been to provide a trusted sanctuary where you can unwind, rejuvenate, and leave feeling utterly refreshed. We combine technical artistry with uncompromising hygiene and a passion for customer satisfaction to create your perfect escape from the city's hustle.`,
     storyTitle: "More Than Just a Nail Salon",
     valuesTitle: "The Principles That Guide Every Service",
     valuesDescription:
@@ -86,7 +87,7 @@ export const websiteContent = {
     bookService: "Book This Service",
     healthSafetyTitle: "Our Commitment to Your Health & Safety",
     healthSafetyDescription:
-      "At Victoria Park Nails and Spa, your well-being is our highest priority. We strictly adhere to and exceed all health and safety guidelines. All metal implements are surgically sterilized in an autoclave and sealed in individual pouches. We use single-use files and buffers for every client. Our pedicure stations are thoroughly cleaned and disinfected with hospital-grade solutions after every single use. We are committed to providing a safe, clean, and welcoming environment for all.",
+      `At ${businessInfo.name}, your well-being is our highest priority. We strictly adhere to and exceed all health and safety guidelines. All metal implements are surgically sterilized in an autoclave and sealed in individual pouches. We use single-use files and buffers for every client. Our pedicure stations are thoroughly cleaned and disinfected with hospital-grade solutions after every single use. We are committed to providing a safe, clean, and welcoming environment for all.`,
   },
 
   // Gallery section
@@ -123,7 +124,7 @@ export const websiteContent = {
     title: "What Our Clients Are Saying",
     subtitle: "Discover why we are a top-rated nail salon in Calgary",
     description:
-      "Don't just take our word for it - hear what our satisfied clients have to say about their experience at Victoria Park Nails and Spa.",
+      `Don't just take our word for it - hear what our satisfied clients have to say about their experience at ${businessInfo.name}.`,
     readMore: "Read More Reviews",
     verifiedReview: "Verified Review",
   },
@@ -146,7 +147,7 @@ export const websiteContent = {
   // Contact section
   contact: {
     title: "Get In Touch or Book Your Visit",
-    subtitle: "Find Us in Victoria Park Nails and Spa",
+    subtitle: `Find Us in ${businessInfo.name}`,
     description:
       "We're here to answer your questions or help you book your next moment of relaxation. For the fastest way to secure your appointment, please use our online booking system. For all other inquiries, please use the form below.",
     getDirections: "Get Directions",
@@ -154,7 +155,7 @@ export const websiteContent = {
     emailUs: "Email Us",
     followUs: "Follow Us",
     hours: "Hours of Operation",
-    location: "Find Us in Victoria Park Nails and Spa",
+    location: `Find Us in ${businessInfo.name}`,
     contactInfo: "Contact Information",
     sendMessage: "Send Us a Message",
     formDisclaimer:
@@ -190,7 +191,7 @@ export const websiteContent = {
       placeholder: "Enter your email",
       subscribe: "Subscribe",
     },
-    copyright: "© 2025 Victoria Park Nails and Spa. All rights reserved.",
+    copyright: `© 2025 ${businessInfo.name}. All rights reserved.`,
     privacy: "Privacy Policy",
     terms: "Terms of Service",
   },

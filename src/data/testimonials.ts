@@ -1,3 +1,5 @@
+import { businessInfo } from "./business-info";
+
 // Define Testimonial interface for better type safety
 export interface Testimonial {
   id: string;
@@ -74,7 +76,7 @@ export const testimonials: Testimonial[] = [
     name: "Fern Jeffery",
     rating: 5,
     review:
-      "I had a day out with my mum and we decided to go to Victoria Park Nails and Spa. What an amazing job the ladies have done! Professional service and great atmosphere.",
+      `I had a day out with my mum and we decided to go to ${businessInfo.name}. What an amazing job the ladies have done! Professional service and great atmosphere.`,
     date: "2024-04-06",
     service: "Manicure & Pedicure",
     verified: true,

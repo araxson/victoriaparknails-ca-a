@@ -1,4 +1,5 @@
 import { FAQ } from "./types";
+import { businessInfo } from "./business-info";
 
 export const faqs: FAQ[] = [
   // General Questions
@@ -6,7 +7,7 @@ export const faqs: FAQ[] = [
     id: "hours-location",
     question: "What are your hours and location?",
     answer:
-      "We're located at 1411 1st Street SE, Calgary, AB T2G 2G3. We're open Monday-Friday 10:00 AM - 7:00 PM, Saturday-Sunday 10:00 AM - 5:30 PM, and Holidays 10:00 AM - 5:30 PM.",
+      `We're located at ${businessInfo.address.fullAddress} with free parking available. We're open Monday-Friday ${businessInfo.hours.monday}, Saturday-Sunday ${businessInfo.hours.saturday}${businessInfo.holidayHours ? `, and Holidays ${businessInfo.holidayHours.hours}` : ''}.`,
     category: "general",
   },
   {

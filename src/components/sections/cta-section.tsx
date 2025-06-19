@@ -18,7 +18,7 @@ export function CtaSection() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 max-w-md mx-auto">
-            <Button size="lg" asChild variant="secondary" className="w-full">
+            <Button size="lg" asChild variant="outline" className="w-full">
               <a
                 href={businessInfo.contact.bookingUrl}
                 target="_blank"

@@ -41,7 +41,7 @@ export function ContactSection() {
               </div>
               <CardTitle>Our Location</CardTitle>
               <CardDescription>
-                Easy to find with parking available
+                Easy to find with free parking available
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center space-y-4">
@@ -53,6 +53,9 @@ export function ContactSection() {
                 <p className="text-muted-foreground">
                   {businessInfo.address.city}, {businessInfo.address.province}{" "}
                   {businessInfo.address.postalCode}
+                </p>
+                <p className="text-sm text-green-600 font-medium">
+                  ✓ Free Parking Available
                 </p>
               </div>
 
@@ -152,12 +155,12 @@ export function ContactSection() {
               </div>
 
               {businessInfo.holidayHours && (
-                <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-                  <p className="text-amber-800 dark:text-amber-200 text-sm text-center font-medium">
+                <div className="mt-4 p-4 bg-muted border border-border rounded-lg">
+                  <p className="text-foreground text-sm text-center font-medium">
                     <strong>Holiday Hours:</strong> {businessInfo.holidayHours.hours}
                   </p>
                   {businessInfo.holidayHours.note && (
-                    <p className="text-amber-700 dark:text-amber-300 text-xs text-center mt-1">
+                    <p className="text-muted-foreground text-xs text-center mt-1">
                       {businessInfo.holidayHours.note}
                     </p>
                   )}

@@ -1,83 +1,46 @@
 import { MetadataRoute } from "next";
+import { businessInfo } from "@/data";
+
+// Force static generation for sitemap
+export const dynamic = 'force-static';
+export const revalidate = false;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://victoriaparknails.ca";
-  const lastModified = new Date();
-
-  // Core pages
-  const corePages = [
+  const baseUrl = businessInfo.contact.website;
+  
+  // Define all static routes with priorities and change frequencies optimized for SEO
+  const routes = [
     {
-      url: baseUrl,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: 1.0,
+      url: `${baseUrl}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 1.0, // Highest priority for homepage
     },
     {
       url: `${baseUrl}/services`,
-      lastModified,
-      changeFrequency: "weekly" as const, // Update more frequently since services may change
-      priority: 0.9,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9, // High priority for services page
     },
     {
       url: `${baseUrl}/gallery`,
-      lastModified,
-      changeFrequency: "weekly" as const, // Gallery updates often with new work
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/team`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8, // Gallery is important for visual content
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8, // Higher priority for contact information
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8, // Contact info is important but stable
     },
     {
       url: `${baseUrl}/offers`,
-      lastModified,
-      changeFrequency: "weekly" as const, // Offers change frequently
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/booking`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.9, // High priority for booking page
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7, // Offers change regularly but are secondary
     },
   ];
 
-  // Service-specific pages can be generated dynamically based on services data
-  // This is a placeholder for demonstration
-  const servicePages = [
-    "manicures",
-    "pedicures",
-    "nail-art",
-    "gel-nails",
-    "acrylics",
-    "spa-treatments",
-    "waxing",
-  ].map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  return [...corePages, ...servicePages];
+  return routes;
 }

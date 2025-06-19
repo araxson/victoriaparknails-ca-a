@@ -54,5 +54,6 @@ export * from "./notifications";
 export * from "./image";
 export * from "./gallery-carousel";
 export * from "./gallery-grid";
+export * from "./gallery-grid-static";
 export * from "./gallery-skeleton";
 export * from "./scroll-to-top";

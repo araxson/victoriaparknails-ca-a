@@ -135,7 +135,8 @@ export function MainFooter() {
               </div>
               <div className="space-y-3">
                 <Button
-                  variant="ghost"
+                  variant="outline"
+                  size="lg"
                   className="w-full justify-start h-auto py-3 px-0 hover:bg-primary/10 hover:text-primary transition-colors group"
                   asChild
                 >
@@ -151,7 +152,8 @@ export function MainFooter() {
                 </Button>
 
                 <Button
-                  variant="ghost"
+                  variant="outline"
+                  size="lg"
                   className="w-full justify-start h-auto py-3 px-0 hover:bg-primary/10 hover:text-primary transition-colors group"
                   asChild
                 >
@@ -167,7 +169,8 @@ export function MainFooter() {
                 </Button>
 
                 <Button
-                  variant="ghost"
+                  variant="outline"
+                  size="lg"
                   className="w-full justify-start h-auto py-3 px-0 hover:bg-primary/10 hover:text-primary transition-colors group"
                   asChild
                 >
@@ -182,6 +185,9 @@ export function MainFooter() {
                       <div className="font-medium text-sm">Visit Us</div>
                       <div className="text-xs text-muted-foreground group-hover:text-primary/80">
                         {businessInfo.address.fullAddress}
+                      </div>
+                      <div className="text-xs text-green-600 font-medium">
+                        ✓ Free Parking
                       </div>
                     </div>
                   </a>
@@ -204,13 +210,13 @@ export function MainFooter() {
                   <span className="text-muted-foreground font-medium text-sm">
                     Monday - Friday
                   </span>
-                  <span className="font-semibold text-sm text-primary">10:00 AM - 7:00 PM</span>
+                  <span className="font-semibold text-sm text-primary">{businessInfo.hours.monday}</span>
                 </div>
                 <div className="flex justify-between items-center py-3 px-4 rounded-lg bg-muted/40 border border-muted">
                   <span className="text-muted-foreground font-medium text-sm">
                     Saturday - Sunday
                   </span>
-                  <span className="font-semibold text-sm text-primary">10:00 AM - 5:30 PM</span>
+                  <span className="font-semibold text-sm text-primary">{businessInfo.hours.saturday}</span>
                 </div>
                 {businessInfo.holidayHours && (
                   <div className="flex justify-between items-center py-3 px-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">

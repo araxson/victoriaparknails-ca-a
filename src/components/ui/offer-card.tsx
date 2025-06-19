@@ -65,13 +65,15 @@ export function OfferCard({ offer }: OfferCardProps) {
           )}
           
           <div>
-            <button 
+            <Button 
+              variant="outline"
+              size="sm"
               onClick={() => setShowTerms(!showTerms)} 
-              className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors w-full"
+              className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors w-full justify-start p-0 h-auto"
             >
               <span className="font-medium">Terms & Conditions</span>
               {showTerms ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-            </button>
+            </Button>
             
             {showTerms && (
               <div className="mt-2 space-y-1 text-sm text-muted-foreground pl-1">
@@ -89,6 +91,7 @@ export function OfferCard({ offer }: OfferCardProps) {
       <Separator />
       <CardFooter className="pt-4">
         <Button 
+          variant="outline"
           size="lg"
           className="w-full"
           asChild
@@ -119,6 +122,7 @@ export function CompactOfferCard({ offer }: OfferCardProps) {
             </div>
           </div>
           <Button 
+            variant="outline"
             size="lg" 
             asChild
           >

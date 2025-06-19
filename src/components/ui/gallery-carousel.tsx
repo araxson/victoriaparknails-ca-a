@@ -184,7 +184,7 @@ export function GalleryCarousel({
             <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
               {typeof navigator !== 'undefined' && 'share' in navigator && (
                 <Button 
-                  variant="ghost" 
+                  variant="outline" 
                   size="icon" 
                   onClick={navigation.share}
                   className={cn(BUTTON_STYLES, "w-10 h-10")}
@@ -196,7 +196,7 @@ export function GalleryCarousel({
               
               {onClose && (
                 <Button 
-                  variant="ghost" 
+                  variant="outline" 
                   size="icon" 
                   onClick={onClose} 
                   className={cn(BUTTON_STYLES, "w-10 h-10")}
@@ -209,7 +209,7 @@ export function GalleryCarousel({
 
             {/* Navigation buttons */}
             <Button 
-              variant="ghost" 
+              variant="outline" 
               size="icon" 
               className={cn(BUTTON_STYLES, "absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12")}
               onClick={navigation.prev}
@@ -219,7 +219,7 @@ export function GalleryCarousel({
             </Button>
             
             <Button 
-              variant="ghost" 
+              variant="outline" 
               size="icon" 
               className={cn(BUTTON_STYLES, "absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12")}
               onClick={navigation.next}
@@ -260,9 +260,10 @@ export function GalleryCarousel({
                       }}
                     >
                       <div className="aspect-square w-full">
-                        <button
+                        <Button
+                          variant="outline"
                           className={cn(
-                            "relative h-full w-full overflow-hidden rounded-lg transition-all duration-200 border",
+                            "relative h-full w-full overflow-hidden rounded-lg transition-all duration-200 border p-0",
                             current === index
                               ? "border-primary opacity-100 ring-1 ring-primary/50"
                               : "border-primary/30 opacity-70 hover:opacity-100 hover:border-primary/60",
@@ -281,7 +282,7 @@ export function GalleryCarousel({
                           {current === index && (
                             <div className="absolute inset-0 bg-white/20 border border-white/40 rounded-md" />
                           )}
-                        </button>
+                        </Button>
                       </div>
                     </CarouselItem>
                   ))}

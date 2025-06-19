@@ -10,11 +10,15 @@ import { Gift, Tag, Phone, CalendarCheck, Percent } from "lucide-react";
 import { Separator } from "@/components/ui/shadcn/separator";
 import { Badge } from "@/components/ui/shadcn/badge";
 
+// Force static generation for maximum SSG performance
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export const metadata: Metadata = {
   title:
-    "Special Offers & Promotions | Nail Salon Deals Calgary | Victoria Park Nails and Spa",
+    `Special Offers & Promotions | Nail Salon Deals Calgary | ${businessInfo.name}`,
   description:
-    "Discover amazing nail salon deals and promotions in Calgary. New client discounts, loyalty programs, seasonal offers, and exclusive packages. Save on manicures, pedicures, nail art, and spa services at Victoria Park Nails and Spa.",
+    `Exclusive nail salon deals in Calgary. New client discounts, loyalty programs, seasonal offers and packages for manicures, pedicures, and nail art at ${businessInfo.name}. Save on professional nail services with our current promotions and special packages.`,
   keywords: [
     "nail salon deals Calgary",
     "manicure discounts Calgary",
@@ -30,16 +34,50 @@ export const metadata: Metadata = {
     "nail salon membership Calgary",
     "group booking discounts",
     "student nail discounts Calgary",
+    "nail service packages Calgary",
+    "beauty deals Calgary",
+    "nail salon savings",
+    "special promotions Calgary",
+    "discounted nail services",
+    "Calgary nail deals",
+    "nail spa offers",
+    "professional nail discounts",
   ],
   openGraph: {
     title: "Special Offers & Promotions | Victoria Park Nails and Spa Calgary",
     description:
-      "Save on professional nail and spa services with our exclusive offers and promotions in Calgary.",
-    images: ["/images/offers/offers-hero.webp"],
+      "Save on professional nail and spa services with our exclusive offers and promotions in Calgary. New client discounts, seasonal specials, and package deals available.",
+    url: `${businessInfo.contact.website}/offers`,
+    type: "website",
+    locale: "en_CA",
+    images: [
+      {
+        url: "/Victoria_Park_Nails_Spa_Logo_Primary_small.png",
+        width: 800,
+        height: 600,
+        alt: "Special offers and promotions at Victoria Park Nails and Spa Calgary - nail salon deals and discounts",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Special Offers | Victoria Park Nails Calgary",
+    description:
+      "Save on professional nail services with our exclusive offers and promotions. New client discounts and seasonal specials available.",
+    images: ["/Victoria_Park_Nails_Spa_Logo_Primary_small.png"],
+    creator: "@victoriaparknails",
+  },
+  alternates: {
+    canonical: `${businessInfo.contact.website}/offers`,
+  },
+  other: {
+    "page-topic": "Special Offers, Promotions, Discounts, Deals",
+    "offer-types": "New Client Discounts, Seasonal Specials, Package Deals",
+    "savings-available": "Yes",
   },
 };
 
-export default async function OffersPage() {
+export default function OffersPage() {
   return (
     <main className="flex flex-col min-h-screen">
       {/* Hero Section */}

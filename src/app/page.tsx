@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { businessInfo } from "@/data";
 import { HeroSection } from "@/components/sections/hero-section";
 import { TeamSection } from "@/components/sections/team-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
@@ -9,11 +10,15 @@ import { ServicesSection } from "@/components/sections/services-section";
 import { ServicePricingComparison } from "@/components/sections/service-combinations";
 import { CtaSection } from "@/components/sections/cta-section";
 
+// Force static generation for maximum SSG performance
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export const metadata: Metadata = {
   title:
-    "Victoria Park Nails and Spa | Calgary's Premier Nail Salon | Custom Nail Art & Luxury Spa Services",
+    `${businessInfo.name} | Calgary's Premier Nail Salon | Custom Nail Art & Luxury Spa Services`,
   description:
-    "Experience Calgary's finest nail salon and spa since 2015. Located in downtown Victoria Park Nails and Spa, we offer luxury manicures, pedicures, custom nail art, gel nails, acrylic extensions, and spa treatments. Book your appointment at Calgary's most trusted nail salon today!",
+    `Calgary's finest nail salon since ${businessInfo.founded}. Luxury manicures, pedicures, custom nail art, gel nails, and spa treatments in downtown Calgary. Professional nail technicians, relaxing atmosphere, and premium services. Book your appointment today!`,
   keywords: [
     "Calgary nail salon",
     "Victoria Park nail salon",
@@ -32,30 +37,47 @@ export const metadata: Metadata = {
     "nail art design Calgary",
     "bridal nails Calgary",
     "premium nail salon Calgary",
+    "nail technician Calgary",
+    "manicure and pedicure Calgary",
+    "nail salon Victoria Park",
+    "Calgary beauty salon",
+    "professional nail services",
+    "nail care Calgary",
   ],
   openGraph: {
-    title: "Victoria Park Nails and Spa | Calgary's Premier Nail Salon & Spa",
+    title: `${businessInfo.name} | Calgary's Premier Nail Salon & Spa`,
     description:
-      "Experience Calgary's finest nail salon and spa services. Custom nail art, luxury manicures & pedicures, gel nails, and spa treatments in downtown Calgary since 2015.",
-    url: "https://victoriaparknails.ca",
+      `Experience Calgary's finest nail salon and spa services. Custom nail art, luxury manicures & pedicures, gel nails, and spa treatments in downtown Calgary since ${businessInfo.founded}. Professional nail technicians in a relaxing, premium environment.`,
+    url: businessInfo.contact.website,
+    type: "website",
+    locale: "en_CA",
     images: [
       {
-        url: "/og-home.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Victoria Park Nails and Spa - Calgary's premier nail salon interior showcasing luxury manicure and pedicure stations",
+        url: "/Victoria_Park_Nails_Spa_Logo_Primary_small.png",
+        width: 800,
+        height: 600,
+        alt: `${businessInfo.name} - Calgary's premier nail salon interior showcasing luxury manicure and pedicure stations`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Victoria Park Nails and Spa | Calgary's Premier Nail Salon",
+    title: `${businessInfo.name} | Calgary's Premier Nail Salon`,
     description:
-      "Experience Calgary's finest nail salon services. Custom nail art, luxury spa treatments, and professional nail care in downtown Calgary.",
-    images: ["/og-home.jpg"],
+      `Experience Calgary's finest nail salon services. Custom nail art, luxury spa treatments, and professional nail care in downtown Calgary since ${businessInfo.founded}.`,
+    images: ["/Victoria_Park_Nails_Spa_Logo_Primary_small.png"],
+    creator: "@victoriaparknails",
   },
   alternates: {
-    canonical: "https://victoriaparknails.ca",
+    canonical: businessInfo.contact.website,
+  },
+  other: {
+    "revisit-after": "7 days",
+    "distribution": "global",
+    "rating": "general",
+    "page-topic": "Nail Salon, Beauty, Spa Services",
+    "page-type": "Home Page",
+    "audience": "Beauty enthusiasts, Calgary residents, Nail care seekers",
   },
 };
 

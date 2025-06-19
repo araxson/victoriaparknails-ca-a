@@ -1,5 +1,3 @@
-"use client";
-
 import { businessInfo } from "@/data";
 import {
   Card,
@@ -64,6 +62,9 @@ export function AboutSection() {
             <CardContent className="space-y-4 flex-grow">
               <p className="font-medium">
                 {businessInfo.address.fullAddress}
+              </p>
+              <p className="text-sm text-green-600 font-medium">
+                ✓ Free Parking Available
               </p>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
