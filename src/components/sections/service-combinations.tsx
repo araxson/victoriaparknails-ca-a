@@ -9,69 +9,60 @@ import * as React from "react";
 
 const popularPackages = [
 	{
-		name: "Bronze Package",
+		name: "Classic",
 		price: "60",
 		originalPrice: "65",
 		duration: "1 hr 15 mins",
 		popular: false,
 		icon: Award,
 		services: [
-			{ name: "Classic Manicure with Regular Polish", included: true },
-			{ name: "Classic Pedicure with Regular Polish", included: true }
+			{ name: "Classic Manicure", included: true },
+			{ name: "Classic Pedicure", included: true }
 		],
-		description: "Perfect entry-level package for essential nail care and maintenance.",
-		savings: "Save $5",
+		description: "The essential for a timeless, elegant look.",
+		savings: "You save $5!",
 	},
 	{
-		name: "Silver Package",
-		price: "80",
-		originalPrice: "90",
-		duration: "1 hr 40 mins",
+		name: "Essential",
+		price: "70",
+		originalPrice: "75",
+		duration: "1 hr 35 mins",
 		popular: true,
 		icon: Star,
 		services: [
 			{ name: "Shellac Manicure", included: true },
-			{ name: "Classic Pedicure with Regular Polish", included: true },
-			{ name: "French Tip", included: true }
+			{ name: "Classic Pedicure", included: true }
 		],
-		description: "Our most popular package - long-lasting hands with classic elegance.",
-		savings: "Save $10",
+		description: "The smart choice for long-lasting hands and beautiful feet.",
+		savings: "You save $5!",
 	},
 	{
-		name: "Gold Package",
-		price: "115",
-		originalPrice: "135",
-		duration: "2 hr 20 mins",
+		name: "Deluxe",
+		price: "80",
+		originalPrice: "90",
+		duration: "2 hrs",
 		popular: false,
 		icon: Crown,
 		services: [
-			{ name: "Shellac Manicure", included: true },
-			{ name: "Spa Pedicure with Hot Stones", included: true },
-			{ name: "French Tip", included: true },
-			{ name: "Simple Nail Art (2 nails)", included: true },
-			{ name: "Paraffin Wax Treatment - Hands", included: true }
+			{ name: "Classic Manicure with Paraffin", included: true },
+			{ name: "Spa Pedicure with Hot Stones", included: true }
 		],
-		description: "Luxurious spa experience with therapeutic treatments and artistic touches.",
-		savings: "Save $20",
+		description: "Your ultimate spa retreat to melt away stress.",
+		savings: "You save $10!",
 	},
 	{
-		name: "Platinum Package",
-		price: "155",
-		originalPrice: "185",
-		duration: "3 hrs",
+		name: "Perfection",
+		price: "75",
+		originalPrice: "80",
+		duration: "1 hr 45 mins",
 		popular: false,
 		icon: Gem,
 		services: [
-			{ name: "Premium Gel Overlay", included: true },
-			{ name: "Deluxe Spa Pedicure", included: true },
-			{ name: "French Tip", included: true },
-			{ name: "Custom Nail Art (2-4 nails)", included: true },
-			{ name: "Cat Eyes Ombre", included: true },
-			{ name: "Paraffin Wax Treatment - Hands", included: true },
-			{ name: "Paraffin Wax Treatment - Feet", included: true }
+			{ name: "Shellac Manicure", included: true },
+			{ name: "Shellac Pedicure", included: true }
 		],
-		description: "The ultimate luxury nail experience with premium treatments and custom artistry.",
-		savings: "Save $30",
+		description: "Worry-free, chip-proof shine from head to toe.",
+		savings: "You save $5!",
 	},
 ];
 
@@ -193,17 +184,16 @@ export function ServicePricingComparison() {
 									? "bg-primary text-primary-foreground border-primary hover:bg-primary/90"
 									: "border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary"
 							}`}
-						>
-							<span className="flex items-center justify-center gap-2">
+						>							<span className="flex items-center justify-center gap-2">
 								{pkg.popular ? (
 									<>
 										<Star className="h-4 w-4" />
 										Book Most Popular
 									</>
-								) : pkg.name === "Platinum Package" ? (
+								) : pkg.name === "Perfection" ? (
 									<>
 										<Gem className="h-4 w-4" />
-										Book Ultimate Luxury
+										Book Perfection
 									</>
 								) : (
 									<>
@@ -219,11 +209,10 @@ export function ServicePricingComparison() {
 	};
 	return (
 		<Section variant="muted" className="py-16" id="packages">
-			<div className="container">
-				<SectionHeader
+			<div className="container">				<SectionHeader
 					badge="Nail Care Packages"
-					title="Complete Nail Service Packages That Save You More"
-					description="Choose from our Bronze, Silver, Gold, and Platinum nail care packages. Each tier includes everything from the previous level plus premium upgrades for the ultimate nail experience."
+					title="Service Combinations That Save You More"
+					description="Choose from our curated service combinations designed to give you the perfect nail care experience at unbeatable value. Each package combines complementary services for maximum savings and beauty."
 				/>{" "}
 				{/* Mobile Carousel */}
 				{isMobile ? (

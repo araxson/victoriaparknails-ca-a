@@ -3,8 +3,6 @@
 import { teamMembers } from "@/data/team";
 import {
   Card,
-  CardHeader,
-  CardDescription,
   CardContent,
   CardFooter,
   Badge,
@@ -46,49 +44,47 @@ export function TeamSection() {
         key={member.id} 
         className="flex flex-col overflow-hidden transition-all duration-300 p-0 border border-border h-full"
       >
-        <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-secondary/20 pt-8 pb-4">
-          <Avatar className="w-28 h-28 mx-auto border border-background">
-            <AvatarImage
-              src={member.image ?? "/avatar-placeholder.webp"}
-              alt={member.name}
-            />
-            <AvatarFallback className="text-2xl bg-secondary text-background">
-              {member.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </AvatarFallback>
-          </Avatar>
-        </div>
-
-        <CardHeader className="text-center space-y-1 p-4 pb-0">
-          <h2 className="text-xl font-semibold text-primary">{member.name}</h2>
-          <CardDescription className="font-medium">{member.position}</CardDescription>
-          
-          <div className="flex items-center justify-center gap-3 mt-1">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
-              <span>{member.experience}</span>
+        <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-secondary/20 p-4">
+          <div className="flex items-start gap-4">
+            <Avatar className="w-20 h-20 border border-background flex-shrink-0">
+              <AvatarImage
+                src={member.image ?? "/avatar-placeholder.webp"}
+                alt={member.name}
+              />
+              <AvatarFallback className="text-lg bg-secondary text-background">
+                {member.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
+              </AvatarFallback>
+            </Avatar>
+            
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg font-semibold text-primary mb-1">{member.name}</h2>
+              <p className="text-sm font-medium text-muted-foreground mb-2">{member.position}</p>
+              
+              <div className="flex items-center gap-1 mb-3">
+                <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
+                <span className="text-xs text-muted-foreground">{member.experience}</span>
+              </div>
+              
+              <div>
+                <div className="flex flex-wrap gap-1">
+                  {member.specialties.map((specialty, index) => (
+                    <Badge key={index} variant="outline" className="text-xs font-normal">
+                      {specialty}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </CardHeader>
+        </div>
 
         <Separator />
         
         <CardContent className="flex-grow p-4 pt-3 pb-2">
-          <div className="space-y-4">
-            {/* Specialties */}
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-wide mb-2 text-muted-foreground">Specialties</h4>
-              <div className="flex flex-wrap gap-1.5">
-                {member.specialties.map((specialty, index) => (
-                  <Badge key={index} variant="outline" className="text-xs font-normal">
-                    {specialty}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            
+          <div className="space-y-4">            
             {/* Certifications */}
             {member.certifications && member.certifications.length > 0 && (
               <div>
