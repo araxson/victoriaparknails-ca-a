@@ -44,7 +44,7 @@ export function TestimonialsSection() {
       <Star
         key={i}
         className={`h-4 w-4 ${
-          i < rating ? "text-primary fill-current" : "text-muted-foreground"
+          i < rating ? "text-amber-500 fill-current" : "text-muted-foreground"
         }`}
       />
     ));
