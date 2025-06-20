@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbo",
-    "build": "next build",
-    "build:static": "next build",
-    "build:analyze": "ANALYZE=true next build",
+    "build": "npm run gallery:manifest && next build",
+    "build:static": "npm run gallery:manifest && next build",
+    "build:analyze": "npm run gallery:manifest && ANALYZE=true next build",
+    "build:optimized": "node scripts/optimize-gallery.js && npm run gallery:manifest && next build",
+    "gallery:analyze": "node scripts/optimize-gallery.js",
+    "gallery:manifest": "node scripts/generate-gallery-manifest.js",
     "start": "next start",
     "serve:static": "npx serve out",
     "lint": "next lint"

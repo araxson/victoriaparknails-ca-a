@@ -101,7 +101,7 @@ export const services: ServiceCategory[] = [
             duration: "60 mins",
             price: "45",
             shortDescription: "Keep your nails always perfect",
-            details: "Keep your nails always perfect, nail extensions to nails. We'll fill in growth areas, reshape as needed, and give you a fresh polish change. Regular maintenance keeps your extensions strong and beautiful between appointments."
+            details: "Keep your nails always perfect. We'll fill in growth areas, reshape as needed, and give you a fresh polish change. Regular maintenance keeps your nails strong and beautiful between appointments."
           }
         ],
       },
@@ -186,11 +186,11 @@ export const services: ServiceCategory[] = [
             details: "Classic never goes out of style! Beautiful white tips with a natural base create an elegant, sophisticated look that goes with everything and makes your fingers look longer and more graceful."
           },
           {
-            name: "Chrome, Cateye Ombre",
+            name: "Chrome, Cateye or Ombre",
             duration: "10 mins",
             price: "15",
             shortDescription: "Eye-catching metallic magic",
-            details: "Make a statement with stunning effects! Choose mirror-like chrome for ultra-glam or mesmerizing cat eye patterns that shift and flow. These specialty finishes create nails that are truly show-stopping."
+            details: "Make a statement with stunning effects! Choose mirror-like chrome for ultra-glam, mesmerizing cat eye patterns that shift and flow, or beautiful ombre gradients that blend colors seamlessly. These specialty finishes create nails that are truly show-stopping."
           },
           {
             name: "Simple Nail Art",

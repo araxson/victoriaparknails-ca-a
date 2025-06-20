@@ -1,10 +1,15 @@
 import { GalleryImage } from "./types";
+import { 
+  getAllGalleryImagesFromFolder, 
+  getRandomGalleryImages,
+  getFeaturedGalleryImages as getDynamicFeaturedImages
+} from "@/lib/gallery-loader";
 
 /**
- * Static gallery images - All images are defined here for SSG optimization
- * This eliminates the need for dynamic API calls and enables full static generation
+ * Static gallery images - Fallback for SSG and when dynamic loading fails
+ * This ensures the site works even without file system access
  */
-export const galleryImages: GalleryImage[] = [
+export const fallbackGalleryImages: GalleryImage[] = [
   {
     src: "/images/gallery/victoriaparknails-0001.webp",
     alt: "Victoria Park Nails - Professional manicure service",
@@ -96,15 +101,52 @@ export const galleryImages: GalleryImage[] = [
 ];
 
 /**
- * Get a subset of gallery images for featured display
+ * Get all gallery images dynamically from the filesystem
+ * Falls back to static images if dynamic loading fails
  */
-export function getFeaturedGalleryImages(count: number = 8): GalleryImage[] {
-  return galleryImages.slice(0, count);
+export async function getAllGalleryImages(): Promise<GalleryImage[]> {
+  try {
+    const dynamicImages = await getAllGalleryImagesFromFolder();
+    return dynamicImages.length > 0 ? dynamicImages : fallbackGalleryImages;
+  } catch (error) {
+    console.error("Failed to load gallery images dynamically, using fallback:", error);
+    return fallbackGalleryImages;
+  }
 }
 
 /**
- * Get all gallery images (for full gallery page)
+ * Get a random subset of gallery images for featured display
+ * @param count Number of images to return (default: 8)
+ * @param randomize Whether to randomize the selection (default: true)
  */
-export function getAllGalleryImages(): GalleryImage[] {
-  return galleryImages;
+export async function getFeaturedGalleryImages(
+  count: number = 8, 
+  randomize: boolean = true
+): Promise<GalleryImage[]> {
+  try {
+    return await getDynamicFeaturedImages(count, randomize);
+  } catch (error) {
+    console.error("Failed to load featured images dynamically, using fallback:", error);
+    const images = randomize 
+      ? getRandomGalleryImages(fallbackGalleryImages, count)
+      : fallbackGalleryImages.slice(0, count);
+    return images;
+  }
+}
+
+/**
+ * Get random gallery images for dynamic displays
+ * @param count Number of images to return (default: 30)
+ */
+export async function getRandomGalleryImagesAsync(count: number = 30): Promise<GalleryImage[]> {
+  const allImages = await getAllGalleryImages();
+  return getRandomGalleryImages(allImages, count);
+}
+
+/**
+ * Legacy function for backward compatibility
+ * @deprecated Use getFeaturedGalleryImages instead
+ */
+export function getFeaturedGalleryImagesSync(count: number = 8): GalleryImage[] {
+  return fallbackGalleryImages.slice(0, count);
 }

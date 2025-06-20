@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { Metadata } from "next";
-import { getAllGalleryImages } from "@/data/gallery";
+import { getRandomGalleryImagesAsync } from "@/data/gallery";
 import { HeroSection } from "@/components/sections/hero-section";
 import { CtaSection } from "@/components/sections/cta-section";
 import { Section } from "@/components/layouts";
@@ -77,9 +77,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GalleryPage() {
-  // Get all gallery images statically at build time
-  const allGalleryImages = getAllGalleryImages();
+export default async function GalleryPage() {
+  // Get 30 random gallery images dynamically at build time
+  // This will automatically include any new images added to the gallery folder
+  const randomGalleryImages = await getRandomGalleryImagesAsync(30);
 
   return (
     <>
@@ -96,12 +97,12 @@ export default function GalleryPage() {
             <div className="mb-8">
               <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Our Gallery</h1>
               <p className="text-muted-foreground">
-                {allGalleryImages.length} beautiful images showcasing our work
+                Featuring {randomGalleryImages.length} beautiful images showcasing our work
               </p>
             </div>
             
-            {/* Static Gallery with Client-side Interactivity */}
-            <StaticGalleryClient images={allGalleryImages} />
+            {/* Dynamic Gallery with Client-side Interactivity */}
+            <StaticGalleryClient images={randomGalleryImages} />
           </div>
         </Section>
         

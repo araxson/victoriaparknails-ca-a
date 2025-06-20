@@ -4,7 +4,12 @@
 export { businessInfo } from "./business-info";
 export { websiteContent } from "./content";
 export { faqs } from "./faqs";
-export { galleryImages, getAllGalleryImages, getFeaturedGalleryImages } from "./gallery";
+export { 
+  fallbackGalleryImages as galleryImages, 
+  getAllGalleryImages, 
+  getFeaturedGalleryImages,
+  getRandomGalleryImagesAsync
+} from "./gallery";
 export { offers } from "./offers";
 export { services, serviceCategories, getServicesByCategory, getServiceById } from "./services";
 export { teamMembers } from "./team";

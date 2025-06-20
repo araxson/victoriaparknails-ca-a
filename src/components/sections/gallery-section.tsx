@@ -7,9 +7,10 @@ import { StaticGalleryGrid } from "@/components/ui/gallery-grid-static";
 import { ArrowRight } from "lucide-react";
 import { getFeaturedGalleryImages } from "@/data/gallery";
 
-export function GallerySection() {
-  // Get featured gallery images statically at build time
-  const featuredImages = getFeaturedGalleryImages(8);
+export async function GallerySection() {
+  // Get featured gallery images dynamically at build time
+  // This will automatically include any new images added to the gallery folder
+  const featuredImages = await getFeaturedGalleryImages(8, true);
 
   return (
     <Section variant="muted" id="gallery">

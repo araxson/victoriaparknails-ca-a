@@ -7,6 +7,7 @@ import { CheckCircle, Star, Crown, Clock, Award, Gem } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { businessInfo } from "@/data/business-info";
 import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
 
 const popularPackages = [
 	{
@@ -69,6 +70,9 @@ const popularPackages = [
 
 export function ServicePricingComparison() {
 	const isMobile = useIsMobile();
+	const plugin = React.useRef(
+		Autoplay({ delay: 3000, stopOnInteraction: true }),
+	);
 	const [api, setApi] = React.useState<CarouselApi>();
 	const [current, setCurrent] = React.useState(0);
 
@@ -114,9 +118,8 @@ export function ServicePricingComparison() {
 							<div className="grid gap-2 min-w-0">
 								<CardTitle className="text-xl font-playfair font-semibold text-foreground leading-tight">
 									{pkg.name}
-								</CardTitle>
-								<div className="flex items-center gap-2">
-									<div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/40 px-3 py-1 rounded-full">
+								</CardTitle>								<div className="flex items-center gap-2">
+									<div className="flex items-center gap-1.5 text-[10px] text-muted-foreground bg-muted/40 px-3 py-1 rounded-full">
 										<Clock className="h-3 w-3" />
 										<span className="font-small">{pkg.duration}</span>
 									</div>
@@ -239,14 +242,13 @@ export function ServicePricingComparison() {
 					badge="Nail Care Packages"
 					title="Service Combinations That Save You More"
 					description="Choose from our curated service combinations designed to give you the perfect nail care experience at unbeatable value. Each package combines complementary services for maximum savings and beauty."
-				/>
-
-				{/* Mobile Carousel */}
+				/>				{/* Mobile Carousel */}
 				{isMobile ? (
 					<div className="relative px-[-4px]">
 						<div className="-mx-4">
 							<Carousel
 								setApi={setApi}
+								plugins={[plugin.current]}
 								opts={{
 									align: "start",
 									loop: false,
@@ -254,16 +256,20 @@ export function ServicePricingComparison() {
 									containScroll: "trimSnaps",
 								}}
 								className="w-full"
+								onMouseEnter={plugin.current.stop}
+								onMouseLeave={plugin.current.reset}
 							>
 								<CarouselContent className="ml-4">
 									{popularPackages.map((pkg) => (
-										<CarouselItem key={pkg.name} className="mr-4 basis-[90%] sm:basis-[75%] md:basis-[60%]">
+										<CarouselItem key={pkg.name} className="mr-4 basis-[85%] sm:basis-[70%]">
 											{renderPackageCard(pkg)}
 										</CarouselItem>
 									))}
 								</CarouselContent>
 							</Carousel>
-						</div>						{/* Interactive Dots indicator */}
+						</div>
+						
+						{/* Interactive Dots indicator */}
 						<div className="flex justify-center mt-6 gap-2">
 							{popularPackages.map((_, index) => (
 								<Button
@@ -280,11 +286,14 @@ export function ServicePricingComparison() {
 								/>
 							))}
 						</div>
-					</div>
-				) : (
-					/* Desktop Grid */
-					<div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-						{popularPackages.map((pkg) => renderPackageCard(pkg))}
+					</div>				) : (
+					/* Desktop 2x2 Grid */
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+						{popularPackages.map((pkg) => (
+							<div key={pkg.name} className="h-full">
+								{renderPackageCard(pkg)}
+							</div>
+						))}
 					</div>
 				)}
 			</div>
