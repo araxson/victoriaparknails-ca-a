@@ -6,17 +6,12 @@ import { GalleryImage } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { Image } from "./image";
 import { Button } from "@/components/ui/shadcn/button";
-
-// Constants
-const GRID_COLUMN_CONFIGS = {
-  2: { grid: "grid-cols-3 sm:grid-cols-2", sizes: "(max-width: 640px) 33.33vw, 50vw" },
-  3: { grid: "grid-cols-3", sizes: "33.33vw" },
-  4: { grid: "grid-cols-3 sm:grid-cols-3 md:grid-cols-4", sizes: "(max-width: 768px) 33.33vw, 25vw" },
-  5: { grid: "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5", sizes: "(max-width: 640px) 33.33vw, (max-width: 768px) 33.33vw, (max-width: 1024px) 25vw, 20vw" },
-  6: { grid: "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6", sizes: "(max-width: 640px) 33.33vw, (max-width: 768px) 33.33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16.66vw" },
-} as const;
-
-const MASONRY_GRID = "columns-3 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 gap-4";
+import { 
+  MASONRY_GRID,
+  GALLERY_ANIMATION_CLASSES,
+  getGridConfig,
+  getImageAlt 
+} from "@/lib/gallery-config";
 
 interface GalleryGridProps {
   images: GalleryImage[];
@@ -26,18 +21,6 @@ interface GalleryGridProps {
   variant?: "default" | "masonry";
   interactive?: boolean;
 }
-
-// Utility functions
-const getGridConfig = (columns: keyof typeof GRID_COLUMN_CONFIGS) => 
-  GRID_COLUMN_CONFIGS[columns] || GRID_COLUMN_CONFIGS[6];
-
-const getImageAlt = (alt: string | undefined, index: number) => 
-  alt || `Gallery image ${index + 1}`;
-
-// Interactive components
-const HOVER_OVERLAY = "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300";
-const HOVER_ICON = "absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0";
-const ICON_CONTAINER = "bg-white/20 backdrop-blur-sm rounded-full p-3 border border-white/30";
 
 // Main gallery component - optimized for both static and interactive use
 export function GalleryGrid({
@@ -61,7 +44,7 @@ export function GalleryGrid({
                 variant="outline"
                 size="lg"
                 onClick={() => onImageClick(index)}
-                className="group relative block w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] p-0 h-auto"
+                className={`group relative block w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 ${GALLERY_ANIMATION_CLASSES.hover} p-0 h-auto`}
               >
                 <div className="relative w-full">
                   <Image
@@ -73,9 +56,9 @@ export function GalleryGrid({
                     sizes={imageSizes}
                     loading="lazy"
                   />
-                  <div className={HOVER_OVERLAY} />
-                  <div className={HOVER_ICON}>
-                    <div className={ICON_CONTAINER}>
+                  <div className={GALLERY_ANIMATION_CLASSES.hoverOverlay} />
+                  <div className={GALLERY_ANIMATION_CLASSES.hoverIcon}>
+                    <div className={GALLERY_ANIMATION_CLASSES.iconContainer}>
                       <ZoomIn className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -112,7 +95,7 @@ export function GalleryGrid({
             variant="outline"
             size="lg"
             onClick={() => onImageClick(index)}
-            className="group relative block aspect-square w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] p-0 h-auto"
+            className={`group relative block aspect-square w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 ${GALLERY_ANIMATION_CLASSES.hover} p-0 h-auto`}
           >
             <Image
               src={image.src}
@@ -122,9 +105,9 @@ export function GalleryGrid({
               sizes={imageSizes}
               loading="lazy"
             />
-            <div className={HOVER_OVERLAY} />
-            <div className={HOVER_ICON}>
-              <div className={ICON_CONTAINER}>
+            <div className={GALLERY_ANIMATION_CLASSES.hoverOverlay} />
+            <div className={GALLERY_ANIMATION_CLASSES.hoverIcon}>
+              <div className={GALLERY_ANIMATION_CLASSES.iconContainer}>
                 <ZoomIn className="h-6 w-6 text-white" />
               </div>
             </div>

@@ -64,6 +64,7 @@ export interface TeamMember {
   specialties: string[];
   experience: string;
   certifications?: string[];
+  bookingUrl?: string;
 }
 
 // Testimonial Types
@@ -73,8 +74,8 @@ export interface Testimonial {
   rating: number;
   review: string;
   date: string;
-  service?: string;
-  verified?: boolean;
+  service: string;
+  verified: boolean;
 }
 
 // FAQ Types

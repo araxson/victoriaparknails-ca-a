@@ -1,13 +1,43 @@
 import * as React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui";
+import { Button, GallerySkeleton } from "@/components/ui";
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
 import { StaticGalleryGrid } from "@/components/ui/gallery-grid-static";
 import { ArrowRight } from "lucide-react";
 import { getFeaturedGalleryImages } from "@/data/gallery";
 
-export async function GallerySection() {
+interface GallerySectionProps {
+  isLoading?: boolean;
+}
+
+export async function GallerySection({ isLoading = false }: GallerySectionProps) {
+  if (isLoading) {
+    return (
+      <Section variant="muted" id="gallery">
+        <div className="container">
+          <SectionHeader
+            badge="Our Work"
+            title="Gallery"
+            description="Browse our collection of beautiful nail art and transformations"
+            centered
+          />
+          
+          <div className="mt-8">
+            <GallerySkeleton 
+              count={8}
+              columns={4}
+            />
+          </div>
+          
+          <div className="text-center mt-8">
+            <div className="h-10 w-40 bg-muted rounded-md mx-auto animate-pulse" />
+          </div>
+        </div>
+      </Section>
+    );
+  }
+
   // Get featured gallery images dynamically at build time
   // This will automatically include any new images added to the gallery folder
   const featuredImages = await getFeaturedGalleryImages(8, true);

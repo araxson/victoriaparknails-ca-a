@@ -5,7 +5,6 @@ import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
 import { CheckCircle, Star, Crown, Clock, Award, Gem } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { businessInfo } from "@/data/business-info";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -17,6 +16,7 @@ const popularPackages = [
 		duration: "2 hrs",
 		popular: true,
 		icon: Crown,
+		bookingUrl: "https://victoriaparknailsspa.setmore.com/book?step=staff&products=33278099-dbf1-454a-b169-30b2ff093286&type=service",
 		services: [
 			{ name: "Shellac Manicure", included: true },
 			{ name: "Deluxe Spa Pedicure", included: true }
@@ -31,6 +31,7 @@ const popularPackages = [
 		duration: "1 hr 15 mins",
 		popular: false,
 		icon: Award,
+		bookingUrl: "https://victoriaparknailsspa.setmore.com/book?step=staff&products=d95a021e-d7ca-4e44-b065-f22a634955ea&type=service",
 		services: [
 			{ name: "Classic Manicure with regular polish", included: true },
 			{ name: "Classic Pedicure with regular polish", included: true }
@@ -45,6 +46,7 @@ const popularPackages = [
 		duration: "1 hr 35 mins",
 		popular: false,
 		icon: Star,
+		bookingUrl: "https://victoriaparknailsspa.setmore.com/book?step=staff&products=e23a8336-3303-4193-a9dc-47025c307144&type=service",
 		services: [
 			{ name: "Shellac Manicure", included: true },
 			{ name: "Classic Pedicure with regular polish", included: true }
@@ -59,6 +61,7 @@ const popularPackages = [
 		duration: "1 hr 45 mins",
 		popular: false,
 		icon: Gem,
+		bookingUrl: "https://victoriaparknailsspa.setmore.com/book?step=staff&products=cae22bc2-9fa6-4555-a560-67adb65db4ae&type=service",
 		services: [
 			{ name: "Shellac Manicure", included: true },
 			{ name: "Shellac Pedicure", included: true }
@@ -207,7 +210,7 @@ export function ServicePricingComparison() {
 							}`}
 						>
 							<a
-								href={businessInfo.contact.bookingUrl}
+								href={pkg.bookingUrl}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center justify-center gap-2"

@@ -19,9 +19,11 @@ function generateAltText(filename) {
   const nameWithoutExt = filename.replace(/\.[^/.]+$/, '');
   
   // Handle different naming patterns
+  const BUSINESS_NAME = "Victoria Park Nails";
+  
   if (nameWithoutExt.includes('victoriaparknails')) {
     const number = nameWithoutExt.match(/\d+/)?.[0];
-    return `Victoria Park Nails - Professional nail art and design showcase ${number || ''}`.trim();
+    return `${BUSINESS_NAME} - Professional nail art and design showcase ${number || ''}`.trim();
   }
   
   // Convert filename to readable alt text
@@ -30,7 +32,7 @@ function generateAltText(filename) {
     .replace(/\b\w/g, l => l.toUpperCase())
     .trim();
     
-  return `Victoria Park Nails - ${readable}`;
+  return `${BUSINESS_NAME} - ${readable}`;
 }
 
 async function generateGalleryManifest() {

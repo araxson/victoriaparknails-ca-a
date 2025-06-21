@@ -163,7 +163,7 @@ export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: Se
                                 className="w-full justify-center gap-1.5 text-xs font-medium"
                               >
                                 <a 
-                                  href={businessInfo.contact.bookingUrl}
+                                  href={service.bookingUrl || businessInfo.contact.bookingUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="flex items-center"

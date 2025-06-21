@@ -117,7 +117,7 @@ export function TeamSection() {
 
         <CardFooter className="p-4 pt-2">
           <Link 
-            href={businessInfo.contact.bookingUrl}
+            href={member.bookingUrl || businessInfo.contact.bookingUrl}
             passHref
             target="_blank"
             rel="noopener noreferrer"

@@ -7,8 +7,7 @@ import { Image } from "@/components/ui";
  * Header logo component with business name and tagline
  * Displays the business logo and name with proper accessibility
  */
-export const HeaderLogo = memo(function HeaderLogo() {
-  return (
+export const HeaderLogo = memo(function HeaderLogo() {  return (
     <Link
       href="/"
       className="flex items-center space-x-3 transition-opacity hover:opacity-80"
@@ -31,8 +30,7 @@ export const HeaderLogo = memo(function HeaderLogo() {
         </h1>
         <span className="text-sm text-muted-foreground leading-tight">
           {businessInfo.tagline}
-        </span>
-      </div>
+        </span>      </div>
     </Link>
   );
 });

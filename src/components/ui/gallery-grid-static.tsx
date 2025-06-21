@@ -2,17 +2,11 @@ import * as React from "react";
 import { GalleryImage } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { Image } from "./image";
-
-// Constants
-const GRID_COLUMN_CONFIGS = {
-  2: { grid: "grid-cols-3 sm:grid-cols-2", sizes: "(max-width: 640px) 33.33vw, 50vw" },
-  3: { grid: "grid-cols-3", sizes: "33.33vw" },
-  4: { grid: "grid-cols-3 sm:grid-cols-3 md:grid-cols-4", sizes: "(max-width: 768px) 33.33vw, 25vw" },
-  5: { grid: "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5", sizes: "(max-width: 640px) 33.33vw, (max-width: 768px) 33.33vw, (max-width: 1024px) 25vw, 20vw" },
-  6: { grid: "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6", sizes: "(max-width: 640px) 33.33vw, (max-width: 768px) 33.33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16.66vw" },
-} as const;
-
-const MASONRY_GRID = "columns-3 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 gap-4";
+import { 
+  MASONRY_GRID,
+  getGridConfig,
+  getImageAlt 
+} from "@/lib/gallery-config";
 
 interface StaticGalleryGridProps {
   images: GalleryImage[];
@@ -20,13 +14,6 @@ interface StaticGalleryGridProps {
   columns?: 2 | 3 | 4 | 5 | 6;
   variant?: "default" | "masonry";
 }
-
-// Utility functions
-const getGridConfig = (columns: keyof typeof GRID_COLUMN_CONFIGS) => 
-  GRID_COLUMN_CONFIGS[columns] || GRID_COLUMN_CONFIGS[6];
-
-const getImageAlt = (alt: string | undefined, index: number) => 
-  alt || `Gallery image ${index + 1}`;
 
 /**
  * Server-only gallery grid component optimized for SSG

@@ -20,6 +20,7 @@ export const teamMembers: TeamMember[] = [
       "Advanced Gel Certification",
       "Nail Art Specialist",
     ],
+    bookingUrl: "https://victoriaparknailsspa.setmore.com/team/cyenzUfc96WJtwAUlopx7DhYQ83kffxi",
   },
   {
     id: "evon",
@@ -40,6 +41,7 @@ export const teamMembers: TeamMember[] = [
       "Pedicure Specialist",
       "Advanced Nail Art Certification"
     ],
+    bookingUrl: "https://victoriaparknailsspa.setmore.com/team/cLetBzJqo9uYtJFldrdZpDYEbgo7v4ne",
   },
   {
     id: "samie",
@@ -59,6 +61,7 @@ export const teamMembers: TeamMember[] = [
       "Nail Art & Nail Technology Certification from the international ibi institution",
       "Acrylic Extension Specialist",
     ],
+    bookingUrl: "https://victoriaparknailsspa.setmore.com/team/cNsVJHwzW7yBam6mFFdWrlsMAGehj4Om",
   },
   {
     id: "rita",
@@ -78,5 +81,6 @@ export const teamMembers: TeamMember[] = [
       "Certified Nail Technician",
       "Advanced Nail Art Specialist",
     ],
+    bookingUrl: "https://victoriaparknailsspa.setmore.com/team/r360e1663875729418",
   },
 ];

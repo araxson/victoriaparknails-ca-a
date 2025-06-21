@@ -10,6 +10,7 @@ import {
   type CarouselApi,
   Button,
   Image,
+  Skeleton,
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
@@ -164,7 +165,7 @@ export function GalleryCarousel({
                 <CarouselItem key={`image-${index}`} className="h-full flex items-center justify-center">
                   <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] max-h-[80vh] overflow-hidden flex items-center justify-center">
                     {!isImageLoaded && (
-                      <div className="absolute inset-0 bg-gray-800 animate-pulse rounded-lg" />
+                      <Skeleton className="absolute inset-0 rounded-lg" />
                     )}
                     <Image
                       src={image.src}

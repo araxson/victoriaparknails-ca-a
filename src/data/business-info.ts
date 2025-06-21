@@ -1,7 +1,8 @@
 import { BusinessInfo } from "./types";
+import { BUSINESS_CONSTANTS } from "@/lib/constants";
 
 export const businessInfo: BusinessInfo = {
-  name: "Victoria Park Nails and Spa",
+  name: BUSINESS_CONSTANTS.name.full,
   tagline: "Experience Tranquility. Unveil Your Radiance.",
   description:
     "Calgary's premier nail salon and spa offering exceptional manicures, pedicures, custom nail art, and luxury spa treatments since 2015.",
@@ -10,8 +11,8 @@ export const businessInfo: BusinessInfo = {
     street: "1411 1st Street SE",
     city: "Calgary",
     province: "AB",
-    postalCode: "T2G 2G3",
-    fullAddress: "1411 1st Street SE, Calgary, AB T2G 2G3",
+    postalCode: "T2G 2J3",
+    fullAddress: "1411 1st Street SE, Calgary, AB T2G 2J3",
   },
   contact: {
     phone: "(403) 719-3600",

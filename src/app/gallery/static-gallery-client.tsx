@@ -3,7 +3,7 @@
 import * as React from "react";
 import { GalleryGrid } from "@/components/ui/gallery-grid";
 import { GalleryModal } from "@/components/ui/gallery-modal";
-import { Button } from "@/components/ui";
+import { Button, GallerySkeleton } from "@/components/ui";
 import { GalleryImage } from "@/data/types";
 
 interface StaticGalleryClientProps {
@@ -13,6 +13,13 @@ interface StaticGalleryClientProps {
 export function StaticGalleryClient({ images: galleryImages }: StaticGalleryClientProps) {
   const [modalOpen, setModalOpen] = React.useState(false);
   const [initialIndex, setInitialIndex] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
+  
+  // Simulate loading state for initial render
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
   
   // Load more functionality
   const ITEMS_PER_ROW = 12;
@@ -41,16 +48,18 @@ export function StaticGalleryClient({ images: galleryImages }: StaticGalleryClie
   const handleCloseModal = () => {
     setModalOpen(false);
   };
-
   return (
     <>
-      <GalleryGrid
-        images={visibleImages}
-        onImageClick={handleImageClick}
-        columns={6}
-      />
-      
-      {hasMoreImages && (
+      {isLoading ? (
+        <GallerySkeleton count={visibleCount} columns={6} />
+      ) : (
+        <GalleryGrid
+          images={visibleImages}
+          onImageClick={handleImageClick}
+          columns={6}
+        />
+      )}      
+      {!isLoading && hasMoreImages && (
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
           <Button onClick={handleLoadMore} size="lg" className="px-8">
             Load More Images
@@ -69,7 +78,7 @@ export function StaticGalleryClient({ images: galleryImages }: StaticGalleryClie
         </div>
       )}
       
-      {!hasMoreImages && galleryImages.length > ITEMS_PER_ROW && (
+      {!isLoading && !hasMoreImages && galleryImages.length > ITEMS_PER_ROW && (
         <div className="text-center mt-12 py-8 border-t">
           <p className="text-muted-foreground">
             You&apos;ve reached the end of our gallery. 

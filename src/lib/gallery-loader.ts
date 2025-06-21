@@ -16,7 +16,7 @@ async function loadManifest() {
     const manifest = await import('@/data/gallery-manifest.json');
     galleryManifest = manifest.default || manifest;
     return galleryManifest;
-  } catch (error) {
+  } catch {
     console.warn('Gallery manifest not found, using fallback images');
     return null;
   }
@@ -29,27 +29,6 @@ async function loadManifest() {
 export async function getAllGalleryImagesFromFolder(): Promise<GalleryImage[]> {
   const manifest = await loadManifest();
   return manifest?.images || [];
-}
-
-/**
- * Generate meaningful alt text from filename
- */
-function generateAltText(filename: string): string {
-  const nameWithoutExt = filename.replace(/\.[^/.]+$/, '');
-  
-  // Handle different naming patterns
-  if (nameWithoutExt.includes('victoriaparknails')) {
-    const number = nameWithoutExt.match(/\d+/)?.[0];
-    return `Victoria Park Nails - Professional nail art and design showcase ${number || ''}`.trim();
-  }
-  
-  // Convert filename to readable alt text
-  const readable = nameWithoutExt
-    .replace(/[-_]/g, ' ')
-    .replace(/\b\w/g, l => l.toUpperCase())
-    .trim();
-    
-  return `Victoria Park Nails - ${readable}`;
 }
 
 /**

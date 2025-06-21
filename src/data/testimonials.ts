@@ -1,15 +1,5 @@
 import { businessInfo } from "./business-info";
-
-// Define Testimonial interface for better type safety
-export interface Testimonial {
-  id: string;
-  name: string;
-  rating: number;
-  review: string;
-  date: string;
-  service: string;
-  verified: boolean;
-}
+import { Testimonial } from "./types";
 
 export const testimonials: Testimonial[] = [
   {
