@@ -27,7 +27,11 @@ export function TestimonialsSection() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
 
-  const displayTestimonials = testimonials.slice(0, 9);
+  // Shuffle testimonials and take 15 random ones
+  const displayTestimonials = React.useMemo(() => {
+    const shuffled = [...testimonials].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 15);
+  }, []);
 
   React.useEffect(() => {
     if (!api) return;
