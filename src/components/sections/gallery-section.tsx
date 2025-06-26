@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Button, GallerySkeleton } from "@/components/ui";
 import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
-import { StaticGalleryGrid } from "@/components/ui/gallery-grid-static";
 import { ArrowRight } from "lucide-react";
-import { getFeaturedGalleryImages } from "@/lib/gallery-loader";
+import { getAllGalleryImages } from "@/lib/gallery-loader";
+import { ClientGalleryGrid } from "@/components/ui/client-gallery-grid";
 
 interface GallerySectionProps {
   isLoading?: boolean;
@@ -38,9 +38,9 @@ export async function GallerySection({ isLoading = false }: GallerySectionProps)
     );
   }
 
-  // Get featured gallery images dynamically at build time
-  // This will automatically include any new images added to the gallery folder
-  const featuredImages = await getFeaturedGalleryImages(8, true);
+  // Get ALL gallery images for client-side randomization
+  // This ensures fresh random selection on every page visit
+  const allGalleryImages = await getAllGalleryImages();
 
   return (
     <Section variant="muted" id="gallery">
@@ -53,9 +53,11 @@ export async function GallerySection({ isLoading = false }: GallerySectionProps)
         />
         
         <div className="mt-8">
-          <StaticGalleryGrid 
-            images={featuredImages} 
+          <ClientGalleryGrid 
+            images={allGalleryImages} 
             columns={4}
+            displayCount={8}
+            randomizeOnClient={true}
           />
         </div>
         

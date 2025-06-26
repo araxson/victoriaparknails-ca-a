@@ -8,18 +8,45 @@ import { GalleryImage } from "@/data/types";
 
 interface StaticGalleryClientProps {
   images: GalleryImage[];
+  randomizeOnClient?: boolean;
+  displayCount?: number;
 }
 
-export function StaticGalleryClient({ images: galleryImages }: StaticGalleryClientProps) {
+// Fisher-Yates shuffle algorithm for client-side randomization
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+export function StaticGalleryClient({ 
+  images: initialImages, 
+  randomizeOnClient = true,
+  displayCount = 30 
+}: StaticGalleryClientProps) {
   const [modalOpen, setModalOpen] = React.useState(false);
   const [initialIndex, setInitialIndex] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [galleryImages, setGalleryImages] = React.useState<GalleryImage[]>(initialImages);
   
-  // Simulate loading state for initial render
+  // Client-side randomization effect
   React.useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    if (randomizeOnClient && initialImages.length > 0) {
+      // Randomize and select images on client side
+      const shuffled = shuffleArray(initialImages);
+      const selected = shuffled.slice(0, Math.min(displayCount, shuffled.length));
+      setGalleryImages(selected);
+    } else {
+      setGalleryImages(initialImages);
+    }
+    
+    // Simulate loading state for initial render
+    const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer);
-  }, []);
+  }, [initialImages, randomizeOnClient, displayCount]);
   
   // Load more functionality
   const ITEMS_PER_ROW = 12;
@@ -48,8 +75,39 @@ export function StaticGalleryClient({ images: galleryImages }: StaticGalleryClie
   const handleCloseModal = () => {
     setModalOpen(false);
   };
+
+  const handleRefreshGallery = () => {
+    if (randomizeOnClient && initialImages.length > 0) {
+      setIsLoading(true);
+      const shuffled = shuffleArray(initialImages);
+      const selected = shuffled.slice(0, Math.min(displayCount, shuffled.length));
+      setGalleryImages(selected);
+      setVisibleCount(ITEMS_PER_ROW * INITIAL_ROWS);
+      setTimeout(() => setIsLoading(false), 500);
+    }
+  };
+
   return (
     <>
+      {/* Gallery Header with Refresh Option */}
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <p className="text-muted-foreground">
+            Showing {galleryImages.length} images from our collection
+          </p>
+        </div>
+        {randomizeOnClient && (
+          <Button 
+            onClick={handleRefreshGallery}
+            variant="outline"
+            size="sm"
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "Refresh Gallery"}
+          </Button>
+        )}
+      </div>
+
       {isLoading ? (
         <GallerySkeleton count={visibleCount} columns={6} />
       ) : (

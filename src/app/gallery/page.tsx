@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { Metadata } from "next";
-import { getRandomGalleryImagesAsync } from "@/lib/gallery-loader";
+import { getAllGalleryImages } from "@/lib/gallery-loader";
 import { HeroSection } from "@/components/sections/hero-section";
 import { CtaSection } from "@/components/sections/cta-section";
 import { Section } from "@/components/layouts";
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     locale: "en_CA",
     images: [
       {
-        url: "/images/gallery/victoriaparknails-0001.webp",
+        url: "/images/gallery/vpnail-gallery-00001.jpeg",
         width: 800,
         height: 600,
         alt: "Victoria Park Nails gallery - Professional nail art showcase featuring custom designs and manicures",
       },
       {
-        url: "/images/gallery/victoriaparknails-0002.webp",
+        url: "/images/gallery/vpnail-gallery-00002.jpeg",
         width: 800,
         height: 600,
         alt: "Beautiful nail art examples from Victoria Park Nails and Spa Calgary",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Gallery | Victoria Park Nails - Nail Art Showcase",
     description:
       "Browse our beautiful collection of nail art and custom designs. Get inspired for your next appointment at Calgary's premier nail salon.",
-    images: ["/images/gallery/victoriaparknails-0001.webp"],
+    images: ["/images/gallery/vpnail-gallery-00001.jpeg"],
     creator: "@victoriaparknails",
   },
   alternates: {
@@ -73,14 +73,14 @@ export const metadata: Metadata = {
   other: {
     "page-topic": "Nail Art Gallery, Nail Design Portfolio",
     "content-type": "Image Gallery",
-    "image-count": "20+",
+    "image-count": "30+",
   },
 };
 
 export default async function GalleryPage() {
-  // Get 30 random gallery images dynamically at build time
-  // This will automatically include any new images added to the gallery folder
-  const randomGalleryImages = await getRandomGalleryImagesAsync(30);
+  // Get ALL gallery images at build time, randomization will happen client-side
+  // This ensures fresh random selection on every page visit in static exports
+  const allGalleryImages = await getAllGalleryImages();
 
   return (
     <>
@@ -97,12 +97,16 @@ export default async function GalleryPage() {
             <div className="mb-8">
               <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Our Gallery</h1>
               <p className="text-muted-foreground">
-                Featuring {randomGalleryImages.length} beautiful images showcasing our work
+                Discover our beautiful nail art collection with fresh selections on every visit
               </p>
             </div>
             
-            {/* Dynamic Gallery with Client-side Interactivity */}
-            <StaticGalleryClient images={randomGalleryImages} />
+            {/* Dynamic Gallery with Client-side Randomization */}
+            <StaticGalleryClient 
+              images={allGalleryImages} 
+              randomizeOnClient={true}
+              displayCount={30}
+            />
           </div>
         </Section>
         
