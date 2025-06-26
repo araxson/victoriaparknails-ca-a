@@ -5,11 +5,10 @@ export { businessInfo } from "./business-info";
 export { websiteContent } from "./content";
 export { faqs } from "./faqs";
 export { 
-  fallbackGalleryImages as galleryImages, 
   getAllGalleryImages, 
   getFeaturedGalleryImages,
   getRandomGalleryImagesAsync
-} from "./gallery";
+} from "@/lib/gallery-loader";
 export { offers } from "./offers";
 export { services, serviceCategories, getServicesByCategory, getServiceById } from "./services";
 export { teamMembers } from "./team";

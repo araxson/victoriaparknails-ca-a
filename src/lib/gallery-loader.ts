@@ -17,7 +17,7 @@ async function loadManifest() {
     galleryManifest = manifest.default || manifest;
     return galleryManifest;
   } catch {
-    console.warn('Gallery manifest not found, using fallback images');
+    console.warn('Gallery manifest not found, using empty array');
     return null;
   }
 }
@@ -29,6 +29,14 @@ async function loadManifest() {
 export async function getAllGalleryImagesFromFolder(): Promise<GalleryImage[]> {
   const manifest = await loadManifest();
   return manifest?.images || [];
+}
+
+/**
+ * Get all gallery images dynamically from the filesystem
+ * This is the main function for getting all available images
+ */
+export async function getAllGalleryImages(): Promise<GalleryImage[]> {
+  return await getAllGalleryImagesFromFolder();
 }
 
 /**
@@ -45,6 +53,16 @@ export function getRandomGalleryImages(
   
   const shuffled = shuffleArray([...images]);
   return shuffled.slice(0, count);
+}
+
+/**
+ * Get 30 random gallery images for main gallery display
+ * This is the main function for loading gallery images
+ * @param count Number of images to return (default: 30)
+ */
+export async function getRandomGalleryImagesAsync(count: number = 30): Promise<GalleryImage[]> {
+  const allImages = await getAllGalleryImages();
+  return getRandomGalleryImages(allImages, count);
 }
 
 /**

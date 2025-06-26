@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { Metadata } from "next";
-import { getRandomGalleryImagesAsync } from "@/data/gallery";
+import { getRandomGalleryImagesAsync } from "@/lib/gallery-loader";
 import { HeroSection } from "@/components/sections/hero-section";
 import { CtaSection } from "@/components/sections/cta-section";
 import { Section } from "@/components/layouts";

@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { GalleryImage } from "@/data/types";
 import { getAllGalleryImagesFromFolder, getRandomGalleryImages, getFeaturedGalleryImages } from "@/lib/gallery-loader";
-import { fallbackGalleryImages } from "@/data/gallery";
 
 interface UseGalleryOptions {
   count?: number;
@@ -36,25 +35,15 @@ export function useGallery(options: UseGalleryOptions = {}): UseGalleryReturn {
     static: isStatic = false
   } = options;
 
-  const [images, setImages] = useState<GalleryImage[]>(
-    isStatic ? fallbackGalleryImages : []
-  );
+  const [images, setImages] = useState<GalleryImage[]>([]);
   const [isLoading, setIsLoading] = useState(!isStatic);
   const [error, setError] = useState<string | null>(null);
-  const [total, setTotal] = useState(isStatic ? fallbackGalleryImages.length : 0);
+  const [total, setTotal] = useState(0);
 
   // Enhanced abort controller for request cancellation
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const loadImages = useCallback(async () => {
-    if (isStatic) {
-      // For static builds, use fallback images
-      setImages(fallbackGalleryImages);
-      setTotal(fallbackGalleryImages.length);
-      setIsLoading(false);
-      return;
-    }
-
     // Cancel previous request if still pending
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
@@ -70,6 +59,7 @@ export function useGallery(options: UseGalleryOptions = {}): UseGalleryReturn {
       if (featured) {
         // Use optimized featured images function
         resultImages = await getFeaturedGalleryImages(count, randomize);
+        setTotal(resultImages.length);
       } else {
         // Get all images and apply filtering
         const allImages = await getAllGalleryImagesFromFolder();
@@ -99,9 +89,9 @@ export function useGallery(options: UseGalleryOptions = {}): UseGalleryReturn {
       setError(errorMessage);
       console.error('Gallery loading error:', err);
       
-      // Fallback to static images on error
-      setImages(fallbackGalleryImages);
-      setTotal(fallbackGalleryImages.length);
+      // Set empty array on error
+      setImages([]);
+      setTotal(0);
     } finally {
       setIsLoading(false);
     }

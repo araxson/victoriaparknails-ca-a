@@ -5,7 +5,7 @@ import { Section } from "@/components/layouts";
 import { SectionHeader } from "@/components/layouts/section-header";
 import { StaticGalleryGrid } from "@/components/ui/gallery-grid-static";
 import { ArrowRight } from "lucide-react";
-import { getFeaturedGalleryImages } from "@/data/gallery";
+import { getFeaturedGalleryImages } from "@/lib/gallery-loader";
 
 interface GallerySectionProps {
   isLoading?: boolean;
