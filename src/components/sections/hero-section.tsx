@@ -147,26 +147,12 @@ function HeroButtons() {
     <div className="pt-4">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <Button 
-          size="lg" 
+          size="xl" 
           asChild 
           className="w-full sm:w-auto rounded-full backdrop-blur-sm bg-primary/70 border border-white/20"
         >
-          <a
-            href={businessInfo.contact.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Book Appointment Online
-          </a>
-        </Button>
+          <Link href="/services">Book Appointment Online</Link>
 
-        <Button
-          size="lg"
-          variant="outline"
-          asChild
-          className="w-full sm:w-auto rounded-full backdrop-blur-sm bg-background/50 border border-white/20"
-        >
-          <Link href="/services">View Services</Link>
         </Button>
       </div>
     </div>
