@@ -8,6 +8,7 @@ import { Notification } from "@/components/ui/notifications";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { cn } from "@/lib/utils";
 import { playfairDisplay, roboto } from "@/lib/fonts";
+import { GoogleAnalytics } from "@/lib/analytics";
 
 // Force static generation for maximum SSG performance
 export const dynamic = 'force-static';
@@ -364,6 +365,7 @@ export default function RootLayout({
       </head>
       
       <body className="bg-background text-foreground">
+        <GoogleAnalytics />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <MainHeader />
           <Breadcrumbs />
