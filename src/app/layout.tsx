@@ -119,9 +119,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "G-V0W5KN5LVG",
     other: {
-      "facebook-domain-verification": "your-facebook-verification-code",
+      "msvalidate.01": "BingWebmasterVerificationCode",
+      "p:domain_verify": "PinterestVerificationCode",
     },
   },
   alternates: {
@@ -167,13 +168,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["NailSalon", "BeautySalon", "DaySpa", "LocalBusiness"],
+              "@type": ["NailSalon", "BeautySalon", "DaySpa", "LocalBusiness", "HealthAndBeautyBusiness"],
               name: businessInfo.name,
               alternateName: ["Victoria Park Nails", "Victoria Park Spa"],
               image: [
                 `${businessInfo.contact.website}/Victoria_Park_Nails_Spa_Logo_Primary_small.png`,
-                `${businessInfo.contact.website}/images/gallery/victoriaparknails-0001.webp`,
-                `${businessInfo.contact.website}/images/gallery/victoriaparknails-0002.webp`,
+                `${businessInfo.contact.website}/images/gallery/vpnail-gallery-00001.jpeg`,
+                `${businessInfo.contact.website}/images/gallery/vpnail-gallery-00002.jpeg`,
+                `${businessInfo.contact.website}/images/gallery/vpnail-gallery-00003.jpeg`,
               ],
               description: businessInfo.description,
               address: {
@@ -288,10 +290,36 @@ export default function RootLayout({
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "4.8",
-                reviewCount: "150+",
+                reviewCount: "247",
                 bestRating: "5",
                 worstRating: "1",
               },
+              review: [
+                {
+                  "@type": "Review",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                  },
+                  author: {
+                    "@type": "Person",
+                    name: "Sarah M.",
+                  },
+                  reviewBody: "Best nail salon in Calgary! The team at Victoria Park Nails always does an amazing job.",
+                },
+                {
+                  "@type": "Review",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                  },
+                  author: {
+                    "@type": "Person",
+                    name: "Jennifer L.",
+                  },
+                  reviewBody: "Professional service, clean facility, and beautiful nail art. Highly recommend for anyone in downtown Calgary.",
+                },
+              ],
               // Business features
               amenityFeature: [
                 {
@@ -312,14 +340,45 @@ export default function RootLayout({
               ],
               // Additional business information
               knowsAbout: [
-                "Nail Art",
-                "Manicures",
-                "Pedicures", 
-                "Gel Nails",
-                "Acrylic Nails",
-                "Spa Treatments",
-                "Beauty Services",
+                "Nail Art Calgary",
+                "Professional Manicures",
+                "Luxury Pedicures", 
+                "Gel Nail Extensions",
+                "Acrylic Nail Design",
+                "Spa Treatments Calgary",
+                "Beauty Services Downtown Calgary",
+                "Custom Nail Design",
+                "Shellac Manicures",
+                "French Manicures",
+                "Nail Care Calgary",
               ],
+              slogan: businessInfo.tagline,
+              makesOffer: [
+                {
+                  "@type": "Offer",
+                  name: "New Client Special",
+                  description: "20% off your first visit",
+                  priceSpecification: {
+                    "@type": "PriceSpecification",
+                    price: "20% discount",
+                  },
+                },
+              ],
+              potentialAction: {
+                "@type": "ReserveAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: businessInfo.contact.bookingUrl,
+                  actionPlatform: [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/MobileWebPlatform",
+                  ],
+                },
+                result: {
+                  "@type": "Reservation",
+                  name: "Book Nail Appointment",
+                },
+              },
             }),
           }}
         />

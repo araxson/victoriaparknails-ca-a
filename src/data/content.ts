@@ -19,16 +19,16 @@ export const websiteContent = {
   hero: {
     title: businessInfo.tagline,
     subtitle:
-      `Welcome to ${businessInfo.name}, your downtown Calgary oasis for exceptional nail care, custom art, and restorative spa services.`,
+      `Welcome to ${businessInfo.name}, your premier destination for exceptional nail care, custom art, and restorative spa services in Victoria Park, Calgary.`,
     description:
-      `Discover your downtown Calgary oasis. ${businessInfo.name} offers exceptional manicures, pedicures, nail art, and spa services. Book your escape today!`,
+      `Discover Calgary's premier nail salon in Victoria Park. ${businessInfo.name} offers exceptional manicures, pedicures, nail art, and spa services. Conveniently located at 1411 1st Street SE near Calgary Stampede grounds. Book your escape today!`,
     primaryCTA: "Book an Appointment",
     secondaryCTA: "Explore Our Services",
     features: [
-      "Creative Artistry: As Calgary's go-to for custom nail design, our talented technicians bring your vision to life.",
+      "Creative Artistry: As Calgary's go-to for custom nail design in Victoria Park, our talented technicians bring your vision to life.",
       "Pristine Hygiene: Your health is paramount. We exceed industry standards with autoclaved tools and hospital-grade disinfectants for your peace of mind.",
       "Uncompromising Quality: We use industry-leading, professional-grade products to ensure your results are stunning, healthy, and long-lasting.",
-      "An Oasis of Relaxation: Our salon is designed to be your escape. From the moment you arrive, our friendly team is dedicated to your comfort and relaxation.",
+      "An Oasis of Relaxation: Our Victoria Park salon is designed to be your escape from the Calgary hustle. From the moment you arrive at our 1411 1st Street SE location, our friendly team is dedicated to your comfort and relaxation.",
     ],
   },
 
@@ -37,16 +37,16 @@ export const websiteContent = {
     title: "A Trusted Haven for Beauty and Relaxation",
     subtitle: "A Passion for Pampering, A Commitment to Care",
     description:
-      `${businessInfo.name} was founded in ${businessInfo.founded} with a clear mission: to create a trusted and elegant haven for beauty and relaxation in the heart of Calgary. We saw the need for a salon that didn't just perform services, but delivered an experience—one where artistry, hygiene, and genuine customer care were the pillars of the business. Our vision is to be the city's most sought-after destination for creative, custom nail art and unparalleled spa services, where every client leaves feeling more confident and cared for than when they arrived.`,
+      `${businessInfo.name} was founded in ${businessInfo.founded} with a clear mission: to create a trusted and elegant haven for beauty and relaxation in Victoria Park, Calgary. Located conveniently near the Calgary Stampede grounds and minutes from downtown, we saw the need for a salon that didn't just perform services, but delivered an experience—one where artistry, hygiene, and genuine customer care were the pillars of the business. Our vision is to be Calgary's most sought-after destination for creative, custom nail art and unparalleled spa services, where every client leaves feeling more confident and cared for than when they arrived.`,
     mission:
-      `At ${businessInfo.name}, we believe self-care is an essential ritual. Since ${businessInfo.founded}, our mission has been to provide a trusted sanctuary where you can unwind, rejuvenate, and leave feeling utterly refreshed. We combine technical artistry with uncompromising hygiene and a passion for customer satisfaction to create your perfect escape from the city's hustle.`,
+      `At ${businessInfo.name}, we believe self-care is an essential ritual. Since ${businessInfo.founded}, our mission has been to provide a trusted sanctuary in Victoria Park where you can unwind, rejuvenate, and leave feeling utterly refreshed. We combine technical artistry with uncompromising hygiene and a passion for customer satisfaction to create your perfect escape from Calgary's hustle.`,
     storyTitle: "More Than Just a Nail Salon",
     valuesTitle: "The Principles That Guide Every Service",
     valuesDescription:
       "Our commitment to you is reflected in everything we do. These values are the heartbeat of our salon.",
     tourTitle: "Step Inside Your Downtown Oasis",
     tourDescription:
-      "We've meticulously designed our space to be clean, modern, and deeply relaxing. From our comfortable pedicure chairs to our pristine manicure stations, every detail is curated for your comfort.",
+      "We've meticulously designed our Victoria Park space to be clean, modern, and deeply relaxing. Located at 1411 1st Street SE, just minutes from Calgary Tower and the Stampede grounds, our salon features comfortable pedicure chairs and pristine manicure stations, with every detail curated for your comfort.",
     values: [
       {
         title: "Quality Service",
@@ -114,7 +114,7 @@ export const websiteContent = {
     title: "Meet Our Team",
     subtitle: "Talented technicians who bring your vision to life",
     description:
-      "Our skilled professionals bring years of experience and artistic talent to every service. As Calgary's go-to for custom nail design, our talented technicians bring your vision to life.",
+      "Our skilled professionals bring years of experience and artistic talent to every service. As Calgary's go-to for custom nail design in Victoria Park, our talented technicians bring your vision to life.",
     meetTeam: "Meet the Team",
     bookWith: "Book with",
   },
@@ -147,7 +147,7 @@ export const websiteContent = {
   // Contact section
   contact: {
     title: "Get In Touch or Book Your Visit",
-    subtitle: `Find Us in ${businessInfo.name}`,
+    subtitle: `Find Us in Victoria Park, Calgary`,
     description:
       "We're here to answer your questions or help you book your next moment of relaxation. For the fastest way to secure your appointment, please use our online booking system. For all other inquiries, please use the form below.",
     getDirections: "Get Directions",
@@ -155,7 +155,7 @@ export const websiteContent = {
     emailUs: "Email Us",
     followUs: "Follow Us",
     hours: "Hours of Operation",
-    location: `Find Us in ${businessInfo.name}`,
+    location: `Find Us in Victoria Park, Calgary`,
     contactInfo: "Contact Information",
     sendMessage: "Send Us a Message",
     formDisclaimer:

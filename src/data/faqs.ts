@@ -7,7 +7,7 @@ export const faqs: FAQ[] = [
     id: "hours-location",
     question: "What are your hours and location?",
     answer:
-      `We're located at ${businessInfo.address.fullAddress} with free parking available. We're open Monday-Friday ${businessInfo.hours.monday}, Saturday-Sunday ${businessInfo.hours.saturday}${businessInfo.holidayHours ? `, and Holidays ${businessInfo.holidayHours.hours}` : ''}.`,
+      `We're located in Victoria Park at ${businessInfo.address.fullAddress}, just minutes from downtown Calgary and the Stampede grounds with free parking available. We're open Monday-Friday ${businessInfo.hours.monday}, Saturday-Sunday ${businessInfo.hours.saturday}${businessInfo.holidayHours ? `, and Holidays ${businessInfo.holidayHours.hours}` : ''}. Easily accessible from anywhere in Calgary.`,
     category: "general",
   },
   {
@@ -28,14 +28,14 @@ export const faqs: FAQ[] = [
     id: "parking-available",
     question: "Is parking available?",
     answer:
-      "Yes, we have free parking available in front of the salon and in the adjacent parking lot. Street parking is also available.",
+      "Yes, we have free parking available in front of our salon and in the adjacent parking lot. Street parking is also available on 1st Street SE. We're conveniently located near Calgary Transit stops in Victoria Park.",
     category: "general",
   },
   {
     id: "walk-ins-welcome",
     question: "Do you accept walk-ins?",
     answer:
-      "Yes, we welcome walk-ins! However, appointments are recommended to ensure availability and minimize wait times, especially during busy periods and weekends.",
+      "Yes, we welcome walk-ins! However, appointments are recommended to ensure availability and minimize wait times, especially during busy periods, weekends, and Calgary Stampede season. Book online or call us to secure your spot.",
     category: "general",
   },
 
@@ -79,7 +79,7 @@ export const faqs: FAQ[] = [
     id: "pricing-range",
     question: "What are your service prices?",
     answer:
-      "Regular manicures start at $30, shellac manicures $40, basic pedicures $45-$50, spa pedicures $50-$60, acrylic new sets $60, and UV gel new sets $65. Massage services range from $120-$240. Contact us for a complete price list.",
+      "Regular manicures start at $30, shellac manicures $40, basic pedicures $45-$50, spa pedicures $50-$60, acrylic new sets $60, and UV gel new sets $65. Massage services range from $120-$240. We offer competitive pricing for professional nail services in Calgary. Contact us for a complete price list.",
     category: "pricing",
   },
 
@@ -148,7 +148,7 @@ export const faqs: FAQ[] = [
     id: "group-discounts",
     question: "Do you offer group discounts?",
     answer:
-      "Yes! We offer special rates for groups of 4 or more, bridal parties, and special events. Contact us to discuss group packages and pricing. Advanced booking required.",
+      "Yes! We offer special rates for groups of 4 or more, bridal parties, Calgary Stampede groups, and special events. Perfect for corporate events, bachelorette parties, or any celebration. Contact us to discuss group packages and pricing. Advanced booking required.",
     category: "pricing",
   },
   {

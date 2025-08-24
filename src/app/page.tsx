@@ -16,14 +16,21 @@ export const revalidate = false;
 
 export const metadata: Metadata = {
   title:
-    `${businessInfo.name} | Calgary's Premier Nail Salon | Custom Nail Art & Luxury Spa Services`,
+    `${businessInfo.name} | Calgary's Premier Nail Salon in Victoria Park | Custom Nail Art & Luxury Spa Services`,
   description:
-    `Calgary's finest nail salon since ${businessInfo.founded}. Luxury manicures, pedicures, custom nail art, gel nails, and spa treatments in downtown Calgary. Professional nail technicians, relaxing atmosphere, and premium services. Book your appointment today!`,
+    `Calgary's finest nail salon in Victoria Park since ${businessInfo.founded}. Luxury manicures, pedicures, custom nail art, gel nails, and spa treatments. Located at 1411 1st Street SE near Calgary Stampede grounds. Professional nail technicians, relaxing atmosphere, and premium services. Book your appointment today!`,
   keywords: [
     "Calgary nail salon",
     "Victoria Park nail salon",
     "downtown Calgary nails",
     "best nail salon Calgary",
+    "nail salon Victoria Park Calgary",
+    "nail salon Beltline Calgary",
+    "nail salon Mission Calgary",
+    "nail salon Inglewood Calgary",
+    "nail salon downtown Calgary",
+    "nail salon near Calgary Stampede",
+    "nail salon 1411 1st Street SE Calgary",
     "custom nail art Calgary",
     "luxury manicure Calgary",
     "spa pedicure Calgary",
@@ -43,11 +50,14 @@ export const metadata: Metadata = {
     "Calgary beauty salon",
     "professional nail services",
     "nail care Calgary",
+    "nail salon near me Calgary",
+    "nail salon Ramsay Calgary",
+    "nail salon East Village Calgary",
   ],
   openGraph: {
     title: `${businessInfo.name} | Calgary's Premier Nail Salon & Spa`,
     description:
-      `Experience Calgary's finest nail salon and spa services. Custom nail art, luxury manicures & pedicures, gel nails, and spa treatments in downtown Calgary since ${businessInfo.founded}. Professional nail technicians in a relaxing, premium environment.`,
+      `Experience Calgary's finest nail salon and spa services in Victoria Park. Custom nail art, luxury manicures & pedicures, gel nails, and spa treatments at 1411 1st Street SE since ${businessInfo.founded}. Professional nail technicians in a relaxing, premium environment. Walking distance from Calgary Stampede grounds.`,
     url: businessInfo.contact.website,
     type: "website",
     locale: "en_CA",

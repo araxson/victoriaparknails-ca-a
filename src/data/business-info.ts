@@ -5,7 +5,7 @@ export const businessInfo: BusinessInfo = {
   name: BUSINESS_CONSTANTS.name.full,
   tagline: "Experience Tranquility. Unveil Your Radiance.",
   description:
-    "Calgary's premier nail salon and spa offering exceptional manicures, pedicures, custom nail art, and luxury spa treatments since 2015.",
+    "Calgary's premier nail salon and spa in Victoria Park offering exceptional manicures, pedicures, custom nail art, and luxury spa treatments since 2015. Located at 1411 1st Street SE near the Calgary Stampede grounds.",
   founded: "2015",
   address: {
     street: "1411 1st Street SE",
