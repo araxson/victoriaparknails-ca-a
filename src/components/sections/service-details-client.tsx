@@ -117,13 +117,11 @@ export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: Se
                 
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-7xl mx-auto">                  {subcategoryServices.map((service, serviceIndex) => {
-                    return (                      <Card
-                        key={`${service.name}-${service.subcategory}-${serviceIndex}`}
-                        className="border-border/50 bg-card/80 backdrop-blur-sm"
-                      >
-                        <CardHeader>
-                          <div className="grid grid-rows-[auto_auto_auto] gap-4">
-                            {/* First Row: Service Info + Pricing (2 columns) */}
+                    return (                                                                                                                    <Card
+                          key={`${service.name}-${service.subcategory}-${serviceIndex}`}
+                          className="border-border/50 bg-card/80 backdrop-blur-sm flex flex-col h-full"
+                        >
+                                                     <CardHeader className="pb-6">
                             <div className="grid grid-cols-[1fr_auto] gap-4 items-start">
                               {/* Service Info Column */}
                               <div className="grid gap-2">                                <CardTitle className="text-lg md:text-xl font-playfair font-medium text-foreground leading-tight">
@@ -147,35 +145,28 @@ export function ServiceDetailsClient({ serviceCategories, defaultActiveTab }: Se
                                 </div>
                               </div>
                             </div>
-                              {/* Second Row: Service Details (Full Width) */}
-                            {service.details && (
-                              <div className="grid">
-                                <div className="text-xs text-muted-foreground leading-relaxed">
-                                  {service.details}
-                                </div>
-                              </div>
-                            )}
-                              {/* Third Row: Book Button (Full Width) */}
-                            <div className="grid">                              <Button
-                                asChild
-                                variant="outline"
-                                size="lg"
-                                className="w-full justify-center gap-1.5 text-xs font-medium"
+                          </CardHeader>
+                          
+                                                     {/* Button with no extra padding - let Card handle spacing */}
+                           <div className="px-6">
+                                                          <Button
+                               asChild
+                               variant="default"
+                               size="lg"
+                               className="w-full justify-center gap-1.5 text-sm font-medium bg-primary/90 text-primary-foreground hover:bg-primary/80"
+                             >
+                              <a 
+                                href={service.bookingUrl || businessInfo.contact.bookingUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center"
                               >
-                                <a 
-                                  href={service.bookingUrl || businessInfo.contact.bookingUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center"
-                                >
-                                  Book This Service
-                                  <ArrowRight className="h-3 w-3" />
-                                </a>
-                              </Button>
-                            </div>
+                                Book This Service
+                                <ArrowRight className="h-3 w-3" />
+                              </a>
+                            </Button>
                           </div>
-                        </CardHeader>
-                      </Card>
+                        </Card>
                     );
                   })}
                 </div>
