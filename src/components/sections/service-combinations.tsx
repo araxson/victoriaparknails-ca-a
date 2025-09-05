@@ -11,7 +11,7 @@ import Autoplay from "embla-carousel-autoplay";
 const popularPackages = [
 	{
 		name: "Deluxe",
-		price: "80",
+		price: "85",
 		originalPrice: "90",
 		duration: "2 hrs",
 		popular: true,
@@ -22,7 +22,7 @@ const popularPackages = [
 			{ name: "Deluxe Spa Pedicure", included: true }
 		],
 		description: "Your ultimate spa retreat to melt away stress.",
-		savings: "You save $10!",
+		savings: "You save $5!",
 	},
 	{
 		name: "Classic",
@@ -302,4 +302,5 @@ export function ServicePricingComparison() {
 			</div>
 		</Section>
 	);
+
 }
