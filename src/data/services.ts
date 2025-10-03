@@ -114,12 +114,20 @@ export const services: ServiceCategory[] = [
             bookingUrl: "https://victoriaparknailsspa.setmore.com/services/3cf5dc61-a989-46a6-b2ae-f7075266cb4a"
           },
           {
-            name: "Nail Refill",
+            name: "Acrylic Refill",
             duration: "20 mins",
             price: "45",
             shortDescription: "Keep your nails always perfect",
 
-            bookingUrl: "https://victoriaparknailsspa.setmore.com/services/0dcb3f25-5eca-4461-ab9d-b8971689f723?step=staff&products=0dcb3f25-5eca-4461-ab9d-b8971689f723&type=service"
+            bookingUrl: "https://victoriaparknailsspa.setmore.com/services/cf9f0b27-3b4e-49b0-9f4d-faa1fa7e4183"
+          },
+          {
+            name: "Gel Refill",
+            duration: "20 mins",
+            price: "45",
+            shortDescription: "Keep your nails always perfect",
+
+            bookingUrl: "https://victoriaparknailsspa.setmore.com/services/238fde8d-6edd-486d-9597-a7e6449ad4a8"
           }
         ],
       },
